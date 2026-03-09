@@ -1,0 +1,7 @@
+[
+{"id":"1","title":"Pendidikan","masterstatus":false,"slug":"pendidikan","created_at":"2020-12-13 21:47:58","updated_at":"2020-12-13 21:47:58","deleted_at":null},
+{"id":"2","title":"Kurikulum 2013","masterstatus":false,"slug":"kurikulum-2013","created_at":"2020-12-13 21:48:13","updated_at":"2020-12-13 21:48:25","deleted_at":null},
+{"id":"3","title":"Spansa","masterstatus":true,"slug":"spansa","created_at":"2020-12-17 22:38:43","updated_at":"2020-12-17 22:38:43","deleted_at":null},
+{"id":"4","title":"Prestasi","masterstatus":false,"slug":"prestasi","created_at":"2020-12-17 22:38:56","updated_at":"2020-12-17 22:38:56","deleted_at":null}
+]
+

@@ -1,0 +1,8 @@
+[
+{"id":"1","author_id":"1","title":"Informasi Sekolah","slug":"informasi-sekolah","image":"1607856634edu7.jpeg","created_at":"2020-12-13 17:08:56","updated_at":"2020-12-13 17:50:34","deleted_at":null},
+{"id":"2","author_id":"1","title":"Umum","slug":"umum","image":"1719926679PPDB2024.png","created_at":"2020-12-13 17:08:56","updated_at":"2024-07-02 21:24:40","deleted_at":null},
+{"id":"3","author_id":"1","title":"Serba Serbid","slug":"serba-serbid","image":"1607856754edu8.jpeg","created_at":"2020-12-13 17:08:56","updated_at":"2020-12-13 18:22:54","deleted_at":null},
+{"id":"4","author_id":"1","title":"Pendidikan","slug":"pendidikan","image":"1607860779edu6.jpeg","created_at":"2020-12-13 18:59:40","updated_at":"2020-12-13 18:59:40","deleted_at":null},
+{"id":"5","author_id":"2","title":"Akademik","slug":"akademik","image":"1608212253edu4.jpeg","created_at":"2020-12-17 21:37:35","updated_at":"2020-12-17 21:37:35","deleted_at":null},
+{"id":"6","author_id":"1","title":"Prestasi Siswa","slug":"prestasi-siswa","image":null,"created_at":"2025-11-02 14:32:39","updated_at":"2025-11-02 14:32:39","deleted_at":null}
+]
