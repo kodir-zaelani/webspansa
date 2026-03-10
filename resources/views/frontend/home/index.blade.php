@@ -1,55 +1,10 @@
 @extends('layouts.front')
 @section('title', $title ?? 'Beranda')
 @section('content')
-<section class="main-banner">
-<div class="container ">
-    <div class="row">
-        <div class="col-lg-2 col-md-2 header-logo">
-            <div class="main-banner-logo">
-                @if ($global_option->logo)
-                <img src="{{ $global_option->ImageUrl }}">
-                @endif
-            </div>
-        </div>
-        <div class="col-lg-10 col-md-10">
-            <div class="main-banner-content">
-                <h2>{!! $global_option->webname !!}</h2>
-                <h4 class="text-yellow">{!! $global_option->tagline !!}</h4>
-                <span><strong><i class="fas fa-envelope"></i> {{ $global_option->email }}</strong></span>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-<section id="hero" class="hero section dark-background">
-    <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-
-        @foreach ($sliders as $key => $item)
-
-        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-            <img src="{{ $item->imageUrl }}" alt="" style="max-width: 100%">
-            <div class="carousel-container">
-                <h4>{{ $item->title }}</h4>
-                <p>{{$item->excerpt}}</p>
-                {{-- <a href="#featured-services" class="btn-get-started">Get Started</a> --}}
-            </div>
-        </div>
-        @endforeach
-
-        <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-        </a>
-
-        <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-        </a>
-
-        <ol class="carousel-indicators"></ol>
-
-    </div>
-
-</section>
-
+@include('frontend.partials.main-banner')
+@include('frontend.partials.main-hero')
+@include('frontend.home.main-featured-news')
+@include('frontend.home.main-latest-news')
 
 <section id="about" class="about section">
 
@@ -64,7 +19,7 @@
         <div class="row gy-4">
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                 <h3>Voluptatem dignissimos provident laboris nisi ut aliquip ex ea commodo</h3>
-                <img src="assets/img/about.jpg" class="mb-4 img-fluid rounded-4" alt="">
+                <img src="{{asset('')}}assets/frontend/img/about.jpg" class="mb-4 img-fluid rounded-4" alt="">
                 <p>Ut fugiat ut sunt quia veniam. Voluptate perferendis perspiciatis quod nisi et. Placeat debitis quia recusandae odit et consequatur voluptatem. Dignissimos pariatur consectetur fugiat voluptas ea.</p>
                 <p>Temporibus nihil enim deserunt sed ea. Provident sit expedita aut cupiditate nihil vitae quo officia vel. Blanditiis eligendi possimus et in cum. Quidem eos ut sint rem veniam qui. Ut ut repellendus nobis tempore doloribus debitis explicabo similique sit. Accusantium sed ut omnis beatae neque deleniti repellendus.</p>
             </div>
@@ -85,7 +40,7 @@
                     </p>
 
                     <div class="mt-4 position-relative">
-                        <img src="assets/img/about-2.jpg" class="img-fluid rounded-4" alt="">
+                        <img src="{{asset('')}}assets/frontend/img/about-2.jpg" class="img-fluid rounded-4" alt="">
                         <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
                     </div>
                 </div>
@@ -294,91 +249,91 @@
             <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
                 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                    <img src="assets/img/masonry-portfolio/masonry-portfolio-1.jpg" class="img-fluid" alt="">
+                    <img src="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-1.jpg" class="img-fluid" alt="">
                     <div class="portfolio-info">
                         <h4>App 1</h4>
                         <p>Lorem ipsum, dolor sit</p>
-                        <a href="assets/img/masonry-portfolio/masonry-portfolio-1.jpg" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-1.jpg" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                         <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                    <img src="assets/img/masonry-portfolio/masonry-portfolio-2.jpg" class="img-fluid" alt="">
+                    <img src="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-2.jpg" class="img-fluid" alt="">
                     <div class="portfolio-info">
                         <h4>Product 1</h4>
                         <p>Lorem ipsum, dolor sit</p>
-                        <a href="assets/img/masonry-portfolio/masonry-portfolio-2.jpg" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-2.jpg" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                         <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                    <img src="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" class="img-fluid" alt="">
+                    <img src="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-3.jpg" class="img-fluid" alt="">
                     <div class="portfolio-info">
                         <h4>Branding 1</h4>
                         <p>Lorem ipsum, dolor sit</p>
-                        <a href="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-3.jpg" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                         <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                    <img src="assets/img/masonry-portfolio/masonry-portfolio-4.jpg" class="img-fluid" alt="">
+                    <img src="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-4.jpg" class="img-fluid" alt="">
                     <div class="portfolio-info">
                         <h4>App 2</h4>
                         <p>Lorem ipsum, dolor sit</p>
-                        <a href="assets/img/masonry-portfolio/masonry-portfolio-4.jpg" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-4.jpg" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                         <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                    <img src="assets/img/masonry-portfolio/masonry-portfolio-5.jpg" class="img-fluid" alt="">
+                    <img src="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-5.jpg" class="img-fluid" alt="">
                     <div class="portfolio-info">
                         <h4>Product 2</h4>
                         <p>Lorem ipsum, dolor sit</p>
-                        <a href="assets/img/masonry-portfolio/masonry-portfolio-5.jpg" title="Product 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-5.jpg" title="Product 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                         <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                    <img src="assets/img/masonry-portfolio/masonry-portfolio-6.jpg" class="img-fluid" alt="">
+                    <img src="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-6.jpg" class="img-fluid" alt="">
                     <div class="portfolio-info">
                         <h4>Branding 2</h4>
                         <p>Lorem ipsum, dolor sit</p>
-                        <a href="assets/img/masonry-portfolio/masonry-portfolio-6.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-6.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                         <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                    <img src="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" class="img-fluid" alt="">
+                    <img src="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-7.jpg" class="img-fluid" alt="">
                     <div class="portfolio-info">
                         <h4>App 3</h4>
                         <p>Lorem ipsum, dolor sit</p>
-                        <a href="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-7.jpg" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                         <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                    <img src="assets/img/masonry-portfolio/masonry-portfolio-8.jpg" class="img-fluid" alt="">
+                    <img src="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-8.jpg" class="img-fluid" alt="">
                     <div class="portfolio-info">
                         <h4>Product 3</h4>
                         <p>Lorem ipsum, dolor sit</p>
-                        <a href="assets/img/masonry-portfolio/masonry-portfolio-8.jpg" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-8.jpg" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                         <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                    <img src="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" class="img-fluid" alt="">
+                    <img src="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-9.jpg" class="img-fluid" alt="">
                     <div class="portfolio-info">
                         <h4>Branding 3</h4>
                         <p>Lorem ipsum, dolor sit</p>
-                        <a href="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="{{asset('')}}assets/frontend/img/masonry-portfolio/masonry-portfolio-9.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                         <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                     </div>
                 </div>
@@ -407,7 +362,7 @@
             <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
                 <div class="team-member">
                     <div class="member-img">
-                        <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                        <img src="{{asset('')}}assets/frontend/img/team/team-1.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="member-info">
                         <div class="social">
@@ -425,7 +380,7 @@
             <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="400">
                 <div class="team-member">
                     <div class="member-img">
-                        <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                        <img src="{{asset('')}}assets/frontend/img/team/team-2.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="member-info">
                         <div class="social">
@@ -443,7 +398,7 @@
             <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="600">
                 <div class="team-member">
                     <div class="member-img">
-                        <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+                        <img src="{{asset('')}}assets/frontend/img/team/team-3.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="member-info">
                         <div class="social">
