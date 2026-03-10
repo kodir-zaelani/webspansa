@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -62,9 +63,9 @@ class Post extends Model
         foreach ($this->tags as $tag) {
             // $anchors[] = '<a href="#">' . $tag->title . '</a>';
             // $anchors[] = '<span ><a href="' .route('post.tag', $tag->slug) . '" > ' . $tag->title . '</a></span>';
-            $anchors[] = '<small><span>' . $tag->title . '</span></small>';
+            $anchors[] = '<a href="' . route('post.tag', $tag->slug) . '" class="tag">' . $tag->title . '</a>';
         }
-        return implode(", ", $anchors);
+        return implode($anchors);
     }
 
     public function getTagsHtmlbackAttribute()
@@ -157,7 +158,7 @@ class Post extends Model
     }
 
     // fungsi scope untuk manampilkan yang status publish
-    public function scopePublishedate($query)
+    public function scopePublisheddate($query)
     {
         return $query->where("published_at", "<=",  date('Y-m-d'));
     }

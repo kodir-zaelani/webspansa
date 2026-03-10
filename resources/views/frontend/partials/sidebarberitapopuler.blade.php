@@ -8,7 +8,7 @@
                 <div class="post-content">
                     <span class="category">{{$item->postcategory->title}}</span>
                     <h4 class="post-title">
-                        <a href="{{route('post.detail', $item->slug)}}">{{$item->title}}</a>
+                        <a href="{{route('news.detail', $item->slug)}}">{{$item->title}}</a>
                     </h4>
                     <div class="post-author">
                         <a href="#">

@@ -66,7 +66,28 @@
     @stack('scripts')
 
     @livewireScripts
-
+    <div class="modal fade modal-md" id="modalSearch" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 fw-bold" id="staticBackdropLabel"><i class="fa fa-search" aria-hidden="true"></i> Pencarian berita</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <form action="{{ route('post.search') }}" method="GET">
+                                <div class="mb-3 input-group">
+                                    <input type="text" name="search" class="form-control" placeholder="Cari berita..." value="{{ request('search') ?? '' }}">
+                                    <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Support\Str;
-use App\Models\Pagecategory;
+use App\Models\Postcategory;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PagecategoryRequest;
 use Intervention\Image\Laravel\Facades\Image;
-use App\Http\Requests\PagecategoryupdateRequest;
+use App\Http\Requests\PostcategorystoreRequest;
+use App\Http\Requests\PostcategoryupdateRequest;
 
-class PagecategoryController extends Controller
+class PostcategoryController extends Controller
 {
-    // perbaikan
-    protected $uploadPath;
+     protected $uploadPath;
     /**
     * __construct
     *
@@ -20,46 +20,46 @@ class PagecategoryController extends Controller
     */
     public function __construct()
     {
-        $this->uploadPath = public_path(config('cms.image.directoryPagecategory'));
+        $this->uploadPath = public_path(config('cms.image.directoryCategorypost'));
     }
 
     public static function middleware(): array
     {
         return [
-            'permission:pagecategories.index|pagecategories.create|pagecategories.edit|pagecategories.delete|pagecategories.trash',
+            // examples with aliases, pipe-separated names, guards, etc:
+            'permission:categoryposts.index|categoryposts.create|categoryposts.edit|categoryposts.delete|categoryposts.trash',
         ];
     }
 
     public function index()
     {
-        return view('backend.pagecategory.index', [
-            'title' => 'Kategori Halaman'
+        return view('backend.postcategory.index', [
+            'title' => 'Post Category'
         ]);
     }
 
-    public function create()
+     public function create()
     {
-        return view('backend.pagecategory.create', [
-            'datapagecategory' => Pagecategory::orderBy('created_at', 'asc')->get(),
-            'title' => 'Kategori Halaman'
+        return view('backend.postcategory.create', [
+            'datapostcategory' => Postcategory::orderBy('created_at', 'asc')->get(),
+            'title' => 'Post Category Create'
         ]);
     }
 
-    public function store(PagecategoryRequest $request)
+    public function store(PostcategorystoreRequest $request)
     {
         // Default data
         $data = [
-            'title'            => $request->input('title'),
-            'slug'             => Str::slug($request->input('title')),
+            'title'     => $request->input('title'),
+            'slug'      => Str::slug($request->input('title')),
+            'parent_id' => $request->input('parent_id'),
         ];
 
         //upload image (cara kedua)
         if ($request->has('image')) {
             # upload with image
             $image = $request->file('image');
-            $fileName = 'pagecategory_' . Str::slug($request->title) . '.' . $image->getClientOriginalExtension();
-            // $fileName = 'pagecategory_' . Str::slug($request->title) . '_' . time() . $image->getClientOriginalName();
-            // $fileName = 'pagecategory_' . time() . $extension;
+            $fileName = 'postcategory_' . Str::slug($request->title) . '.' . $image->getClientOriginalExtension();
             $destination = $this->uploadPath;
 
             $successUploaded = Image::read($image);
@@ -85,9 +85,9 @@ class PagecategoryController extends Controller
             ]);
         }
 
-        $pagecategory = Pagecategory::create($data);
+        $postcategory = Postcategory::create($data);
 
-        return redirect()->route('backend.pagecategories.index')->with(['success' => 'Add Page Category ' . $pagecategory['title'] . ' was successfully!']);
+        return redirect()->route('backend.postscategories.index')->with(['success' => 'Add Post Category ' . $postcategory['title'] . ' was successfully!']);
     }
 
     /**
@@ -96,13 +96,13 @@ class PagecategoryController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function edit(Pagecategory $pagecategory)
+    public function edit(Postcategory $postcategory)
     {
 
-        return view('backend.pagecategory.edit', [
-            'pagecategory' => $pagecategory,
-            'datapagecategory' => Pagecategory::orderBy('created_at', 'asc')->get(),
-            'title'        => 'Page Category Edit',
+        return view('backend.postcategory.edit', [
+            'postcategory' => $postcategory,
+            'datapostcategory' => Postcategory::orderBy('created_at', 'asc')->get(),
+            'title'        => 'Post Category Edit',
         ]);
     }
 
@@ -113,21 +113,22 @@ class PagecategoryController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(PagecategoryupdateRequest $request, Pagecategory $pagecategory)
+    public function update(PostcategoryupdateRequest $request, Postcategory $postcategory)
     {
-        $oldImage = $pagecategory->image;
+        $oldImage = $postcategory->image;
         // Default data
         $data = [
-            'title'            => $request->input('title'),
-            'slug'             => Str::slug($request->input('title')),
+            'title'     => $request->input('title'),
+            'slug'      => Str::slug($request->input('title')),
+            'parent_id' => $request->input('parent_id'),
         ];
 
         //upload image (cara kedua)
         if ($request->has('image')) {
             # upload with image
             $image = $request->file('image');
-            $fileName = 'pagecategory_' . Str::slug($request->title) . '.' . $image->getClientOriginalExtension();
-            // $fileName = 'pagecategory_' . time() . $image->getClientOriginalName();
+            $fileName = 'postcategory_' . Str::slug($request->title) . '.' . $image->getClientOriginalExtension();
+            // $fileName = 'postcategory_' . time() . $image->getClientOriginalName();
             $destination = $this->uploadPath;
 
             $successUploaded = Image::read($image);
@@ -153,13 +154,13 @@ class PagecategoryController extends Controller
             ]);
         }
 
-        $pagecategory->update($data);
+        $postcategory->update($data);
         // Jika gambar lama ada maka lakukan hapus gambar
-        if ($oldImage !== $pagecategory->image) {
-            $this->removeImage($oldImage);
-        }
+            if ($oldImage !== $postcategory->image) {
+                $this->removeImage($oldImage);
+            }
 
-        return redirect()->route('backend.pagecategories.index')->with(['warning' => 'Edit Page Category ' . $pagecategory['title'] . ' was successfully!']);
+        return redirect()->route('backend.postscategories.index')->with(['warning' => 'Edit Post Category ' . $postcategory['title'] . ' was successfully!']);
     }
 
     // function remove image

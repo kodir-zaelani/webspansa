@@ -14,7 +14,11 @@
                     <div class="post-img">
                         <img src="{{$item->imageUrl}}" alt="" class="img-fluid">
                     </div>
-                    <p class="post-category">{{$item->postcategory->title}}</p>
+                    <p class="post-category">
+                        <a href="{{ route('post.category', $item->postcategory->slug) }}">
+                            {{$item->postcategory->title}}
+                        </a>
+                    </p>
 
                     <h2 class="title">
                         <a href="{{ route('news.detail', $item->slug) }}">{{Str::limit($item->title, 40)}}</a>
@@ -28,11 +32,13 @@
                         @endif
                         <div class="post-meta">
                             <p class="post-author">
-                                @if ($item->author->displayname)
-                                {{ $item->author->displayname }}
-                                @else
-                                {{ $item->author->name }}
-                                @endif
+                                <a href="{{ route('post.author', $item->author->id) }}" title="Tulisan dari">
+                                    @if ($item->author->displayname)
+                                    {{ $item->author->displayname }}
+                                    @else
+                                    {{ $item->author->name }}
+                                    @endif
+                                </a>
                             </p>
                             <p class="post-date">
                                 <time datetime="2022-01-01">{{ \Carbon\Carbon::parse($item->created_at)->format('M j, Y') }}</time>

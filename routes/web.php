@@ -4,8 +4,15 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index'])->name('root');
-Route::get('/berita/semua-berita', [App\Http\Controllers\Frontend\PostController::class, 'all_news'])->name('all.news');
-Route::get('/berita/details/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'news_detail'])->name('news.detail');
+Route::get('/kontak', [App\Http\Controllers\Frontend\FrontendController::class, 'contact'])->name('contact');
+
+Route::get('berita/semua-berita', [App\Http\Controllers\Frontend\PostController::class, 'all_news'])->name('all.news');
+Route::get('berita/details/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'news_detail'])->name('news.detail');
+Route::get('berita/kategori/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'news_category'])->name('post.category');
+Route::get('berita/tag/{slug}',  [App\Http\Controllers\Frontend\PostController::class, 'news_tag'])->name('post.tag');
+Route::get('berita/penulis/{id}',  [App\Http\Controllers\Frontend\PostController::class, 'news_author'])->name('post.author');
+Route::get('berita/pencarian',  [App\Http\Controllers\Frontend\PostController::class, 'news_search'])->name('post.search');
+
 Route::prefix('page')->group(function () {
     Route::get('/detail/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'pagedetail'])->name('page.detail');
     // Route::get('/category/{slug}', App\Http\Livewire\Template\Frontend\Terasgreen\Page\Pagecategorylist::class)->name('page.category');
@@ -39,6 +46,23 @@ Route::middleware(['auth', 'verified', 'web'])->group(function () {
     Route::post('backend/pages/store', [App\Http\Controllers\Backend\PageController::class, 'store'])->name('backend.pages.store');
     Route::get('backend/pages/{page}/edit', [App\Http\Controllers\Backend\PageController::class, 'edit'])->name('backend.pages.edit');
     Route::post('backend/pages/{page}/update', [App\Http\Controllers\Backend\PageController::class, 'update'])->name('backend.pages.update');
+
+    // PostCategory
+    Route::get('backend/postcategories', [App\Http\Controllers\Backend\PostcategoryController::class, 'index'])->name('backend.postscategories.index');
+    Route::get('backend/postcategories/create', [App\Http\Controllers\Backend\PostcategoryController::class, 'create'])->name('backend.postscategories.create');
+    Route::post('backend/postcategories/store', [App\Http\Controllers\Backend\PostcategoryController::class, 'store'])->name('backend.postscategories.store');
+    Route::get('backend/postcategories/{postcategory}/edit', [App\Http\Controllers\Backend\PostcategoryController::class, 'edit'])->name('backend.postscategories.edit');
+    Route::post('backend/postcategories/{postcategory}/update', [App\Http\Controllers\Backend\PostcategoryController::class, 'update'])->name('backend.postscategories.update');
+
+    // Tag
+    Route::get('backend/tags', [App\Http\Controllers\Backend\TagController::class, 'index'])->name('backend.tags.index');
+
+    // Post
+    Route::get('backend/posts', [App\Http\Controllers\Backend\PostController::class, 'index'])->name('backend.posts.index');
+    Route::get('backend/posts/create', [App\Http\Controllers\Backend\PostController::class, 'create'])->name('backend.posts.create');
+    Route::post('backend/posts/store', [App\Http\Controllers\Backend\PostController::class, 'store'])->name('backend.posts.store');
+    Route::get('backend/posts/{post}/edit', [App\Http\Controllers\Backend\PostController::class, 'edit'])->name('backend.posts.edit');
+    Route::put('backend/posts/{post}/update', [App\Http\Controllers\Backend\PostController::class, 'update'])->name('backend.posts.update');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

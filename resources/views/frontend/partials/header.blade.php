@@ -24,8 +24,6 @@
                 @endif
                 @endforeach
                 @endif
-
-                <a href="#"><i class="bi bi-envelope me-1"></i>{{ __('Kontak')}}</a>
                 @guest
                 @if (Route::has('register'))
                 <a href="{{ route('register') }}" class="fw-bold">
@@ -56,9 +54,7 @@
         <div class="container position-relative d-flex align-items-center justify-content-between">
             <a href="{{route('root')}}" class="logo d-flex align-items-center">
                 <img src="{{ asset('') }}uploads/images/logo/{{ $global_option->logo_menu }}" alt="" class="img-fluid">
-                {{-- <h1 class="sitename">Mamba</h1> --}}
             </a>
-
             <nav id="navmenu" class="navmenu">
 
                 <ul>
@@ -124,29 +120,9 @@
                     @endif
                     @endforeach
                     @endif
-                    {{-- <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                        <ul>
-                            <li><a href="#">Dropdown 1</a></li>
-                            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Dropdown 1</a></li>
-                                    <li><a href="#">Deep Dropdown 2</a></li>
-                                    <li><a href="#">Deep Dropdown 3</a></li>
-                                    <li><a href="#">Deep Dropdown 4</a></li>
-                                    <li><a href="#">Deep Dropdown 5</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Dropdown 2</a></li>
-                            <li><a href="#">Dropdown 3</a></li>
-                            <li><a href="#">Dropdown 4</a></li>
-                        </ul>
+                    <li>
+                        <a data-bs-toggle="modal" data-bs-target="#modalSearch" style="cursor: pointer" class="fw-bold"><i class="fa fa-search" aria-hidden="true"></i></a>
                     </li>
-                    <li><a href="#contact">Contact</a></li> --}}
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>

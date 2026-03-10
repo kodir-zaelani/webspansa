@@ -20,11 +20,13 @@
                                         @endif
                                         <div class="info">
                                             <h4>
-                                                @if ($item->author->displayname)
-                                                {{ $item->author->displayname }}
-                                                @else
-                                                {{ $item->author->name }}
-                                                @endif
+                                                <a href="{{ route('post.author', $item->author->id) }}">
+                                                    @if ($item->author->displayname)
+                                                    {{ $item->author->displayname }}
+                                                    @else
+                                                    {{ $item->author->name }}
+                                                    @endif
+                                                </a>
                                             </h4>
                                             {{-- <span class="role"></span> --}}
                                         </div>
@@ -40,7 +42,7 @@
                                 <img src="{{$item->imageUrl}}" alt="Featured blog image" class="img-fluid" loading="lazy">
                                 <div class="meta-overlay">
                                     <div class="meta-categories">
-                                        <a href="#" class="category">{{ $item->postcategory->title }}</a>
+                                        <a href="{{ route('post.category', $item->postcategory->slug) }}" class="category">{{ $item->postcategory->title }}</a>
                                         <span class="divider">•</span>
                                         <span class="reading-time"><i class="bi bi-clock"></i> <em>Estimasi: {{ $item->reading_time }}</em></span>
                                     </div>
@@ -51,13 +53,9 @@
                             </div>
                             <div class="meta-bottom">
                                 <div class="tags-section">
-                                    <h4>Related Topics</h4>
+                                    <h4>Topik terkait</h4>
                                     <div class="tags">
-                                        <a href="#" class="tag">Web Development</a>
-                                        <a href="#" class="tag">Performance</a>
-                                        <a href="#" class="tag">Best Practices</a>
-                                        <a href="#" class="tag">Trends</a>
-                                        <a href="#" class="tag">2025</a>
+                                        {!! $item->tags_html !!}
                                     </div>
                                 </div>
 

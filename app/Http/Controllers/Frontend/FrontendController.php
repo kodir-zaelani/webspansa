@@ -18,6 +18,11 @@ class FrontendController extends Controller
             'title' => 'Beranda'
         ]);
     }
+    public function contact(){
+        return view('frontend.home.contact',[
+            'title' => 'Kontak'
+        ]);
+    }
 
 
     public function pagedetail(Request $request, Page $page){
