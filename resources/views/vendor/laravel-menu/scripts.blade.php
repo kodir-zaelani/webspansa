@@ -11,10 +11,11 @@
 		"menuFocus" : "%1$s. Element menu %2$d of %3$d.",
 		"subMenuFocus" : "%1$s. Menu of subelement %2$d of %3$s."
 	};
-	var arraydata = [];     
+	var arraydata = [];
 	var addcustommenur= '{{ route("baddcustommenu") }}';
 	var addcategorymenur= '{{ route("baddcategorymenu") }}';
 	var addpostmenur= '{{ route("baddpostmenu") }}';
+	var addpagemenur= '{{ route("baddpagemenu") }}';
 	var updateitemr= '{{ route("bupdateitem")}}';
 	var generatemenucontrolr= '{{ route("bgeneratemenucontrol") }}';
 	var deleteitemmenur= '{{ route("bdeleteitemmenu") }}';

@@ -2,6 +2,7 @@
 
 use App\Models\Postcategory;
 use App\Models\Post;
+use App\Models\Page;
 
 return [
     /* you can add your own middleware here */
@@ -26,6 +27,16 @@ return [
         'name' => 'title',
         'post_model' => Post::class,
         'prefix' => 'berita/details/',
+    ],
+
+      /*
+* your post title colum name
+* default title
+*/
+    'page' => [
+        'name' => 'title',
+        'page_model' => Page::class,
+        'prefix' => 'halaman/detail/',
     ],
 
     /* you can set your own table prefix here */

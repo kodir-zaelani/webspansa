@@ -14,6 +14,7 @@ class WMenu
     {
         $cat = config('menu.category.category_model');
         $post = config('menu.post.post_model');
+        $page = config('menu.page.page_model');
         $menu = new Menus();
         $menuitems = new MenuItems();
         $menulist = $menu->select(['id', 'name'])->get();
@@ -36,6 +37,7 @@ class WMenu
             }
             $data['categories'] = $cat::latest()->get();
             $data['posts'] = $post::latest()->get();
+            $data['pages'] = $page::latest()->get();
             return view('laravel-menu::menu', $data);
         }
     }

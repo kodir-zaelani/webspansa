@@ -5,6 +5,7 @@ Route::group(['middleware' => config('menu.middleware')], function () {
     $path = rtrim(config('menu.route_path'));
     Route::post($path . '/addcategorymenu', array('as' => 'baddcategorymenu', 'uses' => '\Bdhabib\LaravelMenu\Controllers\MenuController@addcategorypostmenu'));
     Route::post($path . '/addpostmenu', array('as' => 'baddpostmenu', 'uses' => '\Bdhabib\LaravelMenu\Controllers\MenuController@addcategorypostmenu'));
+    Route::post($path . '/addpagemenu', array('as' => 'baddpagemenu', 'uses' => '\Bdhabib\LaravelMenu\Controllers\MenuController@addcategorypostmenu'));
     Route::post($path . '/addcustommenu', array('as' => 'baddcustommenu', 'uses' => '\Bdhabib\LaravelMenu\Controllers\MenuController@addcustommenu'));
     Route::post($path . '/deleteitemmenu', array('as' => 'bdeleteitemmenu', 'uses' => '\Bdhabib\LaravelMenu\Controllers\MenuController@deleteitemmenu'));
     Route::post($path . '/deletemenug', array('as' => 'bdeletemenug', 'uses' => '\Bdhabib\LaravelMenu\Controllers\MenuController@deletemenug'));

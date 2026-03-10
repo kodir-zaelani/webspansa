@@ -92,6 +92,11 @@ function selectallpost() {
   // }
 
 }
+function selectallpage() {
+  $(".page-list input").each(function (key, item) {
+    $(item).click();
+  });
+}
 
 function addcategorymenu() {
     $("#spincustomu").show();
@@ -150,10 +155,47 @@ function addpostmenu() {
         }
     });
 
-
-
     $.ajax({
         url: addpostmenur,
+        type: "POST",
+        dataType: 'json',  // Specify JSON to ensure proper serialization
+        data: {
+            ids: JSON.stringify(ids),  // Stringify arrays
+            names: JSON.stringify(names),
+            slugs: JSON.stringify(slugs),
+            rolemenu: $("#custom-menu-item-role").val(),
+            idmenu: $("#idmenu").val(),
+        },
+
+        success: function (response) {
+            window.location.reload();
+        },
+        complete: function () {
+            $("#spincustomu").hide();
+        },
+    });
+}
+
+function addpagemenu() {
+    $("#spincustomu").show();
+    var ids = [];
+    var names = [];
+    var slugs = [];
+
+    $("li.page-list input[type='checkbox']").each(function (key, item) {
+        if ($(item).is(":checked")) {
+            let id = $(item).val();
+          ids.push(id);
+          let name = $(`.page-list input[name='name-${id}']`).val();
+          names.push(name);
+
+          let slug = $(`.page-list input[name='slug-${id}']`).val();
+          slugs.push(slug);
+        }
+    });
+
+    $.ajax({
+        url: addpagemenur,
         type: "POST",
         dataType: 'json',  // Specify JSON to ensure proper serialization
         data: {
