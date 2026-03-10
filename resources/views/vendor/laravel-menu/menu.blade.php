@@ -584,10 +584,10 @@ href="{{ $currentUrl }}?action=delete-menu-item&menu-item={{ $m->id }}&_wpnonce=
             menu</a>
         </div>
         @elseif(request()->has('menu'))
-        <span class="delete-action"> <a
+        {{-- <span class="delete-action"> <a
             class="submitdelete deletion menu-delete"
             onclick="deletemenu()"
-            href="javascript:void(9)">Delete menu</a> </span>
+            href="javascript:void(9)">Delete menu</a> </span> --}}
             <div class="publishing-action">
 
                 <a onclick="getmenus()" name="save_menu"
