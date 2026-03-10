@@ -110,7 +110,7 @@
                     <p>{!! $global_option->address !!}, {!! $global_option->postalcode !!}</p>
                     <p class="mt-3"><strong>Phone:</strong> <span>{!! $global_option->phone !!}</span></p>
                     <p><strong>Email:</strong> <span>{!! $global_option->email !!}</span></p>
-                    <p><strong>{{__('Map')}}:</strong> <span><a href="{!! $global_option->link_map !!}" target="_blank"><i class="bi bi-geo-alt-fill"></i></a></span></p>
+                    <p><strong>{{__('Tampilkan dalam Peta')}}:</strong> <span><a href="{!! $global_option->link_map !!}" target="_blank"><i class="bi bi-geo-alt-fill"></i></a></span></p>
                 </div>
                 @if ($social_media)
                 <div class="mt-4 social-links d-flex">

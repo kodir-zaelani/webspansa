@@ -13,4 +13,17 @@ class Tag extends Model
 
     protected $guarded = [];
     protected $primaryKey = 'id';
+
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('title', 'like', $term);
+        });
+    }
+
+    public function posts()
+    {
+        return  $this->belongsToMany(Post::class);
+    }
 }

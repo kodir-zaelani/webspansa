@@ -23,10 +23,10 @@ class Postcategory extends Model
         });
     }
 
-    // public function posts()
-    // {
-    //     return $this->hasMany(Post::class, 'postcategory_id');
-    // }
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'postcategory_id');
+    }
 
     public function parent()
     {

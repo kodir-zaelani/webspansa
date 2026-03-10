@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Post extends Model
 {
@@ -205,5 +206,13 @@ class Post extends Model
                 ->orderByRaw('min(published_at) desc')
                 ->get();
         }
+    }
+
+    public function getReadingTimeAttribute()
+    {
+        // Hitung jumlah kata, asumsikan 200 kata per menit
+        $minutes = ceil(str_word_count(strip_tags($this->content)) / 200);
+
+        return $minutes . ' ' . Str::plural('menit', $minutes) . ' baca';
     }
 }

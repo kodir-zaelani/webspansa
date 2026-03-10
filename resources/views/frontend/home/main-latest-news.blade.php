@@ -17,7 +17,7 @@
                     <p class="post-category">{{$item->postcategory->title}}</p>
 
                     <h2 class="title">
-                        <a href="blog-details.html">{{Str::limit($item->title, 40)}}</a>
+                        <a href="{{ route('news.detail', $item->slug) }}">{{Str::limit($item->title, 40)}}</a>
                     </h2>
 
                     <div class="d-flex align-items-center">

@@ -18,12 +18,7 @@ class FrontendController extends Controller
             'title' => 'Beranda'
         ]);
     }
-    public function all_news(){
-        return view('frontend.post.all-news',[
-            'all_news' => Post::with('author','postcategory')->published()->latest()->paginate(10),
-            'title' => 'Semua Berita'
-        ]);
-    }
+
 
     public function pagedetail(Request $request, Page $page){
         $this->segment = $request->segment(3);

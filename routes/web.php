@@ -4,7 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index'])->name('root');
-Route::get('/berita/semua-berita', [App\Http\Controllers\Frontend\FrontendController::class, 'all_news'])->name('all.news');
+Route::get('/berita/semua-berita', [App\Http\Controllers\Frontend\PostController::class, 'all_news'])->name('all.news');
+Route::get('/berita/details/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'news_detail'])->name('news.detail');
 Route::prefix('page')->group(function () {
     Route::get('/detail/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'pagedetail'])->name('page.detail');
     // Route::get('/category/{slug}', App\Http\Livewire\Template\Frontend\Terasgreen\Page\Pagecategorylist::class)->name('page.category');
