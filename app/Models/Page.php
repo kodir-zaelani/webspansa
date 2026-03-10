@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Page extends Model
 {
@@ -102,5 +103,13 @@ class Page extends Model
     public function scopePublished($query)
     {
         return $query->where("status", "=", 1);
+    }
+
+     public function getReadingTimeAttribute()
+    {
+        // Hitung jumlah kata, asumsikan 200 kata per menit
+        $minutes = ceil(str_word_count(strip_tags($this->content)) / 200);
+
+        return $minutes . ' ' . Str::plural('menit', $minutes) . ' baca';
     }
 }

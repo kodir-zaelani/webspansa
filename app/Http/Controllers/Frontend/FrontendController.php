@@ -27,7 +27,7 @@ class FrontendController extends Controller
 
     public function pagedetail(Request $request, Page $page){
         $this->segment = $request->segment(3);
-        $page = Page::published()->Publishedate()->where('slug', $this->segment)->first();
+        $page = Page::published()->where('slug', $this->segment)->first();
         $page->increment('view_count');
 
         return view('frontend.page.detail',[

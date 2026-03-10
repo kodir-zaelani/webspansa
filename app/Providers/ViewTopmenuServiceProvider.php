@@ -15,7 +15,7 @@ class ViewTopmenuServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer(['*'], function ($view) {
-            $public_menu = LaravelMenu::getByName('Top Menu');
+            $public_menu = LaravelMenu::getByName('Main Menu');
             if (!empty($public_menu)) {
                 $view->with('public_menu', $public_menu);
             } else {

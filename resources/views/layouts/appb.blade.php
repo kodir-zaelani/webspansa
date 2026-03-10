@@ -60,7 +60,7 @@
     <script data-navigate-once src="{{ asset('') }}assets/backend/js/vendors.min.js"></script>
     @stack('scripts')
     <script data-navigate-once src="{{ asset('') }}assets/backend/js/template.js"></script>
-	<script src="{{ asset('') }}assets/backend/js/pages/advanced-form-element.js"></script>
+	{{-- <script src="{{ asset('') }}assets/backend/js/pages/advanced-form-element.js"></script> --}}
     @stack('scripts-menu')
     <script>
         window.addEventListener('openDeleteModal', event => {

@@ -13,9 +13,9 @@ Route::get('berita/tag/{slug}',  [App\Http\Controllers\Frontend\PostController::
 Route::get('berita/penulis/{id}',  [App\Http\Controllers\Frontend\PostController::class, 'news_author'])->name('post.author');
 Route::get('berita/pencarian',  [App\Http\Controllers\Frontend\PostController::class, 'news_search'])->name('post.search');
 
-Route::prefix('page')->group(function () {
+Route::prefix('halaman')->group(function () {
     Route::get('/detail/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'pagedetail'])->name('page.detail');
-    // Route::get('/category/{slug}', App\Http\Livewire\Template\Frontend\Terasgreen\Page\Pagecategorylist::class)->name('page.category');
+    // Route::get('/kategory/{slug}', App\Http\Livewire\Template\Frontend\Terasgreen\Page\Pagecategorylist::class)->name('page.category');
 });
 Route::middleware(['auth', 'verified', 'web'])->group(function () {
     Route::get('/backend/menu', [App\Http\Controllers\Backend\MenuController::class, 'index'])->name('backend.menu.index');

@@ -14,7 +14,7 @@ class ViewHeadermenuServiceProvider extends ServiceProvider
     public function boot(): void
     {
          View::composer(['*'], function ($view) {
-            $header_menu = LaravelMenu::getByName('Header Menu');
+            $header_menu = LaravelMenu::getByName('Top Menu');
             if (!empty($header_menu)) {
                 $view->with('header_menu', $header_menu);
             } else {

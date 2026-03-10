@@ -15,7 +15,7 @@ return [
     'category' => [
         'name' => 'title',
         'category_model' => Postcategory::class,
-        'prefix' => '/category/',
+        'prefix' => 'berita/kategori/',
     ],
 
     /*
@@ -25,7 +25,7 @@ return [
     'post' => [
         'name' => 'title',
         'post_model' => Post::class,
-        'prefix' => '/post/',
+        'prefix' => 'berita/details/',
     ],
 
     /* you can set your own table prefix here */

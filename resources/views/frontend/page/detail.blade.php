@@ -1,60 +1,50 @@
-@extends('layouts.appf')
+@extends('layouts.front')
 
 @section('content')
-<div class="page-title light-background">
-    <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">{{$page->pagecategory->title}}</h1>
-        <nav class="breadcrumbs">
-            <ol class="mx-2">
-                <li><a href="/">Beranda</a></li>
-                <li class="current">{{$page->pagecategory->title}}</li>
-            </ol>
-        </nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <section id="blog-details" class=" blog-details section">
+                <div class="container" data-aos="fade-up">
+                    <article class="article">
+                        <div class="article-content" data-aos="fade-up" data-aos-delay="100">
+                            <div class="pb-0 content-header">
+                                <h2 class="pb-2">{{ $page->title }}</h2>
+                                    <div class="post-meta">
+                                        {{-- <span class="date"><i class="bi bi-calendar3"></i> {{ \Carbon\Carbon::parse($page->created_at)->format('j F Y') }}</span> --}}
+                                        <span class="reading-time"><i class="bi bi-clock me-2"></i> <em>Estimasi: {{ $page->reading_time }}</em></span>
+                                        <span class="divider ms-2">•</span>
+                                        <span class="comments ms-2"><i class="bi bi-eye-fill"></i> {{ $page->view_count }} Baca</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hero-img" data-aos="zoom-in">
+                                <img src="{{$page->imageUrl}}" alt="Featured blog image" class="img-fluid" loading="lazy">
+                                <div class="meta-overlay">
+                                    <div class="meta-categories">
+                                        <a href="#" class="category">{{ $page->pagecategory->title }}</a>
+                                        {{-- <span class="divider">•</span>
+                                        <span class="reading-time"><i class="bi bi-clock"></i> <em>Estimasi: {{ $page->reading_time }}</em></span> --}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pb-0 mb-0 content">
+                                {!! $page->content !!}
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </div>
+
+
+        <div class="col-lg-4 sidebar">
+            <div class="widgets-container" data-aos="fade-up" data-aos-delay="200">
+                @include('frontend.partials.postcategory-sidebar')
+                @include('frontend.partials.latestpost-sidebar')
+                @include('frontend.partials.tags-sidebar')
+            </div>
+        </div>
     </div>
 </div>
-<section id="blog-details" class="blog-details section">
-    <div class="container" data-aos="fade-up">
-
-        <article class="article">
-            <div class="article-header">
-                <h1 class="title" data-aos="fade-up" data-aos-delay="100">{{$page->title}}</h1>
-                <div class="article-meta" data-aos="fade-up" data-aos-delay="200">
-                    <div class="post-info">
-                        <span><i class="bi bi-calendar4-week"></i> {{ TanggalID('j M Y', $page->created_at) }}</span>
-                        <span><i class="bi bi-eye-fill"></i>{{ $page->view_count }} kali</span>
-                        {{-- <span><i class="bi bi-chat-square-text"></i> 32 Comments</span> --}}
-                    </div>
-                </div>
-            </div>
-
-            @if ($page->masterstatus <> 1)
-            @if ($page->image)
-            <div class="article-featured-image" data-aos="zoom-in">
-                <img src="{{ $page->imageUrl ? $page->imageUrl : '/assets/images/no_image.png' }}" alt="{{$page->title}}" class="img-fluid">
-            </div>
-            @endif
-            @endif
-            <div class="article-wrapper">
-                <aside class="table-of-contents" data-aos="fade-left">
-                    <h3>{{$page->pagecategory->title}}</h3>
-                    <nav>
-                        <ul>
-                            @forelse ($pages as $item)
-                            <li><a href="{{asset('')}}page/detail/{{$item->slug}}">{{$item->title}}</a></li>
-                            @empty
-                               <span>Data tidak ditemukan</span>
-                            @endforelse
-                        </ul>
-                    </nav>
-                </aside>
-                <div class="article-content">
-                    <div class="content-section" id="introduction" data-aos="fade-up">
-                        {!! $page->content !!}
-                    </div>
-                </div>
-            </div>
-
-        </article>
-    </div>
-</section>
 @endsection

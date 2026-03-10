@@ -32,9 +32,10 @@
                                         </div>
                                     </div>
                                     <div class="post-meta">
-                                        <span class="date"><i class="bi bi-calendar3"></i> {{ $item->created_at->format('M j, Y') }}</span>
-                                        <span class="divider">•</span>
-                                        <span class="comments"><i class="bi bi-chat-text"></i> {{ $item->view_count }} Baca</span>
+                                        <span class="date"><i class="bi bi-calendar3"></i> {{ \Carbon\Carbon::parse($item->created_at)->format('j F Y') }}</span>
+                                        {{-- <span class="date"><i class="bi bi-calendar3"></i> {{ $item->created_at->format('M j, Y') }}</span> --}}
+                                        <span class="divider ms-2">•</span>
+                                        <span class="comments ms-2"><i class="bi bi-eye-fill"></i> {{ $item->view_count }} Baca</span>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +79,6 @@
 
         <div class="col-lg-4 sidebar">
             <div class="widgets-container" data-aos="fade-up" data-aos-delay="200">
-                @include('frontend.partials.searchnews-sidebar')
                 @include('frontend.partials.postcategory-sidebar')
                 @include('frontend.partials.latestpost-sidebar')
                 @include('frontend.partials.tags-sidebar')
