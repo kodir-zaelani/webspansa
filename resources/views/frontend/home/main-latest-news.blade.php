@@ -8,168 +8,46 @@
 
     <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
-
+            @foreach ($latest_news as $item)
             <div class="col-lg-4">
                 <article>
-
                     <div class="post-img">
-                        <img src="{{asset('')}}assets/frontend/img/blog/blog-post-1.webp" alt="" class="img-fluid">
+                        <img src="{{$item->imageUrl}}" alt="" class="img-fluid">
                     </div>
-
-                    <p class="post-category">Politics</p>
+                    <p class="post-category">{{$item->postcategory->title}}</p>
 
                     <h2 class="title">
-                        <a href="blog-details.html">Dolorum optio tempore voluptas dignissimos</a>
+                        <a href="blog-details.html">{{Str::limit($item->title, 40)}}</a>
                     </h2>
 
                     <div class="d-flex align-items-center">
-                        <img src="{{asset('')}}assets/frontend/img/person/person-f-12.webp" alt="" class="flex-shrink-0 img-fluid post-author-img">
+                        @if ($item->author->image)
+                        <img src="{{ asset('') }}uploads/images/users/images_thumb/{{ $item->author->image }}" alt="" class="flex-shrink-0 img-fluid post-author-img">
+                        @else
+                        <img src="{{ $global_option->imageThumbUrl }}" alt="User" class="flex-shrink-0 img-fluid post-author-img">
+                        @endif
                         <div class="post-meta">
-                            <p class="post-author">Maria Doe</p>
+                            <p class="post-author">
+                                @if ($item->author->displayname)
+                                {{ $item->author->displayname }}
+                                @else
+                                {{ $item->author->name }}
+                                @endif
+                            </p>
                             <p class="post-date">
-                                <time datetime="2022-01-01">Jan 1, 2022</time>
+                                <time datetime="2022-01-01">{{ \Carbon\Carbon::parse($item->created_at)->format('M j, Y') }}</time>
                             </p>
                         </div>
                     </div>
 
                 </article>
             </div>
-
-            <div class="col-lg-4">
-                <article>
-
-                    <div class="post-img">
-                        <img src="{{asset('')}}assets/frontend/img/blog/blog-post-2.webp" alt="" class="img-fluid">
-                    </div>
-
-                    <p class="post-category">Sports</p>
-
-                    <h2 class="title">
-                        <a href="blog-details.html">Nisi magni odit consequatur autem nulla dolorem</a>
-                    </h2>
-
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('')}}assets/frontend/img/person/person-f-13.webp" alt="" class="flex-shrink-0 img-fluid post-author-img">
-                        <div class="post-meta">
-                            <p class="post-author">Allisa Mayer</p>
-                            <p class="post-date">
-                                <time datetime="2022-01-01">Jun 5, 2022</time>
-                            </p>
-                        </div>
-                    </div>
-
-                </article>
-            </div>
-
-            <div class="col-lg-4">
-                <article>
-
-                    <div class="post-img">
-                        <img src="{{asset('')}}assets/frontend/img/blog/blog-post-3.webp" alt="" class="img-fluid">
-                    </div>
-
-                    <p class="post-category">Entertainment</p>
-
-                    <h2 class="title">
-                        <a href="blog-details.html">Possimus soluta ut id suscipit ea ut in quo quia et soluta</a>
-                    </h2>
-
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('')}}assets/frontend/img/person/person-m-10.webp" alt="" class="flex-shrink-0 img-fluid post-author-img">
-                        <div class="post-meta">
-                            <p class="post-author">Mark Dower</p>
-                            <p class="post-date">
-                                <time datetime="2022-01-01">Jun 22, 2022</time>
-                            </p>
-                        </div>
-                    </div>
-
-                </article>
-            </div>
-
-            <div class="col-lg-4">
-                <article>
-
-                    <div class="post-img">
-                        <img src="{{asset('')}}assets/frontend/img/blog/blog-post-4.webp" alt="" class="img-fluid">
-                    </div>
-
-                    <p class="post-category">Sports</p>
-
-                    <h2 class="title">
-                        <a href="blog-details.html">Non rem rerum nam cum quo minus olor distincti</a>
-                    </h2>
-
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('')}}assets/frontend/img/person/person-f-14.webp" alt="" class="flex-shrink-0 img-fluid post-author-img">
-                        <div class="post-meta">
-                            <p class="post-author">Lisa Neymar</p>
-                            <p class="post-date">
-                                <time datetime="2022-01-01">Jun 30, 2022</time>
-                            </p>
-                        </div>
-                    </div>
-
-                </article>
-            </div>
-
-            <div class="col-lg-4">
-                <article>
-
-                    <div class="post-img">
-                        <img src="{{asset('')}}assets/frontend/img/blog/blog-post-5.webp" alt="" class="img-fluid">
-                    </div>
-
-                    <p class="post-category">Politics</p>
-
-                    <h2 class="title">
-                        <a href="blog-details.html">Accusamus quaerat aliquam qui debitis facilis consequatur</a>
-                    </h2>
-
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('')}}assets/frontend/img/person/person-m-11.webp" alt="" class="flex-shrink-0 img-fluid post-author-img">
-                        <div class="post-meta">
-                            <p class="post-author">Denis Peterson</p>
-                            <p class="post-date">
-                                <time datetime="2022-01-01">Jan 30, 2022</time>
-                            </p>
-                        </div>
-                    </div>
-
-                </article>
-            </div>
-
-            <div class="col-lg-4">
-                <article>
-
-                    <div class="post-img">
-                        <img src="{{asset('')}}assets/frontend/img/blog/blog-post-6.webp" alt="" class="img-fluid">
-                    </div>
-
-                    <p class="post-category">Entertainment</p>
-
-                    <h2 class="title">
-                        <a href="blog-details.html">Distinctio provident quibusdam numquam aperiam aut</a>
-                    </h2>
-
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('')}}assets/frontend/img/person/person-f-15.webp" alt="" class="flex-shrink-0 img-fluid post-author-img">
-                        <div class="post-meta">
-                            <p class="post-author">Mika Lendon</p>
-                            <p class="post-date">
-                                <time datetime="2022-01-01">Feb 14, 2022</time>
-                            </p>
-                        </div>
-                    </div>
-
-                </article>
-            </div>
-
+            @endforeach
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="pt-5 text-center">
-                    <a href="blog.html" class="btn btn-primary">{{ __('Semua Berita') }}</a>
+                    <a href="{{ route('all.news') }}" class="btn btn-primary">{{ __('Selengkapnya') }}</a>
                 </div>
             </div>
         </div>

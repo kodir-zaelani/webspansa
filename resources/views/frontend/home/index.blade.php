@@ -8,7 +8,6 @@
 
 <section id="about" class="about section">
 
-
     <div class="container section-title" data-aos="fade-up">
         <h2>About</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>

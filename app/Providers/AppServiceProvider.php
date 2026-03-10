@@ -35,6 +35,9 @@ class AppServiceProvider extends ServiceProvider
             return 'The current password you entered did not match with the password from the database!';
         });
 
-        Paginator::useBootstrapFive();
+        // Paginator::useBootstrapFive();
+        Paginator::defaultView(
+            'pagination::bootstrap-edit-5',
+        );
     }
 }
