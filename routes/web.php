@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index'])->name('root');
 Route::get('/kontak', [App\Http\Controllers\Frontend\FrontendController::class, 'contact'])->name('contact');
+Route::get('/video/details/{slug}', [App\Http\Controllers\Frontend\VideoController::class, 'video_detail'])->name('video.detail');
 
 Route::get('berita/semua-berita', [App\Http\Controllers\Frontend\PostController::class, 'all_news'])->name('all.news');
 Route::get('berita/details/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'news_detail'])->name('news.detail');
@@ -85,6 +86,35 @@ Route::middleware(['auth', 'verified', 'web'])->group(function () {
     Route::post('backend/roles/store', [App\Http\Controllers\Backend\RoleController::class, 'store'])->name('backend.roles.store');
     Route::get('backend/roles/{role}/edit', [App\Http\Controllers\Backend\RoleController::class, 'edit'])->name('backend.roles.edit');
     Route::put('backend/roles/{role}/update', [App\Http\Controllers\Backend\RoleController::class, 'update'])->name('backend.roles.update');
+
+    // Slider
+    Route::get('backend/sliders', [App\Http\Controllers\Backend\SliderController::class, 'index'])->name('backend.sliders.index');
+    Route::get('backend/sliders/create', [App\Http\Controllers\Backend\SliderController::class, 'create'])->name('backend.sliders.create');
+    Route::post('backend/sliders/store', [App\Http\Controllers\Backend\SliderController::class, 'store'])->name('backend.sliders.store');
+    Route::get('backend/sliders/{slider}/edit', [App\Http\Controllers\Backend\SliderController::class, 'edit'])->name('backend.sliders.edit');
+    Route::put('backend/sliders/{slider}/update', [App\Http\Controllers\Backend\SliderController::class, 'update'])->name('backend.sliders.update');
+
+    // Video
+    Route::get('backend/video', [App\Http\Controllers\Backend\VideoController::class, 'index'])->name('backend.video.index');
+    Route::get('backend/video/create', [App\Http\Controllers\Backend\VideoController::class, 'create'])->name('backend.video.create');
+    Route::post('backend/video/store', [App\Http\Controllers\Backend\VideoController::class, 'store'])->name('backend.video.store');
+    Route::get('backend/video/{video}/edit', [App\Http\Controllers\Backend\VideoController::class, 'edit'])->name('backend.video.edit');
+    Route::put('backend/video/{video}/update', [App\Http\Controllers\Backend\VideoController::class, 'update'])->name('backend.video.update');
+
+    // Agenda
+    Route::get('backend/agenda', [App\Http\Controllers\Backend\AgendaController::class, 'index'])->name('backend.agendas.index');
+    Route::get('backend/agendas/create', [App\Http\Controllers\Backend\AgendaController::class, 'create'])->name('backend.agendas.create');
+    Route::post('backend/agendas/store', [App\Http\Controllers\Backend\AgendaController::class, 'store'])->name('backend.agendas.store');
+    Route::get('backend/agendas/{agenda}/edit', [App\Http\Controllers\Backend\AgendaController::class, 'edit'])->name('backend.agendas.edit');
+    Route::put('backend/agendas/{agenda}/update', [App\Http\Controllers\Backend\AgendaController::class, 'update'])->name('backend.agendas.update');
+
+    // Album
+    Route::get('backend/albums', [App\Http\Controllers\Backend\AlbumController::class, 'index'])->name('backend.albums.index');
+    Route::get('backend/albums/create', [App\Http\Controllers\Backend\AlbumController::class, 'create'])->name('backend.albums.create');
+    Route::post('backend/albums/store', [App\Http\Controllers\Backend\AlbumController::class, 'store'])->name('backend.albums.store');
+    Route::get('backend/albums/{album}/edit', [App\Http\Controllers\Backend\AlbumController::class, 'edit'])->name('backend.albums.edit');
+    Route::put('backend/albums/{album}/update', [App\Http\Controllers\Backend\AlbumController::class, 'update'])->name('backend.albums.update');
+    Route::post('backend/albums/storefoto', [App\Http\Controllers\Backend\AlbumController::class, 'storefoto'])->name('backend.albums.storefoto');
 
 
 });

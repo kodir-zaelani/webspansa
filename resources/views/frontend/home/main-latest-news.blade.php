@@ -1,4 +1,4 @@
-<section id="latest-posts" class="latest-posts section">
+<section id="latest-posts" class="latest-posts section light-background">
 
 
     <div class="container section-title" data-aos="fade-up">

@@ -6,8 +6,8 @@
         <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
             <img src="{{ $item->imageUrl }}" alt="" style="max-width: 100%">
             <div class="carousel-container">
-                <h4>{{ $item->title }}</h4>
-                <p>{{$item->excerpt}}</p>
+                {{-- <h4>{{ $item->title }}</h4> --}}
+                {{-- <p>{{$item->excerpt}}</p> --}}
                 {{-- <a href="#featured-services" class="btn-get-started">Get Started</a> --}}
             </div>
         </div>

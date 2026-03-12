@@ -66,6 +66,46 @@
                         @endcan
                         @endif
                         {{-- Pages Menu  --}}
+                         <li class="header">Galleries</li>
+                        {{-- Galeries Menu --}}
+                        @if (auth()->user()->can('agendas.index') ||
+                        auth()->user()->can('downloadfiles.index') ||
+                        auth()->user()->can('downloadcategories.index') ||
+                        auth()->user()->can('sliders.index') ||
+                        auth()->user()->can('hero.index') ||
+                        auth()->user()->can('albums.index') ||
+                        auth()->user()->can('albums.create') ||
+                        auth()->user()->can('advertisements.index') ||
+                        auth()->user()->can('advertisements.create') ||
+                        auth()->user()->can('video.index') ||
+                        auth()->user()->can('haribesar.index') ||
+                        auth()->user()->can('facility.index') ||
+                        auth()->user()->can('video.create'))
+                        <li
+                        class="treeview {{ setActive('backend/agenda') . setActive('backend/dldcategory') . setActive('backend/facility') . setActive('backend/haribesar') . setActive('backend/sliders') . setActive('backend/albums') . setActive('backend/photos') . setActive('backend/advertisements') . setActive('backend/video') . setActive('backend/heros')}}
+                        {{ setOpen('backend/agenda') . setOpen('backend/dldcategory') . setOpen('backend/facility') . setOpen('backend/haribesar') . setOpen('backend/sliders') . setOpen('backend/sliders') . setOpen('backend/photos') . setOpen('backend/advertisements') . setOpen('backend/video') . setOpen('backend/heros') }}">
+                        <a href="#">
+                            <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                            <span class="path1"></span><span class="path2"></span></i>
+                            <span>Galeries</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+
+                            @can('sliders.index')
+                            <li class="{{ setActive('backend/sliders') }}">
+                                <a href="{{ route('backend.sliders.index') }}">
+                                    <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
+                                    Sliders
+                                </a>
+                            </li>
+                            @endcan
+                        </ul>
+                    </li>
+                    @endif
+                    {{-- End Galeries Menu --}}
                         @if (
                         auth()->user()->can('settings.index') ||
                         auth()->user()->can('socialmedia.index') ||

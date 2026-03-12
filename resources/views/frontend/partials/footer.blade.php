@@ -122,71 +122,89 @@
             </div>
 
             <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Useful Links</h4>
+                <h4>Tentang Spansa</h4>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Terms of service</a></li>
-                    <li><a href="#">Privacy policy</a></li>
+                    @if ($footer_menuleft != '0')
+                    @foreach ($footer_menuleft as $item)
+                    <li>
+                        <a href=" @if ($item['type'] == 'internal'){{ asset('') }}{{ $item['link'] }} @else {{ $item['link'] }} @endif" target="{{ $item['target'] }}">
+                            {{ $item['label'] }}
+                        </a>
+                    </li>
+                    @endforeach
+                    @endif
                 </ul>
             </div>
 
             <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Our Services</h4>
+                <h4>Layanan Spansa</h4>
                 <ul>
-                    <li><a href="#">Web Design</a></li>
-                    <li><a href="#">Web Development</a></li>
-                    <li><a href="#">Product Management</a></li>
-                    <li><a href="#">Marketing</a></li>
-                    <li><a href="#">Graphic Design</a></li>
+                    @if ($footer_menumiddle != '0')
+                    @foreach ($footer_menumiddle as $item)
+                    <li>
+                        <a href=" @if ($item['type'] == 'internal'){{ asset('') }}{{ $item['link'] }} @else {{ $item['link'] }} @endif" target="{{ $item['target'] }}">
+                            {{ $item['label'] }}
+                        </a>
+                    </li>
+                    @endforeach
+                    @endif
                 </ul>
             </div>
 
             <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Hic solutasetp</h4>
+                <h4>Link</h4>
                 <ul>
-                    <li><a href="#">Molestiae accusamus iure</a></li>
-                    <li><a href="#">Excepturi dignissimos</a></li>
-                    <li><a href="#">Suscipit distinctio</a></li>
-                    <li><a href="#">Dilecta</a></li>
-                    <li><a href="#">Sit quas consectetur</a></li>
+                    @if ($footer_right != '0')
+                    @foreach ($footer_right as $item)
+                    <li>
+                        <a href=" @if ($item['type'] == 'internal'){{ asset('') }}{{ $item['link'] }} @else {{ $item['link'] }} @endif" target="{{ $item['target'] }}">
+                            {{ $item['label'] }}
+                        </a>
+                    </li>
+                    @endforeach
+                    @endif
                 </ul>
             </div>
 
             <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Nobis illum</h4>
-                <ul>
-                    <li><a href="#">Ipsam</a></li>
-                    <li><a href="#">Laudantium dolorum</a></li>
-                    <li><a href="#">Dinera</a></li>
-                    <li><a href="#">Trodelas</a></li>
-                    <li><a href="#">Flexo</a></li>
-                </ul>
-            </div>
+                <h4>Statistik</h4>
+                <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
+                <!-- Histats.com  START  (aync)-->
+                <script type="text/javascript">var _Hasync= _Hasync|| [];
+                    _Hasync.push(['Histats.start', '1,4745723,4,402,118,80,00011111']);
+                    _Hasync.push(['Histats.fasi', '1']);
+                    _Hasync.push(['Histats.track_hits', '']);
+                    (function() {
+                        var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+                        hs.src = ('//s10.histats.com/js15_as.js');
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+                    })();</script>
+                    <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4745723&101" alt="hidden hit counter" border="0"></a></noscript>
+                    <!-- Histats.com  END  -->
+                </div>
 
-        </div>
-    </div>
-
-    <div class="container mt-4 text-center copyright">
-        <p>
-            &copy; 2012-
-            @php
-            echo date('Y');
-            @endphp
-            <span>Copyright</span>
-            <strong class="px-1 sitename">
-                @if ($global_option != '0')
-                {{ !empty($global_option->webname) ? $global_option->webname : 'Silahkan Sesuaikan ' }}
-                @else
-                Silahkan Sesuaikan di menu setting
-                @endif
-            </strong> <span>|| Versi: {{ config('app.version', '1.0') }} | Dibuat dengan <i class="fa fa-heart"
-                aria-hidden="true"></i> untuk <i class="flag-icon flag-icon-id" title="Indonesia" id="id"></i></span>
-            </p>
-            <div class="credits">
-                Designed by <a href="#">Anak Petani</a>
             </div>
         </div>
 
-    </footer>
+        <div class="container mt-4 text-center copyright">
+            <p>
+                &copy; 2012-
+                @php
+                echo date('Y');
+                @endphp
+                <span>Copyright</span>
+                <strong class="px-1 sitename">
+                    @if ($global_option != '0')
+                    {{ !empty($global_option->webname) ? $global_option->webname : 'Silahkan Sesuaikan ' }}
+                    @else
+                    Silahkan Sesuaikan di menu setting
+                    @endif
+                </strong> <span>|| Versi: {{ config('app.version', '1.0') }} | Dibuat dengan <i class="fa fa-heart"
+                    aria-hidden="true"></i> untuk <i class="flag-icon flag-icon-id" title="Indonesia" id="id"></i></span>
+                </p>
+                <div class="credits">
+                    Designed by <a href="#">Anak Petani</a>
+                </div>
+            </div>
+
+        </footer>

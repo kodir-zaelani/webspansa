@@ -3,6 +3,9 @@
 return [
     App\Providers\AppServiceProvider::class,
     App\Providers\ViewHeadermenuServiceProvider::class,
+    App\Providers\ViewMenuFotterleftServiceProvider::class,
+    App\Providers\ViewMenuFottermiddleServiceProvider::class,
+    App\Providers\ViewMenuFotterrightServiceProvider::class,
     App\Providers\ViewPostLatestServiceProvider::class,
     App\Providers\ViewPostcategoryServiceProvider::class,
     App\Providers\ViewSettingServiceProvider::class,
