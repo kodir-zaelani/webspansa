@@ -12,6 +12,7 @@ class Video extends Model
     use HasFactory;
     use SoftDeletes;
     use HasUuids;
+
     protected $table      = 'videos';
     protected $primaryKey = 'id';
     protected $guarded    = [];

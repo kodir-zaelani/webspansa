@@ -150,22 +150,23 @@
                                                     </h2>
                                                     <div id="flush-collapseOne-{{$item->id}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample-{{$item->id}}">
                                                         <div class="accordion-body">
-                                                            @php
-                                                            $fotos = App\Models\Foto::with('album')->where('album_id', $item->id)->get()
-                                                            @endphp
-                                                            <div class="row">
-                                                                @forelse ($fotos as $item)
-                                                                <div class="col-3">
-                                                                    {{-- <img class="rounded w-80" src="{{ $item->imageThumbUrl ? $item->imageThumbUrl : '/assets/images/no_image.png' }}" alt="..."> --}}
-                                                                    <img class="rounded w-80" src="{{asset('')}}/uploads/images/photos/{{$item->image}}" alt="...">
-                                                                    <br/>
-                                                                    <button wire:click="selectItem('{{ $item->id }}' , 'deletefoto')" class="mx-1 my-1 btn btn-xs btn-danger" title="Delete">
-                                                                        <i class="fa fa-trash "></i>
-                                                                    </button>
+
+                                                            <div class="zoom-gallery m-t-30">
+                                                                <div class="row">
+                                                                    @forelse ($item->fotos as $foto)
+                                                                    <div class="text-center col-3">
+                                                                        <a href="{{asset('')}}/uploads/images/photos/{{$foto->image}}" title="{{$foto->title}}">
+                                                                        <img class="rounded w-80" src="{{ $foto->imageThumbUrl ? $foto->imageThumbUrl : '/assets/images/no_image.png' }}" alt="...">
+                                                                        </a>
+                                                                        <br/>
+                                                                        <button wire:click="selectItem('{{ $foto->id }}' , 'deletefoto')" class="mx-1 my-1 btn btn-xs btn-danger" title="Delete">
+                                                                            <i class="fa fa-trash "></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    @empty
+                                                                    belum ada data
+                                                                    @endforelse
                                                                 </div>
-                                                                @empty
-                                                                data kosong
-                                                                @endforelse
                                                             </div>
                                                         </div>
                                                     </div>

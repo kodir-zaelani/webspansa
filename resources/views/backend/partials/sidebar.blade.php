@@ -109,6 +109,14 @@
                                 </a>
                             </li>
                             @endcan
+                            @can('video.index')
+                            <li class="{{ setActive('backend/video') }}">
+                                <a href="{{ route('backend.video.index') }}">
+                                    <i class="icon-Commit"><span class="path1"></span><span class="path2"></span>
+                                    </i>Video
+                                </a>
+                            </li>
+                            @endcan
                         </ul>
                     </li>
                     @endif

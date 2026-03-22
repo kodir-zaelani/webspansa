@@ -121,9 +121,11 @@
                                             </div>
                                         </td> --}}
                                         <td width="10%">
-                                            <img class="rounded w-80"
-                                            src="{{ $item->imageThumbUrl ? $item->imageThumbUrl : '/assets/images/no_image.png' }}"
-                                            alt="...">
+                                            <a class="popup-youtube" href="{{$item->video}}">
+                                                <img class="rounded w-80"
+                                                src="{{ $item->imageThumbUrl ? $item->imageThumbUrl : '/assets/images/no_image.png' }}"
+                                                alt="...">
+                                            </a>
                                         </td>
                                         <td>
                                             {{ !empty($item->title) ? $item->title : '' }}<br />
@@ -208,3 +210,14 @@
 </div>
 </section>
 </div>
+@push('styles')
+<!-- Jasny Bootstrap 4 -->
+<link rel="stylesheet"
+href="{{ asset('') }}assets/vendor_plugins/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
+@endpush
+
+@push('scripts')
+<script src="{{ asset('') }}assets/vendor_plugins/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
+<script src="{{ asset('') }}assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
+<script src="{{ asset('') }}assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>
+@endpush
