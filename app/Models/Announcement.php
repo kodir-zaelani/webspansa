@@ -7,13 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Agenda extends Model
+class Announcement extends Model
 {
     use HasFactory;
-
     use SoftDeletes;
     use HasUuids;
-    protected $table      = 'agendas';
     protected $primaryKey = 'id';
     protected $guarded    = [];
     protected $dateFormat = 'Y-m-d H:i:s';
@@ -30,16 +28,17 @@ class Agenda extends Model
     {
         $term = "%$term%";
         $query->where(function ($query) use ($term) {
-            $query->where('title', 'like', $term);
+            $query->where('title', 'like', $term)
+            ->orWhere('content', 'like', $term);
         });
     }
 
-    public function getImageUrlAttribute($value)
+     public function getImageUrlAttribute($value)
     {
         $imageUrl = "";
 
         if (!is_null($this->image)) {
-            $directory = config('cms.image.directoryAgenda');
+            $directory = config('cms.image.directoryAnnouncements');
             $imagePath = public_path() ."/{$directory}" . $this->image;
             if(file_exists($imagePath)) $imageUrl = asset("/{$directory}" . $this->image);
         }
@@ -52,7 +51,7 @@ class Agenda extends Model
         $imageThumbUrl = "";
 
         if (!is_null($this->image)) {
-            $directory = config('cms.image.directoryAgenda');
+            $directory = config('cms.image.directoryAnnouncements');
             $ext       = substr(strrchr($this->image, '.'), 1);
             $thumbnail = str_replace(".{$ext}", "_thumb.{$ext}", $this->image);
             $imagePath = public_path() ."/{$directory}" . $thumbnail;

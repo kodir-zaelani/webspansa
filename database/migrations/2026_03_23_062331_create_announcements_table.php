@@ -11,30 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('agendas', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+        Schema::create('announcements', function (Blueprint $table) {
+            $table->uuid('id');
             $table->uuid('author_id');
             $table->string('title');
             $table->string('slug')->unique();
+            $table->text('content')->nullable();
             $table->string('image')->nullable();
-            $table->string('place')->nullable();
-            $table->string('contact_person')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('email')->nullable();
-            $table->text('address')->nullable();
-            $table->text('description')->nullable();
-            $table->date('startdate')->nullable();
-            $table->date('enddate')->nullable();
-            $table->time('startperiode')->nullable();
-            $table->time('endperiode')->nullable();
-            $table->string('link_location')->nullable();
-            $table->text('location')->nullable();
+            $table->string('attach')->nullable();
             $table->boolean('status')->default(true);
             $table->integer('view_count')->default(0);
             $table->uuid('updated_by')->nullable();
             $table->uuid('deleted_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
+            $table->primary('id');
 
             $table->foreign('author_id')->references('id')->on('users')->onDelete('restrict');
         });
@@ -45,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('agendas');
+        Schema::dropIfExists('announcements');
     }
 };

@@ -43,16 +43,7 @@
                     <div class="box-body">
                         <x-flash-message/>
                         <div class="row">
-                            <div class="col">
-                                @if ($statusUpdate == true)
-                                    @include('livewire.backend.socialmedia.edit')
-                                @else
-                                    @include('livewire.backend.socialmedia.create')
-                                @endif
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-12 col-md-12 col-lg-12 col-12">
+                            <div class="col-xl-6 col-md-6 col-lg-6 col-12">
                                 @if ($datasocialmedia->count())
                                     <div class="table-responsive">
                                         <table class="table mb-0 editable-table table-hover">
@@ -101,10 +92,16 @@
                                             </tbody>
                                         </table>
                                     </div>
-
                                 @else
                                     <hr>
                                     <h2 style="color: red" class="text-center">@yield('title') not available</h2>
+                                @endif
+                            </div>
+                            <div class="col-xl-6 col-md-6 col-lg-6 col-12">
+                                 @if ($statusUpdate == true)
+                                    @include('livewire.backend.socialmedia.edit')
+                                @else
+                                    @include('livewire.backend.socialmedia.create')
                                 @endif
                             </div>
                         </div>

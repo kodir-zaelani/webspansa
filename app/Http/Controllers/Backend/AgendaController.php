@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Agenda;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RequestAgendaStore;
@@ -51,16 +51,21 @@ class AgendaController extends Controller
 
         // Default data
         $data = [
-            'title'       => $request->input('title'),
-            'slug'        => Str::slug($request->input('title')),
-            'description' => $request->input('description'),
-            'startdate'   => $request->input('startdate'),
-            'enddate'     => $request->input('enddate'),
-            'periode'     => $request->input('periode'),
-            'endperiode'  => $request->input('endperiode'),
-            'location'    => $request->input('location'),
-            'status'      => $request->input('status'),
-            'author_id'   => Auth::id(),
+            'title'          => $request->input('title'),
+            'slug'           => Str::slug($request->input('title')),
+            'description'    => $request->input('description'),
+            'contact_person' => $request->input('contact_person'),
+            'address'        => $request->input('address'),
+            'phone'          => $request->input('phone'),
+            'place'          => $request->input('place'),
+            'startdate'      => $request->input('startdate'),
+            'enddate'        => $request->input('enddate'),
+            'startperiode'   => $request->input('startperiode'),
+            'endperiode'     => $request->input('endperiode'),
+            'link_location'  => $request->input('link_location'),
+            'location'       => $request->input('location'),
+            'status'         => $request->input('status'),
+            'author_id'      => Auth::id(),
         ];
 
         //upload image (cara kedua)
@@ -146,16 +151,21 @@ class AgendaController extends Controller
 
         // Default data
         $data = [
-            'title'       => $request->input('title'),
-            'slug'        => Str::slug($request->input('title')),
-            'description' => $request->input('description'),
-            'startdate'   => $request->input('startdate'),
-            'enddate'     => $request->input('enddate'),
-            'periode'     => $request->input('periode'),
-            'endperiode'  => $request->input('endperiode'),
-            'location'    => $request->input('location'),
-            'status'      => $request->input('status'),
-            'updated_by'  => Auth::id(),
+            'title'          => $request->input('title'),
+            'slug'           => Str::slug($request->input('title')),
+            'description'    => $request->input('description'),
+            'contact_person' => $request->input('contact_person'),
+            'address'        => $request->input('address'),
+            'phone'          => $request->input('phone'),
+            'place'          => $request->input('place'),
+            'startdate'      => $request->input('startdate'),
+            'enddate'        => $request->input('enddate'),
+            'startperiode'   => $request->input('startperiode'),
+            'endperiode'     => $request->input('endperiode'),
+            'link_location'  => $request->input('link_location'),
+            'location'       => $request->input('location'),
+            'status'         => $request->input('status'),
+            'updated_by'     => Auth::id(),
         ];
 
         //upload image (cara kedua)

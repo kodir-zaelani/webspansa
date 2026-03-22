@@ -119,6 +119,21 @@ Route::middleware(['auth', 'verified', 'web'])->group(function () {
     Route::put('backend/albums/{album}/update', [App\Http\Controllers\Backend\AlbumController::class, 'update'])->name('backend.albums.update');
     Route::post('backend/albums/storefoto', [App\Http\Controllers\Backend\AlbumController::class, 'storefoto'])->name('backend.albums.storefoto');
 
+    // Album
+    Route::get('backend/albums', [App\Http\Controllers\Backend\AlbumController::class, 'index'])->name('backend.albums.index');
+    Route::get('backend/albums/create', [App\Http\Controllers\Backend\AlbumController::class, 'create'])->name('backend.albums.create');
+    Route::post('backend/albums/store', [App\Http\Controllers\Backend\AlbumController::class, 'store'])->name('backend.albums.store');
+    Route::get('backend/albums/{album}/edit', [App\Http\Controllers\Backend\AlbumController::class, 'edit'])->name('backend.albums.edit');
+    Route::put('backend/albums/{album}/update', [App\Http\Controllers\Backend\AlbumController::class, 'update'])->name('backend.albums.update');
+    Route::post('backend/albums/storefoto', [App\Http\Controllers\Backend\AlbumController::class, 'storefoto'])->name('backend.albums.storefoto');
+
+    // Announcement
+    Route::get('backend/announcement', [App\Http\Controllers\Backend\AnnouncementController::class, 'index'])->name('backend.announcement.index');
+    Route::get('backend/announcement/create', [App\Http\Controllers\Backend\AnnouncementController::class, 'create'])->name('backend.announcement.create');
+    Route::post('backend/announcement/store', [App\Http\Controllers\Backend\AnnouncementController::class, 'store'])->name('backend.announcement.store');
+    Route::get('backend/announcement/{announcement}/edit', [App\Http\Controllers\Backend\AnnouncementController::class, 'edit'])->name('backend.announcement.edit');
+    Route::put('backend/announcement/{announcement}/update', [App\Http\Controllers\Backend\AnnouncementController::class, 'update'])->name('backend.announcement.update');
+
 
 });
 

@@ -16,35 +16,6 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="header">{{ __('Post') }}</li>
-                        @if (auth()->user()->can('posts.index') ||
-                        auth()->user()->can('pagecategories.index') || auth()->user()->can('editorials.index') )
-                        @can('posts.index')
-                        <li class="{{ setActive('backend/posts') }}">
-                            <a href="{{ route('backend.posts.index') }}" title="Post">
-                                <i class="fa fa-file-text-o"><span class="path1"></span><span class="path2"></span></i>
-                                <span>Post</span>
-                            </a>
-                        </li>
-                        @endcan
-                        @can('categoryposts.index')
-                        <li class="{{ setActive('backend/postcategories') }}">
-                            <a href="{{ route('backend.postscategories.index') }}" title="Post Category">
-                                <i class="fa fa-folder"><span class="path1"></span><span class="path2"></span></i>
-                                <span>Post Category</span>
-                            </a>
-                        </li>
-                        @endcan
-                        @can('tags.index')
-                        <li class="{{ setActive('backend/tags') }}">
-                            <a href="{{ route('backend.tags.index') }}" title="Tag">
-                                <i class="fa fa-tags"><span class="path1"></span><span class="path2"></span></i>
-                                <span>Tag</span>
-                            </a>
-                        </li>
-                        @endcan
-
-                        @endif
                         <li class="header">{{ __('Pages') }}</li>
                         @if (auth()->user()->can('pages.index') ||
                         auth()->user()->can('pagecategories.index'))
@@ -66,8 +37,44 @@
                         @endcan
                         @endif
                         {{-- Pages Menu  --}}
-                        <li class="header">Galleries</li>
+                        <li class="header">{{ __('Post') }}</li>
+                        @if (auth()->user()->can('posts.index') ||
+                        auth()->user()->can('pagecategories.index') || auth()->user()->can('editorials.index') )
+                        @can('categoryposts.index')
+                        <li class="{{ setActive('backend/postcategories') }}">
+                            <a href="{{ route('backend.postscategories.index') }}" title="Post Category">
+                                <i class="fa fa-folder"><span class="path1"></span><span class="path2"></span></i>
+                                <span>Post Category</span>
+                            </a>
+                        </li>
+                        @endcan
+                        @can('tags.index')
+                        <li class="{{ setActive('backend/tags') }}">
+                            <a href="{{ route('backend.tags.index') }}" title="Tag">
+                                <i class="fa fa-tags"><span class="path1"></span><span class="path2"></span></i>
+                                <span>Tag</span>
+                            </a>
+                        </li>
+                        @endcan
+                        @can('posts.index')
+                        <li class="{{ setActive('backend/posts') }}">
+                            <a href="{{ route('backend.posts.index') }}" title="Post">
+                                <i class="fa fa-file-text-o"><span class="path1"></span><span class="path2"></span></i>
+                                <span>Post</span>
+                            </a>
+                        </li>
+                        @endcan
+                        @endif
+                        @can('announcement.index')
+                        <li class="{{ setActive('backend/announcement') }}">
+                            <a href="{{ route('backend.announcement.index') }}" title="Announcement">
+                                <i class="fa fa-bullhorn" aria-hidden="true"><span class="path1"></span><span class="path2"></span></i>
+                                <span>{{ __('Announcement')}}</span>
+                            </a>
+                        </li>
+                        @endcan
                         {{-- Galeries Menu --}}
+                        <li class="header">Galleries</li>
                         @if (auth()->user()->can('agendas.index') ||
                         auth()->user()->can('downloadfiles.index') ||
                         auth()->user()->can('downloadcategories.index') ||
@@ -93,6 +100,14 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
+                             @can('agendas.index')
+                            <li class="{{ setActive('backend/agenda') }}">
+                                <a href="{{ route('backend.agendas.index') }}">
+                                    <i class="icon-Commit"><span class="path1"></span><span class="path2"></span>
+                                    </i>Agenda
+                                </a>
+                            </li>
+                            @endcan
                             @can('albums.index')
                             <li class="{{ setActive('backend/albums') }}">
                                 <a href="{{ route('backend.albums.index') }}">
@@ -101,19 +116,19 @@
                                 </a>
                             </li>
                             @endcan
-                            @can('sliders.index')
-                            <li class="{{ setActive('backend/sliders') }}">
-                                <a href="{{ route('backend.sliders.index') }}">
-                                    <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
-                                    Sliders
-                                </a>
-                            </li>
-                            @endcan
                             @can('video.index')
                             <li class="{{ setActive('backend/video') }}">
                                 <a href="{{ route('backend.video.index') }}">
                                     <i class="icon-Commit"><span class="path1"></span><span class="path2"></span>
                                     </i>Video
+                                </a>
+                            </li>
+                            @endcan
+                            @can('sliders.index')
+                            <li class="{{ setActive('backend/sliders') }}">
+                                <a href="{{ route('backend.sliders.index') }}">
+                                    <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
+                                    Sliders
                                 </a>
                             </li>
                             @endcan
