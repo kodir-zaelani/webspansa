@@ -35,7 +35,7 @@
         </div>
     </div>
 </section>
-@push('scripts')
+@push('scripts-menu')
 {!! LaravelMenu::scripts() !!}
 @endpush
 @endsection

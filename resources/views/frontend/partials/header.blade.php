@@ -37,7 +37,7 @@
                     </a>
                     @endif
                     @if (Route::has('login'))
-                    <a href="{{ route('login') }}" class="fw-bold" target="_blank">{{__('Login')}}</a>
+                    <a href="{{ route('login') }}" class="fw-bold">{{__('Login')}}</a>
                     @endif
 
                     @else

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gallery;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\Slider;
@@ -49,5 +50,42 @@ class FrontendController extends Controller
             'page' => $page,
             'title' => 'Detail Video'
         ]);
+    }
+
+    // public function storeimage(Request $request){
+    //     $request->validate([
+    //         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    //     ]);
+
+    //     $imageName = time().'.'.$request->fotos->extension();
+    //     $request->fotos->move(public_path('fotos'), $imageName);
+
+    //     return redirect()->back()->with(['success'=>'Image uploaded successfully.']);
+    // }
+
+    public function upload(Request $request)
+    {
+        if($request->hasFile('file')){
+
+            $uploadPath = "uploads/gallery/";
+
+            $file = $request->file('file');
+
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'-'.rand(0,99).'.'.$extention;
+            $file->move($uploadPath, $filename);
+
+            $finalImageName = $uploadPath.$filename;
+
+            Gallery::create([
+                'image' => $finalImageName
+            ]);
+
+            return response()->json(['success' => 'Image Uploaded Successfully']);
+        }
+        else
+        {
+            return response()->json(['error' => 'File upload failed.']);
+        }
     }
 }

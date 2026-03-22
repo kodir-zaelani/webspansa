@@ -24,6 +24,29 @@ $currentUser = Auth::user()
         </div>
     </div>
 
+    <div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="mb-4 card">
+                <div class="card-header">
+                    <h4 class="mb-0">Drop Multiple Images</h4>
+                </div>
+                <div class="card-body">
+
+                    <label>Drag and Drop Multiple Images (JPG, JPEG, PNG, .webp)</label>
+
+                    <form action="{{ url('gallery/upload') }}" method="POST" enctype="multipart/form-data"
+                        class="dropzone" id="myDragAndDropUploader">
+                        @csrf
+                    </form>
+
+                    <h5 id="message"></h5>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     <div class="row">
         <div class="col-12">

@@ -147,7 +147,7 @@ return [
             'width' => 200,
             'height' => 300
         ],
-        'directoryFoto' => 'uploads/images/fotos/',
+        'directoryFoto' => 'uploads/images/photos/',
         'thumbnailfoto' => [
             'width' => 300,
             'height' => 200

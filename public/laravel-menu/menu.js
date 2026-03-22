@@ -298,7 +298,7 @@ function actualizarmenu() {
             $("#spincustomu2").show();
         },
         success: function (response) {
-            console.log("Alhamdulillah");
+            console.log("aqu llega");
         },
         complete: function () {
             $("#spincustomu2").hide();

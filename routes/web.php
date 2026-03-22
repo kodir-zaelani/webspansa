@@ -4,8 +4,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index'])->name('root');
+Route::post('/dropzones', [App\Http\Controllers\Frontend\FrontendController::class, 'storeimage'])->name('dropzone.store');
 Route::get('/kontak', [App\Http\Controllers\Frontend\FrontendController::class, 'contact'])->name('contact');
 Route::get('/video/details/{slug}', [App\Http\Controllers\Frontend\VideoController::class, 'video_detail'])->name('video.detail');
+
+Route::post('gallery/upload', [App\Http\Controllers\Backend\GalleryController::class, 'upload']);
 
 Route::get('berita/semua-berita', [App\Http\Controllers\Frontend\PostController::class, 'all_news'])->name('all.news');
 Route::get('berita/details/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'news_detail'])->name('news.detail');
