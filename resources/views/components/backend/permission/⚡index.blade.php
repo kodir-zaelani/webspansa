@@ -261,7 +261,7 @@ new class extends Component
     {
         $validateData = [
             'name' => 'required|min:2',
-            'description' => 'required|min:2',
+            // 'description' => 'required|min:2',
         ];
 
         // Default data

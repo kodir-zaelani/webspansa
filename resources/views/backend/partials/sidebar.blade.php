@@ -16,6 +16,17 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
+                        @if (auth()->user()->can('greetings.index') ||
+                                auth()->user()->can('greetings.create'))
+                            @can('greetings.index')
+                                <li
+                                    class="{{ setActive('backend/allgreetings') }} {{ setOpen('backend/allgreetings') }}">
+                                    <a href="{{ route('backend.greetings.index') }}">
+                                        <i class="fa fa-vcard-o" aria-hidden="true"></i>{{ __('Greeting')}}
+                                    </a>
+                                </li>
+                            @endcan
+                        @endif
                         <li class="header">{{ __('Pages') }}</li>
                         @if (auth()->user()->can('pages.index') ||
                         auth()->user()->can('pagecategories.index'))
@@ -64,6 +75,14 @@
                             </a>
                         </li>
                         @endcan
+                        @can('blog.index')
+                        <li class="{{ setActive('backend/blog') }}">
+                            <a href="{{ route('backend.blog.index') }}" title="Blog">
+                                <i class="fa fa-file-text-o"><span class="path1"></span><span class="path2"></span></i>
+                                <span>Blog</span>
+                            </a>
+                        </li>
+                        @endcan
                         @endif
                         @can('announcement.index')
                         <li class="{{ setActive('backend/announcement') }}">
@@ -73,6 +92,7 @@
                             </a>
                         </li>
                         @endcan
+
                         {{-- Galeries Menu --}}
                         <li class="header">Galleries</li>
                         @if (auth()->user()->can('agendas.index') ||

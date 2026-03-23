@@ -17,6 +17,10 @@ Route::get('berita/tag/{slug}',  [App\Http\Controllers\Frontend\PostController::
 Route::get('berita/penulis/{id}',  [App\Http\Controllers\Frontend\PostController::class, 'news_author'])->name('post.author');
 Route::get('berita/pencarian',  [App\Http\Controllers\Frontend\PostController::class, 'news_search'])->name('post.search');
 
+Route::get('blog/detail/{slug}',  [App\Http\Controllers\Frontend\BlogController::class, 'detail'])->name('blog.detail');
+Route::get('blog',  [App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('blog.index');
+Route::get('blog/kategori/{slug}',  [App\Http\Controllers\Frontend\BlogController::class, 'category'])->name('blog.category');
+
 Route::prefix('halaman')->group(function () {
     Route::get('/detail/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'pagedetail'])->name('page.detail');
     // Route::get('/kategory/{slug}', App\Http\Livewire\Template\Frontend\Terasgreen\Page\Pagecategorylist::class)->name('page.category');
@@ -133,6 +137,20 @@ Route::middleware(['auth', 'verified', 'web'])->group(function () {
     Route::post('backend/announcement/store', [App\Http\Controllers\Backend\AnnouncementController::class, 'store'])->name('backend.announcement.store');
     Route::get('backend/announcement/{announcement}/edit', [App\Http\Controllers\Backend\AnnouncementController::class, 'edit'])->name('backend.announcement.edit');
     Route::put('backend/announcement/{announcement}/update', [App\Http\Controllers\Backend\AnnouncementController::class, 'update'])->name('backend.announcement.update');
+
+    // Blog
+    Route::get('backend/blog', [App\Http\Controllers\Backend\BlogController::class, 'index'])->name('backend.blog.index');
+    Route::get('backend/blog/create', [App\Http\Controllers\Backend\BlogController::class, 'create'])->name('backend.blog.create');
+    Route::post('backend/blog/store', [App\Http\Controllers\Backend\BlogController::class, 'store'])->name('backend.blog.store');
+    Route::get('backend/blog/{blog}/edit', [App\Http\Controllers\Backend\BlogController::class, 'edit'])->name('backend.blog.edit');
+    Route::put('backend/blog/{blog}/update', [App\Http\Controllers\Backend\BlogController::class, 'update'])->name('backend.blog.update');
+
+    // Greetings
+    Route::get('backend/sambutan', [App\Http\Controllers\Backend\GreetingController::class, 'index'])->name('backend.greetings.index');
+    Route::get('backend/sambutan/create', [App\Http\Controllers\Backend\GreetingController::class, 'create'])->name('backend.greetings.create');
+    Route::post('backend/sambutan/store', [App\Http\Controllers\Backend\GreetingController::class, 'store'])->name('backend.greetings.store');
+    Route::get('backend/sambutan/{greeting}/edit', [App\Http\Controllers\Backend\GreetingController::class, 'edit'])->name('backend.greetings.edit');
+    Route::put('backend/sambutan/{greeting}/update', [App\Http\Controllers\Backend\GreetingController::class, 'update'])->name('backend.greetings.update');
 
 
 });

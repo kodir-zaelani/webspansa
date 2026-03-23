@@ -9,9 +9,9 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}"><i class="fa fa-home"><span
                             class="path1"></span><span class="path2"></span></i></a></li>
-                            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('backend.posts.index') }}">
-                                Posts</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Edit a post</li>
+                            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('backend.blog.index') }}">
+                                Blog</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Edit a blog</li>
                             </ol>
                         </nav>
                     </div>
@@ -20,7 +20,7 @@
             </div>
         </div>
         <section class="content">
-            <form id="post-form" enctype="multipart/form-data" action="{{ route('backend.posts.update', $post) }}"
+            <form id="post-form" enctype="multipart/form-data" action="{{ route('backend.blog.update', $blog) }}"
             method="POST">
             @csrf
             @method('PUT')
@@ -28,7 +28,7 @@
                 <div class="col-lg-8 col-12">
                     <div class="box">
                         <div class="box-header">
-                            <h4 class="box-title">Edit a Post
+                            <h4 class="box-title">Edit a Blog
                             </h4>
                         </div>
                         <div class="box-body">
@@ -37,30 +37,30 @@
                                 <div class="controls">
                                     <input type="text" name="title"
                                     class="form-control @error('title') is-invalid @enderror"
-                                    value="{{ old('title') ?? $post->title }}" placeholder="Title" required>
+                                    value="{{ old('title') ?? $blog->title }}" placeholder="Title" required>
                                 </div>
                                 @error('title')
                                 <div class="form-control-feedback"><small> <code>{{ $message }}</code> </small></div>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label class="form-label">Berita Utama :</label>
+                            <div class="form-group visually-hidden">
+                                <label class="form-label">Headline :</label>
                                 <div class="demo-radio-button">
-                                    <input {{ $post->headline == 0 ? 'checked' : '' }} value="0" name="headline"
+                                    <input {{ $blog->headline == 0 ? 'checked' : '' }} value="0" name="headline"
                                     type="radio" id="radio_32" class="with-gap radio-col-success" />
                                     <label for="radio_32">Inactive</label>
-                                    <input {{ $post->headline == 1 ? 'checked' : '' }} value="1" name="headline"
+                                    <input {{ $blog->headline == 1 ? 'checked' : '' }} value="1" name="headline"
                                     type="radio" id="radio_30" class="with-gap radio-col-success" />
                                     <label for="radio_30">Active</label>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group visually-hidden">
                                 <label class="form-label">Primary / Selection :</label>
                                 <div class="demo-radio-button">
-                                    <input {{ $post->selection == 0 ? 'checked' : '' }} value="0" name="selection"
+                                    <input {{ $blog->selection == 0 ? 'checked' : '' }} value="0" name="selection"
                                     type="radio" id="radio_33" class="with-gap radio-col-primary" checked />
                                     <label for="radio_33">Primary</label>
-                                    <input {{ $post->selection == 1 ? 'checked' : '' }} value="1" name="selection"
+                                    <input {{ $blog->selection == 1 ? 'checked' : '' }} value="1" name="selection"
                                     type="radio" id="radio_34" class="with-gap radio-col-primary" />
                                     <label for="radio_34">Selection</label>
                                 </div>
@@ -68,10 +68,10 @@
                             <div class="form-group" hidden>
                                 <label class="form-label">News/Blog:</label>
                                 <div class="demo-radio-button">
-                                    <input {{ $post->statuspost == 0 ? 'checked' : '' }} value="0" name="statuspost"
+                                    <input {{ $blog->statuspost == 0 ? 'checked' : '' }} value="0" name="statuspost"
                                     type="radio" id="radio_41" class="with-gap radio-col-primary" />
                                     <label for="radio_41">News</label>
-                                    <input {{ $post->statuspost == 1 ? 'checked' : '' }} value="1" name="statuspost"
+                                    <input {{ $blog->statuspost == 1 ? 'checked' : '' }} value="1" name="statuspost"
                                     type="radio" id="radio_40" class="with-gap radio-col-primary" />
                                     <label for="radio_40">Blog</label>
                                 </div>
@@ -81,8 +81,8 @@
                                 <div class="mt-2 input-group">
                                     <input id="video" name="video" type="text"
                                     class="form-control @error('video') is-invalid @enderror" placeholder="Content Video"
-                                    value="{{ old('video') ?? $post->video }}">
-                                    <a class="btn btn-sm btn-primary input-group-text popup-youtube" href="{{$post->video}}">{{ __('View')}}</a>
+                                    value="{{ old('video') ?? $blog->video }}">
+                                    <a class="btn btn-sm btn-primary input-group-text popup-youtube" href="{{$blog->video}}">{{ __('View')}}</a>
                                 </div>
                                 <span class="font-italic"> Example: https://www.youtube.com/watch?v=LJ_YrtyEnck</span>
                                 @error('video')
@@ -92,7 +92,7 @@
                             <div class="form-group">
                                 <label for="caption_video">Caption Video</label>
                                 <textarea name="caption_video" id="caption_video" class="form-control  @error('caption_video') is-invalid @enderror"
-                                placeholder="Caption Video">{{ old('caption_video') ?? $post->caption_video }}</textarea>
+                                placeholder="Caption Video">{{ old('caption_video') ?? $blog->caption_video }}</textarea>
                                 @error('caption_video')
                                 <div class="form-control-feedback"><small> <code>{{ $message }}</code> </small></div>
                                 @enderror
@@ -100,7 +100,7 @@
                             <div class="form-group">
                                 <label class="form-label">Content <span class="text-danger">*</span></label>
                                 <textarea id="editor1" rows="40" cols="80" class="form-control @error('content') is-invalid @enderror"
-                                name="content">{{ old('content') ?? $post->content }}</textarea>
+                                name="content">{{ old('content') ?? $blog->content }}</textarea>
                                 @error('content')
                                 <div class="form-control-feedback"><small> <code>{{ $message }}</code> </small></div>
                                 @enderror
@@ -119,7 +119,7 @@
                             <div class="form-group row">
                                 <label for="status">
                                     Status :
-                                    @if ($post->status == 1)
+                                    @if ($blog->status == 1)
                                     <font style="color: rgb(18, 168, 13)">Publish</font>
                                     @else
                                     <font style="color: rgb(58, 40, 224)"> Draft</font>
@@ -130,11 +130,11 @@
                             <div class="form-group row" hidden>
                                 <label class="form-label">Comments :</label>
                                 <div class="c-inputs-stacked">
-                                    <input {{ $post->comment_status == 0 ? 'checked' : '' }} value="0"
+                                    <input {{ $blog->comment_status == 0 ? 'checked' : '' }} value="0"
                                     name="comment_status" type="radio" id="radio_36"
                                     class="with-gap radio-col-success" />
                                     <label for="radio_36">Inactive</label>
-                                    <input {{ $post->comment_status == 1 ? 'checked' : '' }} value="1"
+                                    <input {{ $blog->comment_status == 1 ? 'checked' : '' }} value="1"
                                     name="comment_status" type="radio" id="radio_35"
                                     class="with-gap radio-col-success" />
                                     <label for="radio_35">Active</label>
@@ -146,7 +146,7 @@
                                 <div class="col">
                                     <input class="form-control @error('published_at') is-invalid @enderror"
                                     name="published_at" type="date"
-                                    value="{{ old('published_at') ?? $post->published_at }}" id="example-date-input">
+                                    value="{{ old('published_at') ?? $blog->published_at }}" id="example-date-input">
                                     @error('published_at')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -156,7 +156,7 @@
                         </div>
                         <div class="box-footer text-end">
                             <input type="text" name="status" id="status" hidden>
-                            <a href="{{route('backend.posts.index')}}" type="submit" class="btn btn-info me-1">
+                            <a href="{{route('backend.blog.index')}}" type="submit" class="btn btn-info me-1">
                                 Cancel
                             </a>
                             <button id="draft-btn" type="submit" class="btn btn-warning me-1">
@@ -181,7 +181,7 @@
                                     @foreach ($postcatagories as $item)
                                     <option value="{{ $item->id }}"
                                         {{ old('postcategory_id') == $item->id ? 'selected' : '' }}
-                                        @if ($item->id == $post->postcategory_id) selected @endif>
+                                        @if ($item->id == $blog->postcategory_id) selected @endif>
                                         {{ $item->title }}
                                     </option>
                                     @endforeach
@@ -196,7 +196,7 @@
                                 data-placeholder="Select a Tag" style="width: 100%;">
                                 @foreach ($tags as $item)
                                 <option value="{{ $item->id }}"
-                                    {{ in_array($item->id,$post->tags()->pluck('id')->toArray())? 'selected': '' }}>
+                                    {{ in_array($item->id,$blog->tags()->pluck('id')->toArray())? 'selected': '' }}>
                                     {{ $item->title }}</option>
                                     @endforeach
                                 </select>
@@ -213,7 +213,7 @@
                             <div class=" form-group">
                                 <div class=" fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-new img-thumbnail" style="width: 200px;">
-                                        <img src="{{ $post->imageThumbUrl ? $post->imageThumbUrl : '/assets/images/no_image.png' }}"
+                                        <img src="{{ $blog->imageThumbUrl ? $blog->imageThumbUrl : '/assets/images/no_image.png' }}"
                                         alt="...">
                                     </div>
                                     <div class="fileinput-preview fileinput-exists img-thumbnail"
@@ -237,7 +237,7 @@
                                 <div class="form-group text-start">
                                     <label for="caption_image">Caption Image</label>
                                     <textarea name="caption_image" id="caption_image" class="form-control @error('caption_image') is-invalid @enderror"
-                                    placeholder="Caption Image">{{ old('caption_image') ?? $post->caption_image }}</textarea>
+                                    placeholder="Caption Image">{{ old('caption_image') ?? $blog->caption_image }}</textarea>
                                     @error('caption_image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

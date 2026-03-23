@@ -233,5 +233,17 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'program.create']);
         Permission::create(['name' => 'program.edit']);
         Permission::create(['name' => 'program.delete']);
+
+        //permission for editorial
+        Permission::create(['name' => 'editorial.index']);
+        Permission::create(['name' => 'editorial.create']);
+        Permission::create(['name' => 'editorial.edit']);
+        Permission::create(['name' => 'editorial.delete']);
+
+        //permission for blog
+        Permission::create(['name' => 'blog.index']);
+        Permission::create(['name' => 'blog.create']);
+        Permission::create(['name' => 'blog.edit']);
+        Permission::create(['name' => 'blog.delete']);
     }
 }

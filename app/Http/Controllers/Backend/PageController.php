@@ -55,6 +55,7 @@ class PageController extends Controller
             'pagecategory_id' => $request->input('pagecategory_id'),
             'slug'            => Str::slug($request->input('title')),
             'content'         => $request->input('content'),
+            'video'           => $request->input('video'),
             'status'          => $request->input('status'),
         ];
         //upload image (cara kedua)
@@ -131,6 +132,7 @@ class PageController extends Controller
             'pagecategory_id' => $request->input('pagecategory_id'),
             'slug'            => Str::slug($request->input('title')),
             'content'         => $request->input('content'),
+            'video'           => $request->input('video'),
             'status'          => $request->input('status'),
             'updated_by'      => Auth::id(),
         ];

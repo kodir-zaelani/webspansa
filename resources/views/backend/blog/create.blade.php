@@ -10,9 +10,9 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}"><i class="fa fa-home"><span
                                             class="path1"></span><span class="path2"></span></i></a></li>
-                            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('backend.posts.index') }}">
-                                    Posts</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Create a post</li>
+                            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('backend.blog.index') }}">
+                                    Blog</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Create a blog</li>
                         </ol>
                     </nav>
                 </div>
@@ -21,13 +21,13 @@
         </div>
     </div>
     <section class="content">
-        <form id="post-form" enctype="multipart/form-data" action="{{ route('backend.posts.store') }}" method="post">
+        <form id="post-form" enctype="multipart/form-data" action="{{ route('backend.blog.store') }}" method="post">
             <div class="row">
                 @csrf
                 <div class="col-lg-8 col-12">
                     <div class="box">
                         <div class="box-header">
-                            <h4 class="box-title">Create a Post
+                            <h4 class="box-title">Create a Blog
                             </h4>
                         </div>
                         <div class="box-body">
@@ -42,8 +42,8 @@
                                     <div class="form-control-feedback"><small> <code>{{ $message }}</code> </small></div>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label class="form-label">Berita Utama :</label>
+                            <div class="visually-hidden form-group">
+                                <label class="form-label">Headline :</label>
                                 <div class="demo-radio-button">
                                     <input value="0" name="headline" type="radio" id="radio_32"
                                         class="with-gap radio-col-success" checked  />
@@ -53,7 +53,7 @@
                                     <label for="radio_30">Active</label>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="visually-hidden form-group">
                                 <label class="form-label">Primary / Selection :</label>
                                 <div class="demo-radio-button">
                                     <input value="0" name="selection" type="radio" id="radio_33"
@@ -68,10 +68,10 @@
                                 <label class="form-label">News/Blog:</label>
                                 <div class="c-inputs-stacked ">
                                     <input value="0" name="statuspost" type="radio" id="radio_41"
-                                        class="with-gap radio-col-primary" checked />
+                                        class="with-gap radio-col-primary"  />
                                     <label for="radio_41">News</label>
                                     <input value="1" name="statuspost" type="radio" id="radio_40"
-                                        class="with-gap radio-col-primary" />
+                                        class="with-gap radio-col-primary" checked/>
                                     <label for="radio_40">Blog</label>
                                 </div>
                             </div>
@@ -138,13 +138,13 @@
                         </div>
                         <div class="box-footer text-end">
                             <input type="text" name="status" id="status" hidden>
-                            <a href="{{route('backend.posts.index')}}" type="submit" class="btn btn-info me-1">
+                            <a href="{{route('backend.blog.index')}}" type="submit" class="btn btn-info me-1">
                                 Cancel
                             </a>
                             <button id="draft-btn" type="submit" class="btn btn-warning me-1">
                                 Draft
                             </button>
-                            <button id="publish-btn" type="submit" class="btn btn-primary"  @if (auth()->user()->can('postsubcribe.create')) hidden @endif>
+                            <button id="publish-btn" type="submit" class="btn btn-primary"  @if (auth()->user()->can('blogubcribe.create')) hidden @endif>
                                 Publish
                             </button>
                         </div>

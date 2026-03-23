@@ -1,179 +1,193 @@
 @extends('layouts.appb')
 
 @section('content')
-    <div class="content-header">
-        <div class="d-flex align-items-center">
-            <div class="me-auto">
-                <h3 class="page-title">{{ __($title) }}</h3>
-                <div class="d-inline-block align-items-center">
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}"><i class="fa fa-home"><span
-                                            class="path1"></span><span class="path2"></span></i></a></li>
+<div class="content-header">
+    <div class="d-flex align-items-center">
+        <div class="me-auto">
+            <h3 class="page-title">{{ __($title) }}</h3>
+            <div class="d-inline-block align-items-center">
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}"><i class="fa fa-home"><span
+                            class="path1"></span><span class="path2"></span></i></a></li>
                             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('backend.pages.index') }}">All
-                                    Page</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Edit</li>
-                        </ol>
-                    </nav>
+                                Page</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Edit</li>
+                            </ol>
+                        </nav>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
-    <section class="content">
-        <form id="post-form" enctype="multipart/form-data" action="{{ route('backend.pages.update', $page->id) }}" method="POST">
-            @csrf
-            <div class="row">
-                <div class="col-lg-8 col-12">
-                    <div class="box">
-                        <div class="box-header">
-                            <h4 class="box-title">{{ __('Edit Page') }}
-                            </h4>
-                        </div>
-                        <div class="box-body">
-                            <div class="form-group">
-                                <h5>Title <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <input type="text" name="title"
+        <section class="content">
+            <form id="post-form" enctype="multipart/form-data" action="{{ route('backend.pages.update', $page->id) }}" method="POST">
+                @csrf
+                <div class="row">
+                    <div class="col-lg-8 col-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h4 class="box-title">{{ __('Edit Page') }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <h5>Title <span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" name="title"
                                         class="form-control @error('title') is-invalid @enderror"
                                         value="{{ old('title') ?? $page->title }}" placeholder="Title" required>
+                                    </div>
+                                    @error('title')
+                                    <div class="form-control-feedback"><small> <code>{{ $message }}</code> </small></div>
+                                    @enderror
                                 </div>
-                                @error('title')
+                                <div class="form-group">
+                                    <label for="video">Video</label>
+                                    <div class="mt-2 input-group">
+                                        <input id="video" name="video" type="text"
+                                        class="form-control @error('video') is-invalid @enderror" placeholder="Content Video"
+                                        value="{{ old('video') ?? $page->video }}">
+                                        <a class="btn btn-sm btn-primary input-group-text popup-youtube" href="{{$page->video}}">{{ __('View')}}</a>
+                                    </div>
+                                    <span class="font-italic"> Example: https://www.youtube.com/watch?v=LJ_YrtyEnck</span>
+                                    @error('video')
                                     <div class="form-control-feedback"><small> <code>{{ $message }}</code> </small></div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Content <span class="text-danger">*</span></label>
-                                <textarea id="editor1" rows="10" cols="80" class="form-control @error('content') is-invalid @enderror"
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Content <span class="text-danger">*</span></label>
+                                    <textarea id="editor1" rows="10" cols="80" class="form-control @error('content') is-invalid @enderror"
                                     name="content">{{ old('content') ?? $page->content }}</textarea>
-                                @error('content')
+                                    @error('content')
                                     <div class="form-control-feedback"><small> <code>{{ $message }}</code> </small></div>
-                                @enderror
+                                    @enderror
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <div class="box">
+                            <div class="box-header">
+                                <h4 class="box-title">Save
+                                    <small>Publish or Draft</small>
+                                </h4>
+                            </div>
+                            <div class="box-footer text-end">
+                                <input type="text" name="status" id="status" hidden>
+                                <a href="{{ route('backend.pages.index') }}" class="btn btn-sm btn-secondary me-1">
+                                    Cancel
+                                </a>
+                                <button id="draft-btn" type="submit" class="btn btn-sm btn-warning me-1">
+                                    Draft
+                                </button>
+                                <button id="publish-btn" type="submit"class="btn btn-sm btn-primary">
+                                    Publish
+                                </button>
                             </div>
                         </div>
+                        <div class="box">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Page Category
+                                </h4>
+                            </div>
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-12">
-                    <div class="box">
-                        <div class="box-header">
-                            <h4 class="box-title">Save
-                                <small>Publish or Draft</small>
-                            </h4>
-                        </div>
-                        <div class="box-footer text-end">
-                            <input type="text" name="status" id="status" hidden>
-                            <a href="{{ route('backend.pages.index') }}" class="btn btn-sm btn-secondary me-1">
-                                Cancel
-                            </a>
-                            <button id="draft-btn" type="submit" class="btn btn-sm btn-warning me-1">
-                                Draft
-                            </button>
-                            <button id="publish-btn" type="submit"class="btn btn-sm btn-primary">
-                                Publish
-                            </button>
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="box-header">
-                            <h4 class="box-title">
-                                Page Category
-                            </h4>
-                        </div>
-
-                        <div class="box-body">
-                            <div class="form-group @error('pagecategory_id') has-error @enderror">
-                                <label class="form-label">Page Category <span class="text-danger">*</span></label>
-                                <select class="form-control select2" style="width: 100%;" name="pagecategory_id">
-                                    <option value="" holder>Select Page Category</option>
-                                    @foreach ($pagecatagories as $item)
+                            <div class="box-body">
+                                <div class="form-group @error('pagecategory_id') has-error @enderror">
+                                    <label class="form-label">Page Category <span class="text-danger">*</span></label>
+                                    <select class="form-control select2" style="width: 100%;" name="pagecategory_id">
+                                        <option value="" holder>Select Page Category</option>
+                                        @foreach ($pagecatagories as $item)
                                         <option value="{{ $item->id }}"
                                             {{ old('pagecategory_id') == $item->id ? 'selected' : '' }}
                                             @if ($item->id == $page->pagecategory_id) selected @endif>
                                             {{ $item->title }}
                                         </option>
-                                    @endforeach
-                                </select>
-                                @error('pagecategory_id')
+                                        @endforeach
+                                    </select>
+                                    @error('pagecategory_id')
                                     <span class="help-block"><strong>{{ $message }}</strong></span>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="box">
-                        <div class="box-header">
-                            <h4 class="box-title">
-                                Feature Image
-                            </h4>
-                        </div>
-                        <div class="text-center box-body ">
-                            <div class="form-group">
-                                <div class=" fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-new img-thumbnail" style="width: 200px;">
-                                        <img src="{{ $page->imageThumbUrl ? $page->imageThumbUrl : '/assets/images/no_image.png' }}"
+                        <div class="box">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    Feature Image
+                                </h4>
+                            </div>
+                            <div class="text-center box-body ">
+                                <div class="form-group">
+                                    <div class=" fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-new img-thumbnail" style="width: 200px;">
+                                            <img src="{{ $page->imageThumbUrl ? $page->imageThumbUrl : '/assets/images/no_image.png' }}"
                                             alt="...">
-                                    </div>
-                                    <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px;">
-                                    </div>
-                                    <div>
-                                        <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select
+                                        </div>
+                                        <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px;">
+                                        </div>
+                                        <div>
+                                            <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select
                                                 image</span><span class="fileinput-exists">Change</span>
-                                            <input type="file" class="@error('image') is-invalid @enderror"
+                                                <input type="file" class="@error('image') is-invalid @enderror"
                                                 name="image" value="{{ old('image') }}"></span>
-                                        <a href="#" class="btn btn-outline-secondary fileinput-exists"
-                                            data-dismiss="fileinput">Remove</a>
+                                                <a href="#" class="btn btn-outline-secondary fileinput-exists"
+                                                data-dismiss="fileinput">Remove</a>
+                                            </div>
+                                        </div>
+                                        @error('image')
+                                        <div class="invalid-feedback" style="display: block">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                 </div>
-                                @error('image')
-                                    <div class="invalid-feedback" style="display: block">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </form>
-    </section>
+                </form>
+            </section>
 
-    @push('styles')
-        <link rel="stylesheet"
+            @push('styles')
+            <link rel="stylesheet"
             href="{{ asset('') }}assets/vendor_plugins/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
-    @endpush
+            @endpush
 
-    @push('scripts')
-        <script src="{{ asset('') }}assets/vendor_plugins/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
-        <script src="{{ asset('') }}assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
-        <script src="{{ asset('') }}assets/vendor_components/select2/dist/js/select2.full.js"></script>
-        <script src="{{ asset('') }}assets/vendor_components/ckeditor/ckeditor.js"></script>
-        <script src="{{ asset('') }}assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
+            @push('scripts')
+            <script src="{{ asset('') }}assets/vendor_plugins/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
+            <script src="{{ asset('') }}assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+            <script src="{{ asset('') }}assets/vendor_components/select2/dist/js/select2.full.js"></script>
+            <script src="{{ asset('') }}assets/vendor_components/ckeditor/ckeditor.js"></script>
+            <script src="{{ asset('') }}assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
+            <script src="{{ asset('') }}assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
+            <script src="{{ asset('') }}assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>
+            <script>
+                var options = {
+                    filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+                    filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{ csrf_token() }}',
+                    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+                    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{ csrf_token() }}'
+                };
+            </script>
+            <script>
+                CKEDITOR.replace('editor1', options);
+                //Initialize Select2 Elements
+                $('.select2').select2();
 
-        <script>
-            var options = {
-                filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-                filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{ csrf_token() }}',
-                filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-                filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{ csrf_token() }}'
-            };
-        </script>
-        <script>
-            CKEDITOR.replace('editor1', options);
-            //Initialize Select2 Elements
-            $('.select2').select2();
-
-            //Save Draft
-            $('#draft-btn').click(function(e) {
-                e.preventDefault();
-                $('#status').val(0);
-                $('#post-form').submit();
-            });
-            //Save Publish
-            $('#publish-btn').click(function(e) {
-                e.preventDefault();
-                $('#status').val(1);
-                $('#post-form').submit();
-            });
-        </script>
-    @endpush
-@endsection
+                //Save Draft
+                $('#draft-btn').click(function(e) {
+                    e.preventDefault();
+                    $('#status').val(0);
+                    $('#post-form').submit();
+                });
+                //Save Publish
+                $('#publish-btn').click(function(e) {
+                    e.preventDefault();
+                    $('#status').val(1);
+                    $('#post-form').submit();
+                });
+            </script>
+            @endpush
+            @endsection
