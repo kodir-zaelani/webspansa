@@ -1,0 +1,45 @@
+{
+    "name": "bdhabib/laravel-menu",
+    "description": "Drag & Drop menu builder like  WordPress for Laravel 12.x",
+    "keywords": ["Laravel", "Menu", "Wordpress", "Builder"],
+    "homepage": "https://github.com/creativehabib/laravel-menu",
+    "license": "MIT",
+    "version": "2.2",
+    "authors": [
+        {
+            "name": ":Habibur Rahaman",
+            "email": "shamolrahaman@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^v12.2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bdhabib\\LaravelMenu\\": "src/",
+            "Bdhabib\\LaravelMenu\\Database\\Factories\\": "database/factories/"
+        }
+    },
+
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bdhabib\\LaravelMenu\\LaravelMenuServiceProvider"
+            ],
+            "aliases": {
+                "LaravelMenu": "Bdhabib\\LaravelMenu\\Facades\\LaravelMenu"
+            }
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "stable"
+}
