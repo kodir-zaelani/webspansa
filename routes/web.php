@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index'])->name('root');
 Route::post('/dropzones', [App\Http\Controllers\Frontend\FrontendController::class, 'storeimage'])->name('dropzone.store');
 Route::get('/kontak', [App\Http\Controllers\Frontend\FrontendController::class, 'contact'])->name('contact');
-Route::get('/video/details/{slug}', [App\Http\Controllers\Frontend\VideoController::class, 'video_detail'])->name('video.detail');
+Route::get('/video/details/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'video_detail'])->name('video.detail');
 
 Route::post('gallery/upload', [App\Http\Controllers\Backend\GalleryController::class, 'upload']);
 
@@ -151,6 +151,20 @@ Route::middleware(['auth', 'verified', 'web'])->group(function () {
     Route::post('backend/sambutan/store', [App\Http\Controllers\Backend\GreetingController::class, 'store'])->name('backend.greetings.store');
     Route::get('backend/sambutan/{greeting}/edit', [App\Http\Controllers\Backend\GreetingController::class, 'edit'])->name('backend.greetings.edit');
     Route::put('backend/sambutan/{greeting}/update', [App\Http\Controllers\Backend\GreetingController::class, 'update'])->name('backend.greetings.update');
+
+    // Editorial
+    Route::get('backend/editorials', [App\Http\Controllers\Backend\EditorialController::class, 'index'])->name('backend.editorials.index');
+    Route::get('backend/editorials/create', [App\Http\Controllers\Backend\EditorialController::class, 'create'])->name('backend.editorials.create');
+    Route::post('backend/editorials/store', [App\Http\Controllers\Backend\EditorialController::class, 'store'])->name('backend.editorials.store');
+    Route::get('backend/editorials/{editorial}/edit', [App\Http\Controllers\Backend\EditorialController::class, 'edit'])->name('backend.editorials.edit');
+    Route::put('backend/editorials/{editorial}/update', [App\Http\Controllers\Backend\EditorialController::class, 'update'])->name('backend.editorials.update');
+
+    // Editorial
+    Route::get('backend/statistic', [App\Http\Controllers\Backend\StatisticController::class, 'index'])->name('backend.statistic.index');
+    Route::get('backend/statistic/create', [App\Http\Controllers\Backend\StatisticController::class, 'create'])->name('backend.statistic.create');
+    Route::post('backend/statistic/store', [App\Http\Controllers\Backend\StatisticController::class, 'store'])->name('backend.statistic.store');
+    Route::get('backend/statistic/{editorial}/edit', [App\Http\Controllers\Backend\StatisticController::class, 'edit'])->name('backend.statistic.edit');
+    Route::put('backend/statistic/{editorial}/update', [App\Http\Controllers\Backend\StatisticController::class, 'update'])->name('backend.statistic.update');
 
 
 });

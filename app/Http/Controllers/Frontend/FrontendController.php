@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Foto;
 use App\Models\Gallery;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\Slider;
+use App\Models\Statistic;
 use App\Models\Video;
 use Illuminate\Http\Request;
 
@@ -17,6 +19,7 @@ class FrontendController extends Controller
             'sliders' => Slider::published()->latest()->take(8)->get(),
             'featured_news' => Post::with('author','postcategory')->where('headline', 1)->published()->latest()->take(6)->get(),
             'latest_news' => Post::with('author','postcategory')->published()->latest()->take(6)->get(),
+            'statistics' => Statistic::with('author')->published()->take(6)->get(),
             'latest_video' => Video::published()->latest()->take(6)->get(),
             'title' => 'Beranda'
         ]);
@@ -40,17 +43,7 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function video_detail(Request $request, Page $page){
-        $this->segment = $request->segment(3);
-        $page = Page::published()->where('slug', $this->segment)->first();
-        $page->increment('view_count');
 
-        return view('frontend.video.details',[
-            'pages' => Page::published()->where('pagecategory_id', $page->pagecategory_id)->get(),
-            'page' => $page,
-            'title' => 'Detail Video'
-        ]);
-    }
 
     // public function storeimage(Request $request){
     //     $request->validate([
@@ -87,5 +80,60 @@ class FrontendController extends Controller
         {
             return response()->json(['error' => 'File upload failed.']);
         }
+    }
+
+    public function editorialdetail(Request $request){
+        $this->segment = $request->segment(3);
+        $editorial = Editorial::publish()->where('slug', $this->segment)->first();
+        $editorial->increment('view_count');
+
+        return view('frontend.editorial.detail',[
+            'editorials' => editorial::publish()->get(),
+            'editorial' => $editorial,
+            'title' => 'Detail Editorial'
+        ]);
+    }
+
+    public function editorialall(Request $request){
+
+        return view('frontend.editorial.all',[
+            'editorials' => Editorial::Published()
+            ->Publishedate()
+            ->latest()
+            ->paginate($this->limit),
+            'title' => 'Semua Editorial'
+        ]);
+    }
+
+
+
+    public function fotoAll()
+    {
+        return view('frontend.foto.all', [
+            'fotos' => Foto::with('album')
+            ->latest()
+            ->paginate($this->limit),
+            'title' => 'Galeri Foto'
+        ]);
+    }
+    public function videoAll()
+    {
+        return view('frontend.video.all', [
+            'videos' => Video::latest()
+            ->paginate($this->limit),
+            'title' => 'Galeri Video'
+        ]);
+    }
+
+    public function video_detail(Request $request, Video $video){
+        $this->segment = $request->segment(3);
+        $video = Video::published()->where('slug', $this->segment)->first();
+        $video->increment('view_count');
+
+        return view('frontend.video.details',[
+            'videos' => Video::published()->get(),
+            'video' => $video,
+            'title' => 'Detail Video'
+        ]);
     }
 }

@@ -3,6 +3,7 @@
 @section('content')
 @include('frontend.partials.main-banner')
 @include('frontend.partials.main-hero')
+@include('frontend.partials.main-stats')
 @include('frontend.home.main-featured-news')
 @include('frontend.home.main-latest-news')
 @include('frontend.home.main-video')

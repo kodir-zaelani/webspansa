@@ -245,5 +245,11 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'blog.create']);
         Permission::create(['name' => 'blog.edit']);
         Permission::create(['name' => 'blog.delete']);
+
+        //permission for statistic
+        Permission::create(['name' => 'statistic.index']);
+        Permission::create(['name' => 'statistic.create']);
+        Permission::create(['name' => 'statistic.edit']);
+        Permission::create(['name' => 'statistic.delete']);
     }
 }

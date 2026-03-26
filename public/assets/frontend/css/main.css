@@ -2664,6 +2664,12 @@ section,
   margin-right: 0.3rem;
 }
 
+.blog-details .pulsating-play-btn {
+  position: absolute;
+  left: calc(50% - 47px);
+  top: calc(50% - 47px);
+}
+
 @media (max-width: 768px) {
   .blog-details .hero-img {
     height: 350px;

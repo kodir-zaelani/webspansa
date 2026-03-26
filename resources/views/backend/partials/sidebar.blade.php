@@ -27,6 +27,14 @@
                                 </li>
                             @endcan
                         @endif
+                        @can('editorials.index')
+                        <li class="{{ setActive('backend/editorials') }}">
+                            <a href="{{ route('backend.editorials.index') }}" title="Editorials">
+                                <i class="fa fa-file-text-o"><span class="path1"></span><span class="path2"></span></i>
+                                <span>Editorial</span>
+                            </a>
+                        </li>
+                        @endcan
                         <li class="header">{{ __('Pages') }}</li>
                         @if (auth()->user()->can('pages.index') ||
                         auth()->user()->can('pagecategories.index'))
@@ -149,6 +157,14 @@
                                 <a href="{{ route('backend.sliders.index') }}">
                                     <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
                                     Sliders
+                                </a>
+                            </li>
+                            @endcan
+                            @can('statistic.index')
+                            <li class="{{ setActive('backend/statistic') }}">
+                                <a href="{{ route('backend.statistic.index') }}">
+                                    <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
+                                    {{ __('Statistic')}}
                                 </a>
                             </li>
                             @endcan
