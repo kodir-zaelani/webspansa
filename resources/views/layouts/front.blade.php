@@ -49,7 +49,7 @@
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 
-    <div id="preloader"></div>
+    {{-- <div id="preloader"></div> --}}
 
 
     <script src="{{asset('')}}assets/vendor_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
