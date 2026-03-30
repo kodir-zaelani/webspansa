@@ -4,7 +4,7 @@
 
 +function ($) {
   'use strict'
-	
+
 // Dynamic active menu
     var path = window.location.pathname.split("/").pop();
     var target = $('.menu li a[href="'+path+'"]');
@@ -430,10 +430,10 @@
 
 
 $(function () {
-    "use strict";   
+    "use strict";
 
-		
-	
+
+
 	jQuery(window).scroll(startCounter);
 	function startCounter() {
 		var hT = jQuery('.countnm-bx').offset().top,
@@ -453,13 +453,13 @@ $(function () {
 			});
 		}
 	}
-	
-	
+
+
   }); // End of use strict
 
 
 $(function () {
-	"use strict"; 
+	"use strict";
 		var checkSelectorExistence = function(selectorName) {
 		  if(jQuery(selectorName).length > 0){return true;}else{return false;}
 		};
@@ -473,7 +473,7 @@ $(function () {
 		  var inputValue = $(this).val();
 		  if ( inputValue == "" ) {
 			$(this).removeClass('filled');
-			$(this).parents('.form-group').removeClass('focused');  
+			$(this).parents('.form-group').removeClass('focused');
 		  } else {
 			$(this).addClass('filled');
 		  }
@@ -493,7 +493,7 @@ $(function () {
               $autohgt = ($this.data('autoheight')) ? $this.data('autoheight') : false,
               $autowdt = ($this.data('autoWidth')) ? $this.data('autoWidth') : true,
               $space = ($this.attr('data-space')) ? $this.data('space') : 20;
-         
+
               $(this).owlCarousel({
                   loop: $loop,
                   items: $items,
@@ -513,11 +513,11 @@ $(function () {
                   autoplayHoverPause: true,
               });
 
-       }); 
+       });
  });
 
 $(function () {
-	
+
 	 AOS.init({
 		easing: 'ease-in-out-sine'
 	  });
@@ -556,4 +556,16 @@ $(document).ready(function() {
 	});
 });
 
+/**
+   * Auto generate the carousel indicators
+   */
+  document.querySelectorAll('.carousel-indicators').forEach((carouselIndicator) => {
+    carouselIndicator.closest('.carousel').querySelectorAll('.carousel-item').forEach((carouselItem, index) => {
+      if (index === 0) {
+        carouselIndicator.innerHTML += `<li data-bs-target="#${carouselIndicator.closest('.carousel').id}" data-bs-slide-to="${index}" class="active"></li>`;
+      } else {
+        carouselIndicator.innerHTML += `<li data-bs-target="#${carouselIndicator.closest('.carousel').id}" data-bs-slide-to="${index}"></li>`;
+      }
+    });
+  });
 

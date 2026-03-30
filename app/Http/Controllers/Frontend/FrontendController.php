@@ -16,6 +16,8 @@ class FrontendController extends Controller
 {
     public function index(){
         return view('themes.aksataedu.home.index',[
+            'sliders' => Slider::published()->latest()->take(8)->get(),
+            'statistics' => Statistic::with('author')->published()->take(6)->get(),
             'title' => 'Beranda'
         ]);
     }

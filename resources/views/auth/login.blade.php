@@ -6,8 +6,8 @@
             <div class="col-12">
                 <div class="row justify-content-center g-0">
                     <div class="col-lg-5 col-md-5 col-12">
-                        <div class="bg-white rounded10 shadow-lg">
-                            <div class="content-top-agile p-20 pb-0">
+                        <div class="bg-white shadow-lg rounded10">
+                            <div class="p-20 pb-0 content-top-agile">
                                 <h2 class="text-primary">Let's Get Started</h2>
                                 <p class="mb-0">Sign in to continue to WebkitX.</p>
                             </div>
@@ -16,8 +16,8 @@
                                 <form action="{{ route('login') }}" method="post">
                                     @csrf
                                     <div class="form-group">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text bg-transparent"><i class="ti-user"></i></span>
+                                        <div class="mb-3 input-group">
+                                            <span class="bg-transparent input-group-text"><i class="ti-user"></i></span>
                                             <input type="text" class="form-control ps-15 bg-transparent @error('login') is-invalid @enderror" placeholder="{{ __("Username/Email/No Celuller") }}" name="login" :value="old('login')"  autofocus>
                                             @error('login')
                                             <span class="invalid-feedback" role="alert">
@@ -27,8 +27,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text  bg-transparent"><i class="ti-lock"></i></span>
+                                        <div class="mb-3 input-group">
+                                            <span class="bg-transparent input-group-text"><i class="ti-lock"></i></span>
                                             <input type="password" class="form-control ps-15 bg-transparent @error('password') is-invalid @enderror" placeholder="{{ __("Password") }}" name="password" id="password" autocomplete="current-password">
                                             <span class="input-group-text" id="togglePassword">
                                                 <i class="bi bi-eye-slash" id="eyeIcon"></i>
@@ -56,15 +56,20 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-12 text-center">
-                                            <button type="submit" class="btn btn-danger mt-10">{{ __('Sign In') }}</button>
+                                        <div class="gap-0 d-grid column-gap-4" style="grid-template-columns: 1fr 1fr;">
+                                        <div class="p-2 text-start">
+                                            <button type="submit" class="mt-10 btn btn-danger ">{{ __('Sign In') }}</button>
                                         </div>
+                                        <div class="p-2 text-end">
+                                            <a href="{{route('root')}}"  class="mt-10 btn btn-info">{{ __('Beranda') }}</a>
+                                        </div>
+                                    </div>
 
                                     </div>
                                 </form>
                                 @if (Route::has('register'))
                                 <div class="text-center">
-                                    <p class="mt-15 mb-0">{{ __("Don't have an account?") }} <a href="{{ route('register') }}" class="text-warning ms-5">{{ __('Register') }}</a></p>
+                                    <p class="mb-0 mt-15">{{ __("Don't have an account?") }} <a href="{{ route('register') }}" class="text-warning ms-5">{{ __('Register') }}</a></p>
                                 </div>
                                 @endif
                             </div>

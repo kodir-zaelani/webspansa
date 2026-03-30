@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../images/favicon.ico">
 
-    <title>{{ $title ?? config('app.name', 'Teras Petani') }}</title>
+    <title>{{ __($title) ?? config('app.name', 'Teras Petani') }}</title>
 
     <link rel="stylesheet" href="{{ asset('') }}assets/backend/css/vendors_css.css">
 
