@@ -19,7 +19,7 @@ Route::get('berita/pencarian',  [App\Http\Controllers\Frontend\PostController::c
 
 Route::get('blog/detail/{slug}',  [App\Http\Controllers\Frontend\BlogController::class, 'detail'])->name('blog.detail');
 Route::get('blog',  [App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('blog.index');
-Route::get('blog/kategori/{slug}',  [App\Http\Controllers\Frontend\BlogController::class, 'category'])->name('blog.category');
+Route::get('blog/kategori/{slug}',  [App\Http\Controllers\Frontend\BlogController::class, 'blog_category'])->name('blog.category');
 
 Route::prefix('halaman')->group(function () {
     Route::get('/detail/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'pagedetail'])->name('page.detail');

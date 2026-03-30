@@ -27,13 +27,13 @@ class BlogController extends Controller
 
         $blog->increment('view_count');
 
-        return view('frontend.blog.detail', [
-            'blog' => Blog::with('blogcategory', 'tags', 'author')->where('slug', $slug)->first(),
+        return view('frontend.blog.blog-details', [
+            'item' => Blog::with('blogcategory', 'tags', 'author')->where('slug', $slug)->first(),
             'title' => 'Blog Detail'
         ]);
     }
 
-    public function category(Request $request) {
+    public function blog_category(Request $request) {
         $this->segment = $request->segment(3);
         $blogcategory = Postcategory::where('slug', $this->segment)->first();
         $blogs = $blogcategory->blogs()
@@ -42,7 +42,7 @@ class BlogController extends Controller
         ->paginate($this->limit);
 
 
-        return view('frontend.blog.category', [
+        return view('frontend.blog.blog-category', [
             'blogs' => $blogs,
             'blogcategory' => $blogcategory,
             'title' => 'Blog Category'

@@ -15,15 +15,21 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
     public function index(){
-        return view('frontend.home.index',[
-            'sliders' => Slider::published()->latest()->take(8)->get(),
-            'featured_news' => Post::with('author','postcategory')->where('headline', 1)->published()->latest()->take(6)->get(),
-            'latest_news' => Post::with('author','postcategory')->published()->latest()->take(6)->get(),
-            'statistics' => Statistic::with('author')->published()->take(6)->get(),
-            'latest_video' => Video::published()->latest()->take(6)->get(),
+        return view('themes.aksataedu.home.index',[
             'title' => 'Beranda'
         ]);
     }
+
+    // public function index(){
+    //     return view('frontend.home.index',[
+    //         'sliders' => Slider::published()->latest()->take(8)->get(),
+    //         'featured_news' => Post::with('author','postcategory')->where('headline', 1)->published()->latest()->take(6)->get(),
+    //         'latest_news' => Post::with('author','postcategory')->published()->latest()->take(6)->get(),
+    //         'statistics' => Statistic::with('author')->published()->take(6)->get(),
+    //         'latest_video' => Video::published()->latest()->take(6)->get(),
+    //         'title' => 'Beranda'
+    //     ]);
+    // }
     public function contact(){
         return view('frontend.home.contact',[
             'title' => 'Kontak'

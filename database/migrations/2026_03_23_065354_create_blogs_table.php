@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('author_id');
+            $table->uuid('author_id')->constrained('users')->onDelete('restrict');
             $table->string('title');
             $table->string('slug')->unique();
             $table->boolean('headline');
             $table->boolean('selection');
-            $table->uuid('postcategory_id');
+            $table->uuid('blogcategory_id')->constrained('blogcategories')->onDelete('restrict');
             $table->text('content');
             $table->string('image')->nullable();
             $table->string('image_watermark')->nullable();
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->text('video')->nullable();
             $table->text('caption_video')->nullable();
             $table->boolean('status');
-            $table->boolean('comment_status');
+            $table->boolean('comment_status')->default(false);
             $table->boolean('statuspost')->nullable();
             $table->integer('view_count')->default(0);
             $table->date('published_at')->nullable();
@@ -35,8 +35,8 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('author_id')->references('id')->on('users')->onDelete('restrict');
-            $table->foreign('postcategory_id')->references('id')->on('postcategories')->onDelete('restrict');
+            // $table->foreign('author_id')->references('id')->on('users')->onDelete('restrict');
+            // $table->foreign('postcategory_id')->references('id')->on('postcategories')->onDelete('restrict');
 
             //create post_tag table
             Schema::create('blog_tag', function (Blueprint $table) {

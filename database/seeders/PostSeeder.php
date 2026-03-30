@@ -13,7 +13,7 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        $json = File::get('database/data_json/posts.json');
+        $json = File::get('database/data_json/posts_2.json');
         $data = json_decode($json);
 
         foreach($data as $obj){
@@ -36,7 +36,7 @@ class PostSeeder extends Seeder
                 'view_count'      => $obj->view_count ?? 0,
                 'statuspost'      => $obj->statuspost ?? 0,
                 'published_at'    => $obj->published_at ?? null,
-                'updated_by'      => $obj->updated_by ?? null,
+                'updated_by'      => $obj->author_id ?? null,
                 'deleted_by'      => $obj->deleted_by ?? null,
                 'deleted_at'      => $obj->deleted_at ?? null,
                 'created_at'      => $obj->created_at,

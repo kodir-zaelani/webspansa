@@ -41,6 +41,7 @@
 
     <main class="main">
         @yield('content')
+        {{ isset($slot) ? $slot : null }}
     </main>
 
     @include('frontend.partials.footer')

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('performances', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('author_id');
+            $table->uuid('author_id')->constrained('users')->onDelete('restrict');
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('content');
@@ -32,7 +32,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('author_id')->references('id')->on('users')->onDelete('restrict');
+            // $table->foreign('author_id')->references('id')->on('users')->onDelete('restrict');
         });
     }
 

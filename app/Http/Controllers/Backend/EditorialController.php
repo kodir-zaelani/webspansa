@@ -77,7 +77,7 @@ class EditorialController extends Controller
 
                 //KEMUDIAN KITA SISIPKAN WATERMARK DENGAN TEXT LAMAN KREASI
                 //X = 200, Y = 150. SILAHKAN DISESUAIKAN UNTUK POSISINYA
-                $imageUploaded->text('TK Tunas Beriman', 300, 150, function ($font) {
+                $imageUploaded-> text( 'Spansa', 300, 150, function ($font) {
                     // $font->file(public_path('fonts/milkyroad.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->file(public_path('uploads/fonts/amandasignature.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(30);
@@ -179,7 +179,7 @@ class EditorialController extends Controller
 
                 //KEMUDIAN KITA SISIPKAN WATERMARK DENGAN TEXT LAMAN KREASI
                 //X = 200, Y = 150. SILAHKAN DISESUAIKAN UNTUK POSISINYA
-                $imageUploaded->text('TK Tunas Beriman', 300, 150, function ($font) {
+                $imageUploaded-> text( 'Spansa', 300, 150, function ($font) {
                     // $font->file(public_path('fonts/milkyroad.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->file(public_path('uploads/fonts/amandasignature.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(30);

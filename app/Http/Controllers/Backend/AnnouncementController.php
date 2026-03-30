@@ -71,7 +71,7 @@ class AnnouncementController extends Controller
             $imageUploaded->save($destination . $fileName, 80);
 
             if ($imageUploaded) {
-                  $imageUploaded->text('TK Tunas Beriman', 300, 150, function ($font) {
+                  $imageUploaded-> text( 'Spansa', 300, 150, function ($font) {
                     // $font->file(public_path('fonts/milkyroad.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->file(public_path('uploads/fonts/amandasignature.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(30);
@@ -164,7 +164,7 @@ class AnnouncementController extends Controller
 
             if ($imageUploaded) {
 
-                $imageUploaded->text('TK Tunas Beriman', 300, 150, function ($font) {
+                $imageUploaded-> text( 'Spansa', 300, 150, function ($font) {
                     // $font->file(public_path('fonts/milkyroad.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->file(public_path('uploads/fonts/amandasignature.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(30);

@@ -62,6 +62,11 @@ return [
             'width' => 300,
             'height' => 200
         ],
+        'directoryPerformance' => 'uploads/images/performances/',
+        'thumbnailperformance' => [
+            'width' => 250,
+            'height' => 200
+        ],
         'directoryPages' => 'uploads/images/pages/',
         'thumbnailpage' => [
             'width' => 300,
