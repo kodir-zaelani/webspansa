@@ -7,9 +7,9 @@
 
 </head>
 
-<body class="theme-primary">
+<body class="theme-info">
 
-    @include('themes.aksataedu.partials.iconbar-sticky')
+    {{-- @include('themes.aksataedu.partials.iconbar-sticky') --}}
     @include('themes.aksataedu.partials.header')
 
     @yield('content')

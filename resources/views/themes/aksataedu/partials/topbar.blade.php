@@ -1,4 +1,4 @@
-<div class="topbar">
+<div class=" topbar">
 
     <div class="container">
         <div class="row justify-content-end">
@@ -7,7 +7,6 @@
                     <ul class="list-inline d-md-flex d-inline-block">
                         <li class="ms-10 pe-10"><i class="text-dark fa fa-calendar"></i> <span id="dateview"></span></li>
                         <li class="ms-10 pe-10"><i class="text-dark fa fa-clock"></i> <span id="clock"></span></li>
-                        {{-- <li class="ms-10 pe-10"><a href="#"><i class="text-dark fa fa-phone"></i> +(1) 123-878-1649</a></li> --}}
                     </ul>
                 </div>
             </div>
@@ -49,7 +48,7 @@
                             @endguest
                             @if ($social_media)
                             @foreach ($social_media as $socialmedia)
-                            <li class="me-10 ps-10"><a href="{{ $socialmedia->url }}" target="_blank" >{!! $socialmedia->icon !!}</a></li>
+                            <li class="me-10 ps-10 d-md-inline-block d-none"><a href="{{ $socialmedia->url }}" target="_blank" >{!! $socialmedia->icon !!}</a></li>
                             @endforeach
                             @endif
                             {{-- // <li class="me-10 ps-10"><a href="#"><i class="text-dark fa fa-user d-md-inline-block d-none"></i> Register</a></li>
