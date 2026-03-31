@@ -1,4 +1,4 @@
-<div class=" topbar">
+<div class="topbar">
 
     <div class="container">
         <div class="row justify-content-end">

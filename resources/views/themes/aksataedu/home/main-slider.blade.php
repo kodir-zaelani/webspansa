@@ -1,4 +1,4 @@
- <section id="hero" class="hero section dark-background">
+ <section id="hero" class="pt-110 hero section dark-background">
     <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
         @foreach ($sliders as $key => $item)
         <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">

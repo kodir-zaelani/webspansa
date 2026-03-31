@@ -3,7 +3,7 @@
 
     <nav hidden class="nav-dark">
         <div class="nav-header">
-            <a href="index.html" class="brand">
+            <a href="{{route('root')}}" class="brand">
                 <img src="{{ asset('') }}uploads/images/logo/{{ $global_option->logo_menu }}" alt="" style="max-width: 50%"/>
             </a>
             <button class="toggle-bar">
