@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="post-content">
                                     <div class="category-meta">
-                                        <a href="{{ route('post.category', $item->postcategory->slug) }}" class="post-category">{{$item->postcategory->title}}</a>
+                                        <a href="{{ route('news.category', $item->postcategory->slug) }}" class="post-category">{{$item->postcategory->title}}</a>
                                     </div>
                                     <h3 class="title">
                                         <a href="{{ route('news.detail', $item->slug) }}" title="{{$item->title}}">{{Str::limit($item->title, 40)}}</a>

@@ -2,7 +2,7 @@
     <h3 class="widget-title">Tags</h3>
     <ul>
         @foreach ($tags as $item)
-        <li><a href="{{ route('post.tag', $item->slug) }}">{{ $item->title }}</a></li>
+        <li><a href="{{ route('news.tag', $item->slug) }}">{{ $item->title }}</a></li>
         @endforeach
     </ul>
 </div>

@@ -20,7 +20,7 @@
                                         @endif
                                         <div class="info">
                                             <h4>
-                                                <a href="{{ route('post.author', $item->author->id) }}">
+                                                <a href="{{ route('news.author', $item->author->id) }}">
                                                     @if ($item->author->displayname)
                                                     {{ $item->author->displayname }}
                                                     @else
@@ -43,7 +43,7 @@
                                 <img src="{{$item->imageUrl}}" alt="Featured blog image" class="img-fluid" loading="lazy">
                                 <div class="meta-overlay">
                                     <div class="meta-categories">
-                                        <a href="{{ route('post.category', $item->postcategory->slug) }}" class="category">{{ $item->postcategory->title }}</a>
+                                        <a href="{{ route('news.category', $item->postcategory->slug) }}" class="category">{{ $item->postcategory->title }}</a>
                                         <span class="divider">•</span>
                                         <span class="reading-time"><i class="bi bi-clock"></i> <em>Estimasi: {{ $item->reading_time }}</em></span>
                                     </div>

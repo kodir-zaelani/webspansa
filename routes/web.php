@@ -10,12 +10,12 @@ Route::get('/video/details/{slug}', [App\Http\Controllers\Frontend\FrontendContr
 
 Route::post('gallery/upload', [App\Http\Controllers\Backend\GalleryController::class, 'upload']);
 
-Route::get('berita/semua-berita', [App\Http\Controllers\Frontend\PostController::class, 'all_news'])->name('all.news');
+Route::get('berita/semua-berita', [App\Http\Controllers\Frontend\PostController::class, 'all_news'])->name('news.all');
 Route::get('berita/details/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'news_detail'])->name('news.detail');
-Route::get('berita/kategori/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'news_category'])->name('post.category');
-Route::get('berita/tag/{slug}',  [App\Http\Controllers\Frontend\PostController::class, 'news_tag'])->name('post.tag');
-Route::get('berita/penulis/{id}',  [App\Http\Controllers\Frontend\PostController::class, 'news_author'])->name('post.author');
-Route::get('berita/pencarian',  [App\Http\Controllers\Frontend\PostController::class, 'news_search'])->name('post.search');
+Route::get('berita/kategori/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'news_category'])->name('news.category');
+Route::get('berita/tag/{slug}',  [App\Http\Controllers\Frontend\PostController::class, 'news_tag'])->name('news.tag');
+Route::get('berita/penulis/{id}',  [App\Http\Controllers\Frontend\PostController::class, 'news_author'])->name('news.author');
+Route::get('berita/pencarian',  [App\Http\Controllers\Frontend\PostController::class, 'news_search'])->name('news.search');
 
 Route::get('blog/detail/{slug}',  [App\Http\Controllers\Frontend\BlogController::class, 'detail'])->name('blog.detail');
 Route::get('blog',  [App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('blog.index');

@@ -59,7 +59,7 @@
                             Blog |
                             @endif
                             <i class="fa fa-folder-open me-2 ms-2" aria-hidden="true"></i>
-                            <a title="Category" href="{{route('post.category', $item->postcategory->slug)}}" target="_blank" style="text-decoration: none; ">
+                            <a title="Category" href="{{route('news.category', $item->postcategory->slug)}}" target="_blank" style="text-decoration: none; ">
                                 {{ !empty($item->postcategory_id) ? $item->postcategory->title : '' }}
                             </a>
                             <i class="fa fa-tags ms-2 me-2" aria-hidden="true" title="Tags">

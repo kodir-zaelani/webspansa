@@ -110,35 +110,34 @@
                                                                                 @enderror
                                                                             </div>
                                                                             <div class="form-group">
-                                                                                <label class="form-label">Status Hero
-                                                                                    :</label>
-                                                                                    <div class="demo-radio-button">
-                                                                                        <input value="0" name="statushero"
-                                                                                        type="radio" id="radio_slider"
-                                                                                        class="with-gap radio-col-success" />
-                                                                                        <label for="radio_slider">Hero Slider</label>
-                                                                                        <input value="1" name="statushero"
-                                                                                        type="radio" id="radio_static"
-                                                                                        class="with-gap radio-col-success" />
-                                                                                        <label for="radio_static">Hero Static</label>
-                                                                                    </div>
+                                                                                <h5>Video Profil <span class="text-danger">*</span></h5>
+                                                                                <div class="controls">
+                                                                                    <input type="url" name="video"
+                                                                                    class="form-control @error('video') is-invalid @enderror"
+                                                                                    value="{{ old('video') ?? $setting->video }}"
+                                                                                    placeholder="Alamat video profil" required>
+                                                                                </div>
+                                                                                <span class="font-italic"> Example: https://www.youtube.com/watch?v=LJ_YrtyEnck</span>
+                                                                                @error('video')
+                                                                                <div class="form-control-feedback"><small>
+                                                                                    <code>{{ $message }}</code> </small></div>
+                                                                                    @enderror
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <h5>Home Site URL <span class="text-danger">*</span></h5>
-                                                                                    <div class="controls">
-                                                                                        <input type="url" name="homeurl"
-                                                                                        class="form-control @error('homeurl') is-invalid @enderror"
-                                                                                        value="{{ old('homeurl') }}"
-                                                                                        placeholder="Alamat Beranda website" required>
+                                                                                    <label class="form-label">Status Hero
+                                                                                        :</label>
+                                                                                        <div class="demo-radio-button">
+                                                                                            <input value="0" name="statushero"
+                                                                                            type="radio" id="radio_slider"
+                                                                                            class="with-gap radio-col-success" />
+                                                                                            <label for="radio_slider">Hero Slider</label>
+                                                                                            <input value="1" name="statushero"
+                                                                                            type="radio" id="radio_static"
+                                                                                            class="with-gap radio-col-success" />
+                                                                                            <label for="radio_static">Hero Static</label>
+                                                                                        </div>
                                                                                     </div>
-                                                                                    <div class="form-control-feedback"><small><code>Alamat Beranda
-                                                                                        website, atau dapat diisi sesuai Site URL</code></small>
-                                                                                    </div>
-                                                                                    @error('homeurl')
-                                                                                    <div class="form-control-feedback"><small>
-                                                                                        <code>{{ $message }}</code> </small></div>
-                                                                                        @enderror
-                                                                                    </div>
+
                                                                                     <div class="form-group">
                                                                                         <label class="form-label">Description <span
                                                                                             class="text-danger">*</span></label>

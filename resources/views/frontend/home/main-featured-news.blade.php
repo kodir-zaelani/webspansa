@@ -43,7 +43,7 @@
                             </div>
 
                             <p class="post-category">
-                                <a href="{{ route('post.category', $item->postcategory->slug) }}" >{{$item->postcategory->title}}</a>
+                                <a href="{{ route('news.category', $item->postcategory->slug) }}" >{{$item->postcategory->title}}</a>
                             </p>
 
                             <h2 class="title">
@@ -58,7 +58,7 @@
                                 @endif
                                 <div class="post-meta">
                                     <p class="post-author">
-                                        <a href="{{ route('post.author', $item->author->id) }}" title="Tulisan dari">
+                                        <a href="{{ route('news.author', $item->author->id) }}" title="Tulisan dari">
                                             @if ($item->author->displayname)
                                             {{ $item->author->displayname }}
                                             @else

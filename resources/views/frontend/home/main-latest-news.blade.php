@@ -15,7 +15,7 @@
                         <img src="{{$item->imageUrl}}" alt="" class="img-fluid">
                     </div>
                     <p class="post-category">
-                        <a href="{{ route('post.category', $item->postcategory->slug) }}">
+                        <a href="{{ route('news.category', $item->postcategory->slug) }}">
                             {{$item->postcategory->title}}
                         </a>
                     </p>
@@ -32,7 +32,7 @@
                         @endif
                         <div class="post-meta">
                             <p class="post-author">
-                                <a href="{{ route('post.author', $item->author->id) }}" title="Tulisan dari">
+                                <a href="{{ route('news.author', $item->author->id) }}" title="Tulisan dari">
                                     @if ($item->author->displayname)
                                     {{ $item->author->displayname }}
                                     @else

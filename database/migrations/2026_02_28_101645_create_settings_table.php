@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('webname')->nullable();
             $table->string('tagline')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('siteurl')->nullable();
             $table->string('homeurl')->nullable();
             $table->boolean('statushero')->default(true);

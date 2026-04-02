@@ -117,269 +117,350 @@
                                                                                         @enderror
                                                                                     </div>
                                                                                     <div class="form-group">
-                                                                                        <h5>Home Site URL <span class="text-danger">*</span></h5>
-                                                                                        <div class="controls">
-                                                                                            <input type="url" name="homeurl"
-                                                                                            class="form-control @error('homeurl') is-invalid @enderror"
-                                                                                            value="{{ old('homeurl') ?? $setting->homeurl }}"
-                                                                                            placeholder="Alamat Beranda website" required>
+                                                                                        <label for="video">Video Profil</label>
+                                                                                        <div class="mt-2 input-group">
+                                                                                            <input id="video" name="video" type="text"
+                                                                                            class="form-control @error('video') is-invalid @enderror" placeholder="Content Video"
+                                                                                            value="{{ old('video') ?? $setting->video }}">
+                                                                                            <a class="btn btn-sm btn-primary input-group-text popup-youtube" href="{{$setting->video}}">{{ __('View')}}</a>
                                                                                         </div>
-                                                                                        <div class="form-control-feedback"><small><code>Alamat Beranda website,
-                                                                                            atau dapat diisi sesuai Site URL</code></small></div>
-                                                                                            @error('homeurl')
+                                                                                        <span class="font-italic"> Example: https://www.youtube.com/watch?v=LJ_YrtyEnck</span>
+                                                                                        @error('video')
+                                                                                        <div class="form-control-feedback"><small> <code>{{ $message }}</code> </small></div>
+                                                                                        @enderror
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label class="form-label">Hero Slider / Hero Static :</label>
+                                                                                        <div class="demo-radio-button">
+                                                                                            <input {{ $setting->statushero == 0 ? 'checked' : '' }}
+                                                                                            value="0" name="statushero" type="radio"
+                                                                                            id="radio_slider"
+                                                                                            class="with-gap radio-col-success" />
+                                                                                            <label for="radio_slider">Hero Slider</label>
+                                                                                            <input {{ $setting->statushero == 1 ? 'checked' : '' }}
+                                                                                            value="1" name="statushero" type="radio"
+                                                                                            id="radio_static"
+                                                                                            class="with-gap radio-col-success" />
+                                                                                            <label for="radio_static">Hero Static</label>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="form-group">
+                                                                                        <label class="form-label">Description <span
+                                                                                            class="text-danger">*</span></label>
+                                                                                            <textarea id="editor1" rows="10" cols="80"
+                                                                                            class="form-control @error('description') is-invalid @enderror" name="description">{{ old('description') ?? $setting->description }}</textarea>
+                                                                                            <div class="form-control-feedback"><small><code>Deskripsi Singkat
+                                                                                            </code></small></div>
+                                                                                            @error('description')
                                                                                             <div class="form-control-feedback"><small>
                                                                                                 <code>{{ $message }}</code> </small></div>
                                                                                                 @enderror
                                                                                             </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="tab-pane" id="messages7" role="tabpanel">
+                                                                                <div class="p-15">
+                                                                                    <div class="box">
+                                                                                        <div class="box-header">
+                                                                                            <h4 class="box-title">Contact Info
+                                                                                            </h4>
+                                                                                        </div>
+                                                                                        <div class="box-body">
                                                                                             <div class="form-group">
-                                                                                                <label class="form-label">Hero Slider / Hero Static :</label>
-                                                                                                <div class="demo-radio-button">
-                                                                                                    <input {{ $setting->statushero == 0 ? 'checked' : '' }}
-                                                                                                    value="0" name="statushero" type="radio"
-                                                                                                    id="radio_slider"
-                                                                                                    class="with-gap radio-col-success" />
-                                                                                                    <label for="radio_slider">Hero Slider</label>
-                                                                                                    <input {{ $setting->statushero == 1 ? 'checked' : '' }}
-                                                                                                    value="1" name="statushero" type="radio"
-                                                                                                    id="radio_static"
-                                                                                                    class="with-gap radio-col-success" />
-                                                                                                    <label for="radio_static">Hero Static</label>
+                                                                                                <h5>Phone </h5>
+                                                                                                <div class="controls">
+                                                                                                    <input type="text" name="phone"
+                                                                                                    class="form-control @error('phone') is-invalid @enderror"
+                                                                                                    value="{{ old('phone') ?? $setting->phone }}"
+                                                                                                    placeholder=" phone">
                                                                                                 </div>
-                                                                                            </div>
-
-                                                                                            <div class="form-group">
-                                                                                                <label class="form-label">Description <span
-                                                                                                    class="text-danger">*</span></label>
-                                                                                                    <textarea id="editor1" rows="10" cols="80"
-                                                                                                    class="form-control @error('description') is-invalid @enderror" name="description">{{ old('description') ?? $setting->description }}</textarea>
-                                                                                                    <div class="form-control-feedback"><small><code>Deskripsi Singkat
-                                                                                                    </code></small></div>
-                                                                                                    @error('description')
+                                                                                                @error('phone')
+                                                                                                <div class="form-control-feedback"><small>
+                                                                                                    <code>{{ $message }}</code> </small></div>
+                                                                                                    @enderror
+                                                                                                </div>
+                                                                                                <div class="form-group">
+                                                                                                    <h5>Email </h5>
+                                                                                                    <div class="controls">
+                                                                                                        <input type="email" name="email"
+                                                                                                        class="form-control @error('email') is-invalid @enderror"
+                                                                                                        value="{{ old('email') ?? $setting->email }}"
+                                                                                                        placeholder=" email">
+                                                                                                    </div>
+                                                                                                    <div class="form-control-feedback"><small><code> Email </code></small>
+                                                                                                    </div>
+                                                                                                    @error('email')
                                                                                                     <div class="form-control-feedback"><small>
                                                                                                         <code>{{ $message }}</code> </small></div>
                                                                                                         @enderror
                                                                                                     </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="tab-pane" id="messages7" role="tabpanel">
-                                                                                        <div class="p-15">
-                                                                                            <div class="box">
-                                                                                                <div class="box-header">
-                                                                                                    <h4 class="box-title">Contact Info
-                                                                                                    </h4>
-                                                                                                </div>
-                                                                                                <div class="box-body">
                                                                                                     <div class="form-group">
-                                                                                                        <h5>Phone </h5>
+                                                                                                        <h5>Address </h5>
                                                                                                         <div class="controls">
-                                                                                                            <input type="text" name="phone"
-                                                                                                            class="form-control @error('phone') is-invalid @enderror"
-                                                                                                            value="{{ old('phone') ?? $setting->phone }}"
-                                                                                                            placeholder=" phone">
+                                                                                                            <textarea rows="5" name="address" class="form-control @error('address') is-invalid @enderror"
+                                                                                                            placeholder="address">{{ old('address') ?? $setting->address }} </textarea>
                                                                                                         </div>
-                                                                                                        @error('phone')
+                                                                                                        <div class="form-control-feedback"><small><code> Alamat jalan
+                                                                                                        </code></small></div>
+                                                                                                        @error('address')
                                                                                                         <div class="form-control-feedback"><small>
                                                                                                             <code>{{ $message }}</code> </small></div>
                                                                                                             @enderror
                                                                                                         </div>
+                                                                                                        <div class="mb-3 form-group @error('province_code') has-error @enderror">
+                                                                                                            <label class="form-label">Province </label>
+                                                                                                            <select class="form-control select2" style="width: 100%;" name="province_code" id="province_code">
+                                                                                                                <option value="" holder>Select Province</option>
+                                                                                                                @foreach ($province as $item)
+                                                                                                                <option value="{{ $item->code }}"
+                                                                                                                    {{ old('province_code') == $item->code ? 'selected' : '' }}
+                                                                                                                    @if ($setting->province_code == $item->code)
+                                                                                                                    selected
+                                                                                                                    @endif>{{ $item->name }}
+                                                                                                                </option>
+                                                                                                                @endforeach
+                                                                                                            </select>
+                                                                                                            @error('province_code')
+                                                                                                            <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
+                                                                                                            @enderror
+                                                                                                        </div>
+                                                                                                        <div class="mb-3 form-group @error('city_code') has-error @enderror">
+                                                                                                            <label class="form-label">City </label>
+                                                                                                            <select class="form-control select2" style="width: 100%;" name="city_code" id="city_code">
+                                                                                                                <option value="" holder>Select City</option>
+                                                                                                                @foreach ($province as $item)
+                                                                                                                <option value="{{ $item->code }}"
+                                                                                                                    {{ old('city_code') == $item->code ? 'selected' : '' }}
+                                                                                                                    @if ($setting->city_code == $item->code)
+                                                                                                                    selected
+                                                                                                                    @endif>{{ $item->name }}
+                                                                                                                </option>
+                                                                                                                @endforeach
+                                                                                                            </select>
+                                                                                                            @error('city_code')
+                                                                                                            <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
+                                                                                                            @enderror
+                                                                                                        </div>
+
                                                                                                         <div class="form-group">
-                                                                                                            <h5>Email </h5>
+                                                                                                            <h5>Country </h5>
                                                                                                             <div class="controls">
-                                                                                                                <input type="email" name="email"
-                                                                                                                class="form-control @error('email') is-invalid @enderror"
-                                                                                                                value="{{ old('email') ?? $setting->email }}"
-                                                                                                                placeholder=" email">
+                                                                                                                <input type="country" name="country"
+                                                                                                                class="form-control @error('country') is-invalid @enderror"
+                                                                                                                value="{{ old('country') ?? $setting->country }}"
+                                                                                                                placeholder=" country">
                                                                                                             </div>
-                                                                                                            <div class="form-control-feedback"><small><code> Email </code></small>
+                                                                                                            <div class="form-control-feedback"><small><code> Negara </code></small>
                                                                                                             </div>
-                                                                                                            @error('email')
+                                                                                                            @error('country')
                                                                                                             <div class="form-control-feedback"><small>
                                                                                                                 <code>{{ $message }}</code> </small></div>
                                                                                                                 @enderror
                                                                                                             </div>
                                                                                                             <div class="form-group">
-                                                                                                                <h5>Address </h5>
+                                                                                                                <h5>Postal Code </h5>
                                                                                                                 <div class="controls">
-                                                                                                                    <textarea rows="5" name="address" class="form-control @error('address') is-invalid @enderror"
-                                                                                                                    placeholder="address">{{ old('address') ?? $setting->address }} </textarea>
+                                                                                                                    <input type="postalcode" name="postalcode"
+                                                                                                                    class="form-control @error('postalcode') is-invalid @enderror"
+                                                                                                                    value="{{ old('postalcode') ?? $setting->postalcode }}"
+                                                                                                                    placeholder=" postalcode">
                                                                                                                 </div>
-                                                                                                                <div class="form-control-feedback"><small><code> Alamat jalan
+                                                                                                                <div class="form-control-feedback"><small><code> Kode Pos
                                                                                                                 </code></small></div>
-                                                                                                                @error('address')
+                                                                                                                @error('postalcode')
                                                                                                                 <div class="form-control-feedback"><small>
                                                                                                                     <code>{{ $message }}</code> </small></div>
                                                                                                                     @enderror
                                                                                                                 </div>
-                                                                                                                <div class="mb-3 form-group @error('province_code') has-error @enderror">
-                                                                                                                    <label class="form-label">Province </label>
-                                                                                                                    <select class="form-control select2" style="width: 100%;" name="province_code" id="province_code">
-                                                                                                                        <option value="" holder>Select Province</option>
-                                                                                                                        @foreach ($province as $item)
-                                                                                                                        <option value="{{ $item->code }}"
-                                                                                                                            {{ old('province_code') == $item->code ? 'selected' : '' }}
-                                                                                                                            @if ($setting->province_code == $item->code)
-                                                                                                                            selected
-                                                                                                                            @endif>{{ $item->name }}
-                                                                                                                        </option>
-                                                                                                                        @endforeach
-                                                                                                                    </select>
-                                                                                                                    @error('province_code')
-                                                                                                                    <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
-                                                                                                                    @enderror
-                                                                                                                </div>
-                                                                                                                <div class="mb-3 form-group @error('city_code') has-error @enderror">
-                                                                                                                    <label class="form-label">City </label>
-                                                                                                                    <select class="form-control select2" style="width: 100%;" name="city_code" id="city_code">
-                                                                                                                        <option value="" holder>Select City</option>
-                                                                                                                        @foreach ($province as $item)
-                                                                                                                        <option value="{{ $item->code }}"
-                                                                                                                            {{ old('city_code') == $item->code ? 'selected' : '' }}
-                                                                                                                            @if ($setting->city_code == $item->code)
-                                                                                                                            selected
-                                                                                                                            @endif>{{ $item->name }}
-                                                                                                                        </option>
-                                                                                                                        @endforeach
-                                                                                                                    </select>
-                                                                                                                    @error('city_code')
-                                                                                                                    <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
-                                                                                                                    @enderror
-                                                                                                                </div>
+                                                                                                            </div>
 
-                                                                                                                <div class="form-group">
-                                                                                                                    <h5>Country </h5>
-                                                                                                                    <div class="controls">
-                                                                                                                        <input type="country" name="country"
-                                                                                                                        class="form-control @error('country') is-invalid @enderror"
-                                                                                                                        value="{{ old('country') ?? $setting->country }}"
-                                                                                                                        placeholder=" country">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="tab-pane" id="logo7" role="tabpanel">
+                                                                                                    <div class="p-15">
+                                                                                                        <div class="mb-20 row">
+                                                                                                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                                                                                                <div class="box h-400">
+                                                                                                                    <div class="box-header">
+                                                                                                                        <h4 class="box-title">
+                                                                                                                            Logo
+                                                                                                                        </h4>
                                                                                                                     </div>
-                                                                                                                    <div class="form-control-feedback"><small><code> Negara </code></small>
-                                                                                                                    </div>
-                                                                                                                    @error('country')
-                                                                                                                    <div class="form-control-feedback"><small>
-                                                                                                                        <code>{{ $message }}</code> </small></div>
-                                                                                                                        @enderror
-                                                                                                                    </div>
-                                                                                                                    <div class="form-group">
-                                                                                                                        <h5>Postal Code </h5>
-                                                                                                                        <div class="controls">
-                                                                                                                            <input type="postalcode" name="postalcode"
-                                                                                                                            class="form-control @error('postalcode') is-invalid @enderror"
-                                                                                                                            value="{{ old('postalcode') ?? $setting->postalcode }}"
-                                                                                                                            placeholder=" postalcode">
+                                                                                                                    <div class="text-center box-body ">
+                                                                                                                        <label class="form-label">Size : 600 pixel x 400 pixel</label>
+                                                                                                                        <div class="form-group">
+                                                                                                                            <div class=" fileinput fileinput-new"
+                                                                                                                            data-provides="fileinput">
+                                                                                                                            <div class="fileinput-new img-thumbnail"
+                                                                                                                            style="width: 200px;">
+                                                                                                                            <img src="{{ $setting->imageThumbUrl ? $setting->imageThumbUrl : '/assets/images/no_image.png' }}"
+                                                                                                                            alt="...">
                                                                                                                         </div>
-                                                                                                                        <div class="form-control-feedback"><small><code> Kode Pos
-                                                                                                                        </code></small></div>
-                                                                                                                        @error('postalcode')
+                                                                                                                        <div class="fileinput-preview fileinput-exists img-thumbnail"
+                                                                                                                        style="max-width: 200px;"></div>
+                                                                                                                        <div>
+                                                                                                                            <span class="btn btn-outline-secondary btn-file"><span
+                                                                                                                                class="fileinput-new">Select image</span><span
+                                                                                                                                class="fileinput-exists">Change</span>
+                                                                                                                                <input type="file"
+                                                                                                                                class="@error('logo') is-invalid @enderror"
+                                                                                                                                name="logo"
+                                                                                                                                value="{{ old('logo') }}"></span>
+                                                                                                                                <a href="#"
+                                                                                                                                class="btn btn-outline-secondary fileinput-exists"
+                                                                                                                                data-dismiss="fileinput">Remove</a>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                        @error('logo')
                                                                                                                         <div class="form-control-feedback"><small>
                                                                                                                             <code>{{ $message }}</code> </small></div>
                                                                                                                             @enderror
                                                                                                                         </div>
                                                                                                                     </div>
-
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                                                                                                <div class="box ">
+                                                                                                                    <div class="box-header">
+                                                                                                                        <h4 class="box-title">
+                                                                                                                            Favicon
+                                                                                                                        </h4>
+                                                                                                                    </div>
+                                                                                                                    <div class="text-center box-body ">
+                                                                                                                        <label class="form-label">Size : 500kb</label>
+                                                                                                                        <div class="form-group">
+                                                                                                                            <div class=" fileinput fileinput-new"
+                                                                                                                            data-provides="fileinput">
+                                                                                                                            <div class="fileinput-new img-thumbnail"
+                                                                                                                            style="width: 200px;">
+                                                                                                                            <img src="{{ $setting->faviconUrl ? $setting->faviconUrl : '/assets/images/no_image.png' }}"
+                                                                                                                            alt="...">
+                                                                                                                        </div>
+                                                                                                                        <div class="fileinput-preview fileinput-exists img-thumbnail"
+                                                                                                                        style="max-width: 200px;"></div>
+                                                                                                                        <div>
+                                                                                                                            <span class="btn btn-outline-secondary btn-file"><span
+                                                                                                                                class="fileinput-new">Select image</span><span
+                                                                                                                                class="fileinput-exists">Change</span>
+                                                                                                                                <input type="file"
+                                                                                                                                class="@error('favicon') is-invalid @enderror"
+                                                                                                                                name="favicon"
+                                                                                                                                value="{{ old('favicon') }}"></span>
+                                                                                                                                <a href="#"
+                                                                                                                                class="btn btn-outline-secondary fileinput-exists"
+                                                                                                                                data-dismiss="fileinput">Remove</a>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                        @error('favicon')
+                                                                                                                        <div class="form-control-feedback"><small>
+                                                                                                                            <code>{{ $message }}</code> </small></div>
+                                                                                                                            @enderror
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                                                                                                <div class="box">
+                                                                                                                    <div class="box-header">
+                                                                                                                        <h4 class="box-title">
+                                                                                                                            Logo Menu
+                                                                                                                        </h4>
+                                                                                                                    </div>
+                                                                                                                    <div class="text-center box-body ">
+                                                                                                                        <label class="form-label">Size : 140 x 21 pixel | 500kb</label>
+                                                                                                                        <div class="form-group">
+                                                                                                                            <div class=" fileinput fileinput-new"
+                                                                                                                            data-provides="fileinput">
+                                                                                                                            <div class="fileinput-new img-thumbnail"
+                                                                                                                            style="width: 200px;">
+                                                                                                                            <img src="{{ $setting->LogomenuUrl ? $setting->LogomenuUrl : '/assets/images/no_image.png' }}"
+                                                                                                                            alt="...">
+                                                                                                                        </div>
+                                                                                                                        <div class="fileinput-preview fileinput-exists img-thumbnail"
+                                                                                                                        style="max-width: 200px;"></div>
+                                                                                                                        <div>
+                                                                                                                            <span class="btn btn-outline-secondary btn-file"><span
+                                                                                                                                class="fileinput-new">Select image</span><span
+                                                                                                                                class="fileinput-exists">Change</span>
+                                                                                                                                <input type="file"
+                                                                                                                                class="@error('logo_menu') is-invalid @enderror"
+                                                                                                                                name="logo_menu"
+                                                                                                                                value="{{ old('logo_menu') }}"></span>
+                                                                                                                                <a href="#"
+                                                                                                                                class="btn btn-outline-secondary fileinput-exists"
+                                                                                                                                data-dismiss="fileinput">Remove</a>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                        @error('logo_menu')
+                                                                                                                        <div class="form-control-feedback"><small>
+                                                                                                                            <code>{{ $message }}</code> </small></div>
+                                                                                                                            @enderror
+                                                                                                                        </div>
+                                                                                                                    </div>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
-                                                                                                        <div class="tab-pane" id="logo7" role="tabpanel">
-                                                                                                            <div class="p-15">
-                                                                                                                <div class="mb-20 row">
-                                                                                                                    <div class="col-lg-4 col-md-4 col-sm-12">
-                                                                                                                        <div class="box h-400">
-                                                                                                                            <div class="box-header">
-                                                                                                                                <h4 class="box-title">
-                                                                                                                                    Logo
-                                                                                                                                </h4>
+                                                                                                        <div class="mt-20 row">
+                                                                                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                                                                <div class="box h-400">
+                                                                                                                    <div class="box-header">
+                                                                                                                        <h4 class="box-title">
+                                                                                                                            Background Header
+                                                                                                                        </h4>
+                                                                                                                    </div>
+                                                                                                                    <div class="text-center box-body ">
+                                                                                                                        <label class="form-label">Size : 1980 pixel x 1280 pixel |
+                                                                                                                            1Mb</label>
+                                                                                                                            <div class="form-group">
+                                                                                                                                <div class=" fileinput fileinput-new"
+                                                                                                                                data-provides="fileinput">
+                                                                                                                                <div class="fileinput-new img-thumbnail"
+                                                                                                                                style="width: 200px;">
+                                                                                                                                <img src="{{ $setting->BgheaderThumbUrl ? $setting->BgheaderThumbUrl : '/assets/images/no_image.png' }}"
+                                                                                                                                alt="...">
                                                                                                                             </div>
-                                                                                                                            <div class="text-center box-body ">
-                                                                                                                                <label class="form-label">Size : 600 pixel x 400 pixel</label>
-                                                                                                                                <div class="form-group">
-                                                                                                                                    <div class=" fileinput fileinput-new"
-                                                                                                                                    data-provides="fileinput">
-                                                                                                                                    <div class="fileinput-new img-thumbnail"
-                                                                                                                                    style="width: 200px;">
-                                                                                                                                    <img src="{{ $setting->imageThumbUrl ? $setting->imageThumbUrl : '/assets/images/no_image.png' }}"
-                                                                                                                                    alt="...">
+                                                                                                                            <div class="fileinput-preview fileinput-exists img-thumbnail"
+                                                                                                                            style="max-width: 200px;"></div>
+                                                                                                                            <div>
+                                                                                                                                <span class="btn btn-outline-secondary btn-file"><span
+                                                                                                                                    class="fileinput-new">Select image</span><span
+                                                                                                                                    class="fileinput-exists">Change</span>
+                                                                                                                                    <input type="file" name="bg_header"
+                                                                                                                                    value="{{ old('bg_header') }}"
+                                                                                                                                    class="@error('bg_header') is-invalid @enderror"></span>
+                                                                                                                                    <a href="#"
+                                                                                                                                    class="btn btn-outline-secondary fileinput-exists"
+                                                                                                                                    data-dismiss="fileinput">Remove</a>
                                                                                                                                 </div>
-                                                                                                                                <div class="fileinput-preview fileinput-exists img-thumbnail"
-                                                                                                                                style="max-width: 200px;"></div>
-                                                                                                                                <div>
-                                                                                                                                    <span class="btn btn-outline-secondary btn-file"><span
-                                                                                                                                        class="fileinput-new">Select image</span><span
-                                                                                                                                        class="fileinput-exists">Change</span>
-                                                                                                                                        <input type="file"
-                                                                                                                                        class="@error('logo') is-invalid @enderror"
-                                                                                                                                        name="logo"
-                                                                                                                                        value="{{ old('logo') }}"></span>
-                                                                                                                                        <a href="#"
-                                                                                                                                        class="btn btn-outline-secondary fileinput-exists"
-                                                                                                                                        data-dismiss="fileinput">Remove</a>
-                                                                                                                                    </div>
-                                                                                                                                </div>
-                                                                                                                                @error('logo')
-                                                                                                                                <div class="form-control-feedback"><small>
-                                                                                                                                    <code>{{ $message }}</code> </small></div>
-                                                                                                                                    @enderror
-                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                            @error('bg_header')
+                                                                                                                            <div class="form-control-feedback"><small>
+                                                                                                                                <code>{{ $message }}</code> </small></div>
+                                                                                                                                @enderror
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </div>
-                                                                                                                    <div class="col-lg-4 col-md-4 col-sm-12">
-                                                                                                                        <div class="box ">
-                                                                                                                            <div class="box-header">
-                                                                                                                                <h4 class="box-title">
-                                                                                                                                    Favicon
-                                                                                                                                </h4>
-                                                                                                                            </div>
-                                                                                                                            <div class="text-center box-body ">
-                                                                                                                                <label class="form-label">Size : 500kb</label>
-                                                                                                                                <div class="form-group">
-                                                                                                                                    <div class=" fileinput fileinput-new"
-                                                                                                                                    data-provides="fileinput">
-                                                                                                                                    <div class="fileinput-new img-thumbnail"
-                                                                                                                                    style="width: 200px;">
-                                                                                                                                    <img src="{{ $setting->faviconUrl ? $setting->faviconUrl : '/assets/images/no_image.png' }}"
-                                                                                                                                    alt="...">
-                                                                                                                                </div>
-                                                                                                                                <div class="fileinput-preview fileinput-exists img-thumbnail"
-                                                                                                                                style="max-width: 200px;"></div>
-                                                                                                                                <div>
-                                                                                                                                    <span class="btn btn-outline-secondary btn-file"><span
-                                                                                                                                        class="fileinput-new">Select image</span><span
-                                                                                                                                        class="fileinput-exists">Change</span>
-                                                                                                                                        <input type="file"
-                                                                                                                                        class="@error('favicon') is-invalid @enderror"
-                                                                                                                                        name="favicon"
-                                                                                                                                        value="{{ old('favicon') }}"></span>
-                                                                                                                                        <a href="#"
-                                                                                                                                        class="btn btn-outline-secondary fileinput-exists"
-                                                                                                                                        data-dismiss="fileinput">Remove</a>
-                                                                                                                                    </div>
-                                                                                                                                </div>
-                                                                                                                                @error('favicon')
-                                                                                                                                <div class="form-control-feedback"><small>
-                                                                                                                                    <code>{{ $message }}</code> </small></div>
-                                                                                                                                    @enderror
-                                                                                                                                </div>
-                                                                                                                            </div>
+                                                                                                                </div>
+                                                                                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                                                                    <div class="box h-400">
+                                                                                                                        <div class="box-header">
+                                                                                                                            <h4 class="box-title">
+                                                                                                                                Background Statistic
+                                                                                                                            </h4>
                                                                                                                         </div>
-                                                                                                                    </div>
-                                                                                                                    <div class="col-lg-4 col-md-4 col-sm-12">
-                                                                                                                        <div class="box">
-                                                                                                                            <div class="box-header">
-                                                                                                                                <h4 class="box-title">
-                                                                                                                                    Logo Menu
-                                                                                                                                </h4>
-                                                                                                                            </div>
-                                                                                                                            <div class="text-center box-body ">
-                                                                                                                                <label class="form-label">Size : 140 x 21 pixel | 500kb</label>
+                                                                                                                        <div class="text-center box-body ">
+                                                                                                                            <label class="form-label">Size : Size : 1980 pixel x 1280 pixel |
+                                                                                                                                1Mb</label>
                                                                                                                                 <div class="form-group">
                                                                                                                                     <div class=" fileinput fileinput-new"
                                                                                                                                     data-provides="fileinput">
                                                                                                                                     <div class="fileinput-new img-thumbnail"
                                                                                                                                     style="width: 200px;">
-                                                                                                                                    <img src="{{ $setting->LogomenuUrl ? $setting->LogomenuUrl : '/assets/images/no_image.png' }}"
+                                                                                                                                    <img src="{{ $setting->BgstatisticThumbUrl ? $setting->BgstatisticThumbUrl : '/assets/images/no_image.png' }}"
                                                                                                                                     alt="...">
                                                                                                                                 </div>
                                                                                                                                 <div class="fileinput-preview fileinput-exists img-thumbnail"
@@ -389,15 +470,15 @@
                                                                                                                                         class="fileinput-new">Select image</span><span
                                                                                                                                         class="fileinput-exists">Change</span>
                                                                                                                                         <input type="file"
-                                                                                                                                        class="@error('logo_menu') is-invalid @enderror"
-                                                                                                                                        name="logo_menu"
-                                                                                                                                        value="{{ old('logo_menu') }}"></span>
+                                                                                                                                        class="@error('bg_statistic') is-invalid @enderror"
+                                                                                                                                        name="bg_statistic"
+                                                                                                                                        value="{{ old('bg_statistic') }}"></span>
                                                                                                                                         <a href="#"
                                                                                                                                         class="btn btn-outline-secondary fileinput-exists"
                                                                                                                                         data-dismiss="fileinput">Remove</a>
                                                                                                                                     </div>
                                                                                                                                 </div>
-                                                                                                                                @error('logo_menu')
+                                                                                                                                @error('bg_statistic')
                                                                                                                                 <div class="form-control-feedback"><small>
                                                                                                                                     <code>{{ $message }}</code> </small></div>
                                                                                                                                     @enderror
@@ -406,197 +487,112 @@
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
-                                                                                                                <div class="mt-20 row">
-                                                                                                                    <div class="col-lg-6 col-md-6 col-sm-12">
-                                                                                                                        <div class="box h-400">
-                                                                                                                            <div class="box-header">
-                                                                                                                                <h4 class="box-title">
-                                                                                                                                    Background Header
-                                                                                                                                </h4>
-                                                                                                                            </div>
-                                                                                                                            <div class="text-center box-body ">
-                                                                                                                                <label class="form-label">Size : 1980 pixel x 1280 pixel |
-                                                                                                                                    1Mb</label>
-                                                                                                                                    <div class="form-group">
-                                                                                                                                        <div class=" fileinput fileinput-new"
-                                                                                                                                        data-provides="fileinput">
-                                                                                                                                        <div class="fileinput-new img-thumbnail"
-                                                                                                                                        style="width: 200px;">
-                                                                                                                                        <img src="{{ $setting->BgheaderThumbUrl ? $setting->BgheaderThumbUrl : '/assets/images/no_image.png' }}"
-                                                                                                                                        alt="...">
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="tab-pane" id="maps7" role="tabpanel">
+                                                                                                            <div class="p-15">
+                                                                                                                <div class="row">
+                                                                                                                    <div class="box">
+                                                                                                                        <div class="box-body">
+                                                                                                                            <div class="form-group">
+                                                                                                                                <h5>Maps Link</h5>
+                                                                                                                                <div class="controls">
+                                                                                                                                    <input rows="5" name="link_map" class="form-control @error('link_map') is-invalid @enderror"
+                                                                                                                                    placeholder="link map" value="{{ old('link_map') ?? $setting->link_map }}">
+                                                                                                                                </div>
+                                                                                                                                <div class="form-control-feedback"><small> Exp:
+                                                                                                                                    <code>
+                                                                                                                                        https://maps.app.goo.gl/84oW6JKC3uSgx9Zc7
+                                                                                                                                    </code>
+                                                                                                                                </small></div>
+                                                                                                                                @error('link_map')
+                                                                                                                                <div class="form-control-feedback"><small>
+                                                                                                                                    <code>{{ $message }}</code> </small></div>
+                                                                                                                                    @enderror
+                                                                                                                                </div>
+                                                                                                                                <div class="form-group">
+                                                                                                                                    <h5>Maps Script</h5>
+                                                                                                                                    <div class="controls">
+                                                                                                                                        <textarea rows="5" name="maps" class="form-control @error('maps') is-invalid @enderror"
+                                                                                                                                        placeholder="maps">{{ old('maps') ?? $setting->maps }} </textarea>
                                                                                                                                     </div>
-                                                                                                                                    <div class="fileinput-preview fileinput-exists img-thumbnail"
-                                                                                                                                    style="max-width: 200px;"></div>
-                                                                                                                                    <div>
-                                                                                                                                        <span class="btn btn-outline-secondary btn-file"><span
-                                                                                                                                            class="fileinput-new">Select image</span><span
-                                                                                                                                            class="fileinput-exists">Change</span>
-                                                                                                                                            <input type="file" name="bg_header"
-                                                                                                                                            value="{{ old('bg_header') }}"
-                                                                                                                                            class="@error('bg_header') is-invalid @enderror"></span>
-                                                                                                                                            <a href="#"
-                                                                                                                                            class="btn btn-outline-secondary fileinput-exists"
-                                                                                                                                            data-dismiss="fileinput">Remove</a>
-                                                                                                                                        </div>
-                                                                                                                                    </div>
-                                                                                                                                    @error('bg_header')
+                                                                                                                                    <div class="form-control-feedback"><small> Exp:
+                                                                                                                                        <code>
+                                                                                                                                            https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6519218789713!2d117.08926731409771!3d-0.5232837354157259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67f93048b4a03%3A0x77d556abf72c93d0!2sPENERBIT%20BUKU%20MEDIATAMA%20CABANG%20SAMARINDA!5e0!3m2!1sen!2sid!4v1643782605913!5m2!1sen!2sid
+                                                                                                                                        </code>
+                                                                                                                                    </small></div>
+                                                                                                                                    @error('maps')
                                                                                                                                     <div class="form-control-feedback"><small>
                                                                                                                                         <code>{{ $message }}</code> </small></div>
                                                                                                                                         @enderror
                                                                                                                                     </div>
                                                                                                                                 </div>
                                                                                                                             </div>
-                                                                                                                        </div>
-                                                                                                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                                                                                                            <div class="box h-400">
+                                                                                                                            <div class="box">
                                                                                                                                 <div class="box-header">
-                                                                                                                                    <h4 class="box-title">
-                                                                                                                                        Background Statistic
+                                                                                                                                    <h4 class="box-title">Current Maps
                                                                                                                                     </h4>
                                                                                                                                 </div>
-                                                                                                                                <div class="text-center box-body ">
-                                                                                                                                    <label class="form-label">Size : Size : 1980 pixel x 1280 pixel |
-                                                                                                                                        1Mb</label>
-                                                                                                                                        <div class="form-group">
-                                                                                                                                            <div class=" fileinput fileinput-new"
-                                                                                                                                            data-provides="fileinput">
-                                                                                                                                            <div class="fileinput-new img-thumbnail"
-                                                                                                                                            style="width: 200px;">
-                                                                                                                                            <img src="{{ $setting->BgstatisticThumbUrl ? $setting->BgstatisticThumbUrl : '/assets/images/no_image.png' }}"
-                                                                                                                                            alt="...">
-                                                                                                                                        </div>
-                                                                                                                                        <div class="fileinput-preview fileinput-exists img-thumbnail"
-                                                                                                                                        style="max-width: 200px;"></div>
-                                                                                                                                        <div>
-                                                                                                                                            <span class="btn btn-outline-secondary btn-file"><span
-                                                                                                                                                class="fileinput-new">Select image</span><span
-                                                                                                                                                class="fileinput-exists">Change</span>
-                                                                                                                                                <input type="file"
-                                                                                                                                                class="@error('bg_statistic') is-invalid @enderror"
-                                                                                                                                                name="bg_statistic"
-                                                                                                                                                value="{{ old('bg_statistic') }}"></span>
-                                                                                                                                                <a href="#"
-                                                                                                                                                class="btn btn-outline-secondary fileinput-exists"
-                                                                                                                                                data-dismiss="fileinput">Remove</a>
-                                                                                                                                            </div>
-                                                                                                                                        </div>
-                                                                                                                                        @error('bg_statistic')
-                                                                                                                                        <div class="form-control-feedback"><small>
-                                                                                                                                            <code>{{ $message }}</code> </small></div>
-                                                                                                                                            @enderror
-                                                                                                                                        </div>
-                                                                                                                                    </div>
+                                                                                                                                <div class="box-body">
+                                                                                                                                    {!! $setting->maps !!}
                                                                                                                                 </div>
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
-                                                                                                                <div class="tab-pane" id="maps7" role="tabpanel">
+                                                                                                                <div class="tab-pane" id="meta9" role="tabpanel">
                                                                                                                     <div class="p-15">
                                                                                                                         <div class="row">
                                                                                                                             <div class="box">
+                                                                                                                                <div class="box-header">
+                                                                                                                                    <h4 class="box-title">
+                                                                                                                                        Meta Descriptions & Meta Keywords
+                                                                                                                                    </h4>
+                                                                                                                                </div>
                                                                                                                                 <div class="box-body">
                                                                                                                                     <div class="form-group">
-                                                                                                                                        <h5>Maps Link</h5>
+                                                                                                                                        <h5>Meta Descriptions </h5>
                                                                                                                                         <div class="controls">
-                                                                                                                                            <input rows="5" name="link_map" class="form-control @error('link_map') is-invalid @enderror"
-                                                                                                                                            placeholder="link map" value="{{ old('link_map') ?? $setting->link_map }}">
+                                                                                                                                            <textarea rows="2" name="meta_description"
+                                                                                                                                            class="form-control @error('meta_description') is-invalid @enderror" placeholder="meta_description">{{ old('meta_description') ?? $setting->meta_description }} </textarea>
                                                                                                                                         </div>
-                                                                                                                                        <div class="form-control-feedback"><small> Exp:
-                                                                                                                                            <code>
-                                                                                                                                                https://maps.app.goo.gl/84oW6JKC3uSgx9Zc7
-                                                                                                                                            </code>
-                                                                                                                                        </small></div>
-                                                                                                                                        @error('link_map')
+                                                                                                                                        <div class="form-control-feedback">
+                                                                                                                                            <small> Exp:
+                                                                                                                                                <code>
+                                                                                                                                                    Digital Nusantara, Digital Nusantara Borneo, Borneo,
+                                                                                                                                                    Digital, Nusantara, Kaltim
+                                                                                                                                                </code>
+                                                                                                                                            </small>
+                                                                                                                                        </div>
+                                                                                                                                        @error('meta_description')
                                                                                                                                         <div class="form-control-feedback"><small>
                                                                                                                                             <code>{{ $message }}</code> </small></div>
                                                                                                                                             @enderror
                                                                                                                                         </div>
+                                                                                                                                    </div>
+                                                                                                                                    <div class="box-body">
                                                                                                                                         <div class="form-group">
-                                                                                                                                            <h5>Maps Script</h5>
+                                                                                                                                            <h5>Meta Keywords </h5>
                                                                                                                                             <div class="controls">
-                                                                                                                                                <textarea rows="5" name="maps" class="form-control @error('maps') is-invalid @enderror"
-                                                                                                                                                placeholder="maps">{{ old('maps') ?? $setting->maps }} </textarea>
+                                                                                                                                                <textarea rows="2" name="meta_keywords" class="form-control @error('meta_keywords') is-invalid @enderror"
+                                                                                                                                                placeholder="meta_keywords">{{ old('meta_keywords') ?? $setting->meta_keywords }} </textarea>
                                                                                                                                             </div>
-                                                                                                                                            <div class="form-control-feedback"><small> Exp:
-                                                                                                                                                <code>
-                                                                                                                                                    https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6519218789713!2d117.08926731409771!3d-0.5232837354157259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67f93048b4a03%3A0x77d556abf72c93d0!2sPENERBIT%20BUKU%20MEDIATAMA%20CABANG%20SAMARINDA!5e0!3m2!1sen!2sid!4v1643782605913!5m2!1sen!2sid
-                                                                                                                                                </code>
-                                                                                                                                            </small></div>
-                                                                                                                                            @error('maps')
+                                                                                                                                            <div class="form-control-feedback">
+                                                                                                                                                <small> Exp:
+                                                                                                                                                    <code>
+                                                                                                                                                        Digital Nusantara, Digital Nusantara Borneo, Borneo,
+                                                                                                                                                        Digital, Nusantara, Kaltim
+                                                                                                                                                    </code>
+                                                                                                                                                </small>
+                                                                                                                                            </div>
+                                                                                                                                            @error('meta_keywords')
                                                                                                                                             <div class="form-control-feedback"><small>
                                                                                                                                                 <code>{{ $message }}</code> </small></div>
                                                                                                                                                 @enderror
                                                                                                                                             </div>
                                                                                                                                         </div>
                                                                                                                                     </div>
-                                                                                                                                    <div class="box">
-                                                                                                                                        <div class="box-header">
-                                                                                                                                            <h4 class="box-title">Current Maps
-                                                                                                                                            </h4>
-                                                                                                                                        </div>
-                                                                                                                                        <div class="box-body">
-                                                                                                                                            {!! $setting->maps !!}
-                                                                                                                                        </div>
-                                                                                                                                    </div>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                        <div class="tab-pane" id="meta9" role="tabpanel">
-                                                                                                                            <div class="p-15">
-                                                                                                                                <div class="row">
-                                                                                                                                    <div class="box">
-                                                                                                                                        <div class="box-header">
-                                                                                                                                            <h4 class="box-title">
-                                                                                                                                                Meta Descriptions & Meta Keywords
-                                                                                                                                            </h4>
-                                                                                                                                        </div>
-                                                                                                                                        <div class="box-body">
-                                                                                                                                            <div class="form-group">
-                                                                                                                                                <h5>Meta Descriptions </h5>
-                                                                                                                                                <div class="controls">
-                                                                                                                                                    <textarea rows="2" name="meta_description"
-                                                                                                                                                    class="form-control @error('meta_description') is-invalid @enderror" placeholder="meta_description">{{ old('meta_description') ?? $setting->meta_description }} </textarea>
-                                                                                                                                                </div>
-                                                                                                                                                <div class="form-control-feedback">
-                                                                                                                                                    <small> Exp:
-                                                                                                                                                        <code>
-                                                                                                                                                            Digital Nusantara, Digital Nusantara Borneo, Borneo,
-                                                                                                                                                            Digital, Nusantara, Kaltim
-                                                                                                                                                        </code>
-                                                                                                                                                    </small>
-                                                                                                                                                </div>
-                                                                                                                                                @error('meta_description')
-                                                                                                                                                <div class="form-control-feedback"><small>
-                                                                                                                                                    <code>{{ $message }}</code> </small></div>
-                                                                                                                                                    @enderror
-                                                                                                                                                </div>
-                                                                                                                                            </div>
-                                                                                                                                            <div class="box-body">
-                                                                                                                                                <div class="form-group">
-                                                                                                                                                    <h5>Meta Keywords </h5>
-                                                                                                                                                    <div class="controls">
-                                                                                                                                                        <textarea rows="2" name="meta_keywords" class="form-control @error('meta_keywords') is-invalid @enderror"
-                                                                                                                                                        placeholder="meta_keywords">{{ old('meta_keywords') ?? $setting->meta_keywords }} </textarea>
-                                                                                                                                                    </div>
-                                                                                                                                                    <div class="form-control-feedback">
-                                                                                                                                                        <small> Exp:
-                                                                                                                                                            <code>
-                                                                                                                                                                Digital Nusantara, Digital Nusantara Borneo, Borneo,
-                                                                                                                                                                Digital, Nusantara, Kaltim
-                                                                                                                                                            </code>
-                                                                                                                                                        </small>
-                                                                                                                                                    </div>
-                                                                                                                                                    @error('meta_keywords')
-                                                                                                                                                    <div class="form-control-feedback"><small>
-                                                                                                                                                        <code>{{ $message }}</code> </small></div>
-                                                                                                                                                        @enderror
-                                                                                                                                                    </div>
-                                                                                                                                                </div>
-                                                                                                                                            </div>
 
-                                                                                                                                        </div>
-                                                                                                                                    </div>
                                                                                                                                 </div>
                                                                                                                             </div>
                                                                                                                         </div>
@@ -604,85 +600,88 @@
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
-                                                                                                    </form>
-                                                                                                </section>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </form>
+                                                                                        </section>
 
-                                                                                                @push('styles')
-                                                                                                <link rel="stylesheet"
-                                                                                                href="{{ asset('') }}assets/vendor_plugins/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
-                                                                                                @endpush
+                                                                                        @push('styles')
+                                                                                        <link rel="stylesheet"
+                                                                                        href="{{ asset('') }}assets/vendor_plugins/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
+                                                                                        @endpush
 
-                                                                                                @push('scripts')
-                                                                                                <script src="{{ asset('') }}assets/vendor_plugins/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
-                                                                                                <script src="{{ asset('') }}assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
-                                                                                                <script src="{{ asset('') }}assets/vendor_components/select2/dist/js/select2.full.js"></script>
-                                                                                                <script src="{{ asset('') }}assets/vendor_components/ckeditor/ckeditor.js"></script>
-                                                                                                <script src="{{ asset('') }}assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
+                                                                                        @push('scripts')
+                                                                                        <script src="{{ asset('') }}assets/vendor_plugins/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
+                                                                                        <script src="{{ asset('') }}assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+                                                                                        <script src="{{ asset('') }}assets/vendor_components/select2/dist/js/select2.full.js"></script>
+                                                                                        <script src="{{ asset('') }}assets/vendor_components/ckeditor/ckeditor.js"></script>
+                                                                                        <script src="{{ asset('') }}assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
+                                                                                        <script src="{{ asset('') }}assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
+                                                                                        <script src="{{ asset('') }}assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>
+                                                                                        <script>
+                                                                                            var options = {
+                                                                                                filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+                                                                                                filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{ csrf_token() }}',
+                                                                                                filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+                                                                                                filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{ csrf_token() }}'
+                                                                                            };
+                                                                                        </script>
+                                                                                        <script>
+                                                                                            CKEDITOR.replace('editor1', options);
+                                                                                            //Initialize Select2 Elements
+                                                                                            $('.select2').select2();
 
-                                                                                                <script>
-                                                                                                    var options = {
-                                                                                                        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-                                                                                                        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{ csrf_token() }}',
-                                                                                                        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-                                                                                                        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{ csrf_token() }}'
-                                                                                                    };
-                                                                                                </script>
-                                                                                                <script>
-                                                                                                    CKEDITOR.replace('editor1', options);
-                                                                                                    //Initialize Select2 Elements
-                                                                                                    $('.select2').select2();
+                                                                                            //Save Draft
+                                                                                            $('#draft-btn').click(function(e) {
+                                                                                                e.preventDefault();
+                                                                                                $('#status_site_update').val(0);
+                                                                                                $('#post-form').submit();
+                                                                                            });
+                                                                                            //Save Publish
+                                                                                            $('#publish-btn').click(function(e) {
+                                                                                                e.preventDefault();
+                                                                                                $('#status_site_update').val(1);
+                                                                                                $('#fresh_site').val(1);
+                                                                                                $('#post-form').submit();
+                                                                                            });
 
-                                                                                                    //Save Draft
-                                                                                                    $('#draft-btn').click(function(e) {
-                                                                                                        e.preventDefault();
-                                                                                                        $('#status_site_update').val(0);
-                                                                                                        $('#post-form').submit();
-                                                                                                    });
-                                                                                                    //Save Publish
-                                                                                                    $('#publish-btn').click(function(e) {
-                                                                                                        e.preventDefault();
-                                                                                                        $('#status_site_update').val(1);
-                                                                                                        $('#fresh_site').val(1);
-                                                                                                        $('#post-form').submit();
-                                                                                                    });
-
-                                                                                                    //flash message
-                                                                                                    @if (session()->has('success'))
-                                                                                                    swal("SUCCESS!", "{{ session('success') }}", "success");
-                                                                                                    @elseif (session()->has('error'))
-                                                                                                    swal("SUCCESS!", "{{ session('error') }}", "error");
-                                                                                                    @endif
-                                                                                                    // Get relevant element
-                                                                                                    checkBox = document.getElementById('radio_static');
-                                                                                                    // Check if the element is selected/checked
-                                                                                                    if (checkBox.checked) {
-                                                                                                        // Respond to the result
-                                                                                                        // $("#link_hero").show();
-                                                                                                        // $("#hero_slider").hide();
-                                                                                                        $('#radio_slider').change(function() {
-                                                                                                            $("#hero_slider").show();
-                                                                                                            // $("#link_hero").hide();
-                                                                                                        });
-                                                                                                        $('#radio_static').change(function() {
-                                                                                                            $("#hero_slider").hide();
-                                                                                                            // $("#link_hero").show();
-                                                                                                        });
-                                                                                                    }
-                                                                                                    checkBox = document.getElementById('radio_slider');
-                                                                                                    // Check if the element is selected/checked
-                                                                                                    if (checkBox.checked) {
-                                                                                                        // Respond to the result
-                                                                                                        // $("#link_hero").hide();
-                                                                                                        $("#hero_slider").show();
-                                                                                                        $('#radio_slider').change(function() {
-                                                                                                            // $("#link_hero").hide();
-                                                                                                            $("#hero_slider").show();
-                                                                                                        });
-                                                                                                        $('#radio_static').change(function() {
-                                                                                                            // $("#hero_slider").hide();
-                                                                                                            $("#link_hero").show();
-                                                                                                        });
-                                                                                                    }
-                                                                                                </script>
-                                                                                                @endpush
-                                                                                                @endsection
+                                                                                            //flash message
+                                                                                            @if (session()->has('success'))
+                                                                                            swal("SUCCESS!", "{{ session('success') }}", "success");
+                                                                                            @elseif (session()->has('error'))
+                                                                                            swal("SUCCESS!", "{{ session('error') }}", "error");
+                                                                                            @endif
+                                                                                            // Get relevant element
+                                                                                            checkBox = document.getElementById('radio_static');
+                                                                                            // Check if the element is selected/checked
+                                                                                            if (checkBox.checked) {
+                                                                                                // Respond to the result
+                                                                                                // $("#link_hero").show();
+                                                                                                // $("#hero_slider").hide();
+                                                                                                $('#radio_slider').change(function() {
+                                                                                                    $("#hero_slider").show();
+                                                                                                    // $("#link_hero").hide();
+                                                                                                });
+                                                                                                $('#radio_static').change(function() {
+                                                                                                    $("#hero_slider").hide();
+                                                                                                    // $("#link_hero").show();
+                                                                                                });
+                                                                                            }
+                                                                                            checkBox = document.getElementById('radio_slider');
+                                                                                            // Check if the element is selected/checked
+                                                                                            if (checkBox.checked) {
+                                                                                                // Respond to the result
+                                                                                                // $("#link_hero").hide();
+                                                                                                $("#hero_slider").show();
+                                                                                                $('#radio_slider').change(function() {
+                                                                                                    // $("#link_hero").hide();
+                                                                                                    $("#hero_slider").show();
+                                                                                                });
+                                                                                                $('#radio_static').change(function() {
+                                                                                                    // $("#hero_slider").hide();
+                                                                                                    $("#link_hero").show();
+                                                                                                });
+                                                                                            }
+                                                                                        </script>
+                                                                                        @endpush
+                                                                                        @endsection

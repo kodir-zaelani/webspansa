@@ -15,7 +15,7 @@
                                     {{-- <div class="author-details">
                                         <div class="info">
                                             <h4>
-                                                <a href="{{ route('post.author', $video->author->id) }}">
+                                                <a href="{{ route('news.author', $video->author->id) }}">
                                                     @if ($video->author->displayname)
                                                     {{ $video->author->displayname }}
                                                     @else

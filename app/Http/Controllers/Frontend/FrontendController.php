@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Agenda;
+use App\Models\Announcement;
+use App\Models\Editorial;
 use App\Models\Foto;
 use App\Models\Gallery;
 use App\Models\Page;
@@ -18,6 +21,10 @@ class FrontendController extends Controller
         return view('themes.aksataedu.home.index',[
             'sliders' => Slider::published()->latest()->take(8)->get(),
             'statistics' => Statistic::with('author')->published()->take(6)->get(),
+            'featured_news' => Post::with('author','postcategory')->where('headline', 1)->published()->latest()->take(8)->get(),
+            'latest_news' => Post::with('author','postcategory')->published()->latest()->take(6)->get(),
+            'latest_announcements' => Announcement::with('author')->published()->latest()->take(4)->get(),
+            'latest_agendas' => Agenda::with('author')->published()->latest()->take(4)->get(),
             'title' => 'Beranda'
         ]);
     }

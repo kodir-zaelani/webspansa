@@ -20,7 +20,7 @@
                                         @endif
                                         <div class="info">
                                             <h4>
-                                                <a href="{{ route('post.author', $item->author->id) }}">
+                                                <a href="{{ route('news.author', $item->author->id) }}">
                                                     @if ($item->author->displayname)
                                                     {{ $item->author->displayname }}
                                                     @else

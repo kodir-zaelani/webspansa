@@ -77,7 +77,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
-                            <form action="{{ route('post.search') }}" method="GET">
+                            <form action="{{ route('news.search') }}" method="GET">
                                 <div class="mb-3 input-group">
                                     <input type="text" name="search" class="form-control" placeholder="Cari berita..." value="{{ request('search') ?? '' }}">
                                     <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>

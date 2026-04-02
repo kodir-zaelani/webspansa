@@ -62,8 +62,8 @@ class Post extends Model
         $anchors = [];
         foreach ($this->tags as $tag) {
             // $anchors[] = '<a href="#">' . $tag->title . '</a>';
-            // $anchors[] = '<span ><a href="' .route('post.tag', $tag->slug) . '" > ' . $tag->title . '</a></span>';
-            $anchors[] = '<a href="' . route('post.tag', $tag->slug) . '" class="tag">' . $tag->title . '</a>';
+            // $anchors[] = '<span ><a href="' .route('news.tag', $tag->slug) . '" > ' . $tag->title . '</a></span>';
+            $anchors[] = '<a href="' . route('news.tag', $tag->slug) . '" class="tag">' . $tag->title . '</a>';
         }
         return implode($anchors);
     }
@@ -72,7 +72,7 @@ class Post extends Model
     {
         $anchors = [];
         foreach ($this->tags as $tag) {
-            $anchors[] = '<small><span><a href="' . route('post.tag', $tag->slug) . '" > ' . $tag->title . '</a></span></small>';
+            $anchors[] = '<small><span><a href="' . route('news.tag', $tag->slug) . '" > ' . $tag->title . '</a></span></small>';
         }
         return implode(", ", $anchors);
     }

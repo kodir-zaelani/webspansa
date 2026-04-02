@@ -4,7 +4,7 @@
     <nav hidden class="nav-dark">
         <div class="nav-header">
             <a href="{{route('root')}}" class="brand">
-                <img src="{{ asset('') }}uploads/images/logo/{{ $global_option->logo_menu }}" alt="" style="max-width: 50%"/>
+                <img src="{{ $global_option->logo_menuUrl ? $global_option->logo_menuUrl : '/assets/uploads/images/no_image.png' }}" alt="" style="max-width: 50%"/>
             </a>
             <button class="toggle-bar">
                 <span class="ti-menu"></span>
