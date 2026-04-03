@@ -35,7 +35,17 @@ public function run(): void
 // $this->call(TagSeeder::class);
 // $this->call(UserspansaSeeder::class);
 // $this->call(PostSeeder::class);
-$this->call(SliderspansaSeeder::class);
+// $this->call(SliderspansaSeeder::class);
 
+
+
+// $this->call(AgamaSeeder::class);
+// $this->call(TahunajaranSeeder::class);
+// $this->call(JenisPtkSeeder::class);
+// $this->call(RefSemesterSeeder::class);
+// $this->call(RefPrestasiSeeder::class);
+// $this->call(RefTingkatPrestasiSeeder::class);
+// $this->call(RefJabatanTugasPegawaiSeeder::class);
+// $this->call(RefPangkatGolonganSeeder::class);
 }
 }

@@ -166,6 +166,18 @@ Route::middleware(['auth', 'verified', 'web'])->group(function () {
     Route::get('backend/statistic/{editorial}/edit', [App\Http\Controllers\Backend\StatisticController::class, 'edit'])->name('backend.statistic.edit');
     Route::put('backend/statistic/{editorial}/update', [App\Http\Controllers\Backend\StatisticController::class, 'update'])->name('backend.statistic.update');
 
+     // Tahun ajaran Controller
+    Route::get('backend/tahunajaran', [App\Http\Controllers\Backend\TahunajaranController::class, 'index'])->name('backend.tahunajaran.index');
+
+    // SemesterController
+    Route::get('backend/semester', [App\Http\Controllers\Backend\SemesterController::class, 'index'])->name('backend.semester.index');
+
+    // Jenis PTK
+    Route::get('backend/jenisptk', [App\Http\Controllers\Backend\JenisptkController::class, 'index'])->name('backend.jenisptk.index');
+
+    // Jenis jabtan tugas PTK
+    Route::get('backend/jabatantugasptk', [App\Http\Controllers\Backend\TugastambahanptkController::class, 'index'])->name('backend.jabatantugasptk.index');
+
 
 });
 
