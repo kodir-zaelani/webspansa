@@ -21,6 +21,7 @@
                         <hr class="my-15">
                         <div class="card rounded-0 no-border no-shadow">
                             <div class="d-lg-flex">
+                                @if ($greeting != null)
                                 <div class="pt-30 position-relative w-lg-400">
                                     <a href="#"  title="{{$greeting->title}}">
                                         <img class="" src="{{$greeting->imageThumbUrl}}" alt="Card image cap">
@@ -40,13 +41,16 @@
                                         </div>
                                     </div>
                                 </div>
+                                @else
+                                Belum Ada sambutan yang tersedia.
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-4 col-12 h-400">
-                    @include('themes.aksataedu.partials.sidebar-announcement')
+                @include('themes.aksataedu.partials.sidebar-announcement')
             </div>
         </div>
     </div>
