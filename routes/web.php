@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index'])->name('root');
 Route::post('/dropzones', [App\Http\Controllers\Frontend\FrontendController::class, 'storeimage'])->name('dropzone.store');
-Route::get('/kontak', [App\Http\Controllers\Frontend\FrontendController::class, 'contact'])->name('contact');
+Route::get('/kontak', [App\Http\Controllers\Frontend\FrontendController::class, 'contact'])->name('kontak');
+Route::get('/tentang', [App\Http\Controllers\Frontend\FrontendController::class, 'about'])->name('tentang');
 Route::get('/video/details/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'video_detail'])->name('video.detail');
 
 Route::post('gallery/upload', [App\Http\Controllers\Backend\GalleryController::class, 'upload']);
@@ -20,6 +21,9 @@ Route::get('berita/pencarian',  [App\Http\Controllers\Frontend\PostController::c
 Route::get('blog/detail/{slug}',  [App\Http\Controllers\Frontend\BlogController::class, 'detail'])->name('blog.detail');
 Route::get('blog',  [App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('blog.index');
 Route::get('blog/kategori/{slug}',  [App\Http\Controllers\Frontend\BlogController::class, 'blog_category'])->name('blog.category');
+Route::get('blog/tag/{slug}',  [App\Http\Controllers\Frontend\BlogController::class, 'blog_tag'])->name('blog.tag');
+Route::get('blog/penulis/{id}',  [App\Http\Controllers\Frontend\BlogController::class, 'blog_author'])->name('blog.author');
+Route::get('blog/pencarian',  [App\Http\Controllers\Frontend\BlogController::class, 'blog_search'])->name('blog.search');
 
 Route::prefix('halaman')->group(function () {
     Route::get('/detail/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'pagedetail'])->name('page.detail');
@@ -137,6 +141,13 @@ Route::middleware(['auth', 'verified', 'web'])->group(function () {
     Route::post('backend/announcement/store', [App\Http\Controllers\Backend\AnnouncementController::class, 'store'])->name('backend.announcement.store');
     Route::get('backend/announcement/{announcement}/edit', [App\Http\Controllers\Backend\AnnouncementController::class, 'edit'])->name('backend.announcement.edit');
     Route::put('backend/announcement/{announcement}/update', [App\Http\Controllers\Backend\AnnouncementController::class, 'update'])->name('backend.announcement.update');
+
+    // PostCategory
+    Route::get('backend/blogcategories', [App\Http\Controllers\Backend\BlogcategoryController::class, 'index'])->name('backend.blogcategories.index');
+    Route::get('backend/blogcategories/create', [App\Http\Controllers\Backend\BlogcategoryController::class, 'create'])->name('backend.blogcategories.create');
+    Route::post('backend/blogcategories/store', [App\Http\Controllers\Backend\BlogcategoryController::class, 'store'])->name('backend.blogcategories.store');
+    Route::get('backend/blogcategories/{blogcategory}/edit', [App\Http\Controllers\Backend\BlogcategoryController::class, 'edit'])->name('backend.blogcategories.edit');
+    Route::post('backend/blogcategories/{blogcategory}/update', [App\Http\Controllers\Backend\BlogcategoryController::class, 'update'])->name('backend.blogcategories.update');
 
     // Blog
     Route::get('backend/blog', [App\Http\Controllers\Backend\BlogController::class, 'index'])->name('backend.blog.index');

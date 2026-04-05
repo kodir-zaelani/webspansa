@@ -21,6 +21,11 @@ return [
             'width' => 300,
             'height' => 200
         ],
+        'directoryCategoryblog' => 'uploads/images/blogcategory/',
+        'thumbnailblogcategory' => [
+            'width' => 300,
+            'height' => 200
+        ],
 
         'directoryPengajiancategory' => 'uploads/images/pengajiancategory/',
         'thumbnailpengajiancategory' => [
@@ -203,6 +208,7 @@ return [
         ]
     ],
     'default_mastertag' => 1,
+    'default_masterblogcategory' => 1,
     'default_masterpostcategory' => 1,
     'default_masterpostsubcategory' => 1,
     'default_masterpagecategory' => 1,

@@ -24,19 +24,14 @@ class Postcategory extends Model
         });
     }
 
-    public function posts()
-    {
-        return $this->hasMany(Post::class, 'postcategory_id');
-    }
-
     /**
-     * Get all of the blogs for the Postcategory
+     * Get all of the posts for the Postcategory
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function blogs(): HasMany
+    public function posts(): HasMany
     {
-        return $this->hasMany(Blog::class, 'postcategory_id');
+        return $this->hasMany(Post::class, 'postcategory_id');
     }
 
     public function parent()

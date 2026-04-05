@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Blog extends Model
@@ -40,14 +42,14 @@ class Blog extends Model
         });
     }
 
-    public function author()
+    public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');
     }
 
-    public function blogcategory()
+    public function blogcategory(): BelongsTo
     {
-        return $this->belongsTo(Postcategory::class, 'postcategory_id');
+        return $this->belongsTo(Blogcategory::class, 'blogcategory_id');
     }
 
     public function tags()
@@ -55,7 +57,7 @@ class Blog extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function getTagsHtmlAttribute()
+    public function getTagsHtmlblogAttribute()
     {
         $anchors = [];
         foreach ($this->tags as $tag) {
@@ -70,7 +72,7 @@ class Blog extends Model
     {
         $anchors = [];
         foreach ($this->tags as $tag) {
-            $anchors[] = '<small><span><a href="' . route('news.tag', $tag->slug) . '" > ' . $tag->title . '</a></span></small>';
+            $anchors[] = '<small><span><a href="' . route('blog.tag', $tag->slug) . '" > ' . $tag->title . '</a></span></small>';
         }
         return implode(", ", $anchors);
     }
@@ -139,16 +141,7 @@ class Blog extends Model
     {
         return $query->where("selection", "=", 1);
     }
-    // fungsi scope untuk manampilkan yang status selection
-    public function scopeBlog($query)
-    {
-        return $query->where("statuspost", "=", 1);
-    }
-    // fungsi scope untuk manampilkan yang status selection
-    public function scopeNews($query)
-    {
-        return $query->where("statuspost", "=", 0);
-    }
+
     // fungsi scope untuk manampilkan yang status Comment
     public function scopeCommentstatus($query)
     {

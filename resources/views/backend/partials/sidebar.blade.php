@@ -13,7 +13,7 @@
                         <li class="{{ setActive('backend/home') }}">
                             <a href="{{ route('backend.dashboard') }}" title="Dashboard">
                                 <i class="fa fa-home"><span class="path1"></span><span class="path2"></span></i>
-                                <span>Dashboard</span>
+                                <span>Dashbor</span>
                             </a>
                         </li>
                         @if (auth()->user()->can('greetings.index') ||
@@ -22,7 +22,7 @@
                         <li
                         class="{{ setActive('backend/allgreetings') }} {{ setOpen('backend/allgreetings') }}">
                         <a href="{{ route('backend.greetings.index') }}">
-                            <i class="fa fa-vcard-o" aria-hidden="true"></i>{{ __('Greeting')}}
+                            <i class="fa fa-vcard-o" aria-hidden="true"></i>{{ __('Sambutan Pimpinan')}}
                         </a>
                     </li>
                     @endcan
@@ -40,9 +40,9 @@
                     auth()->user()->can('pagecategories.index'))
                     @can('pagecategories.index')
                     <li class="{{ setActive('backend/pagecategories') }}">
-                        <a href="{{ route('backend.pagecategories.index') }}" title="Page Category">
+                        <a href="{{ route('backend.pagecategories.index') }}" title="Kategori Halaman">
                             <i class="fa fa-folder"><span class="path1"></span><span class="path2"></span></i>
-                            <span>Page Category</span>
+                            <span>Kategori Halaman</span>
                         </a>
                     </li>
                     @endcan
@@ -50,7 +50,7 @@
                     <li class="{{ setActive('backend/pages') }}">
                         <a href="{{ route('backend.pages.index') }}" title="Pages">
                             <i class="fa fa-file-text-o"><span class="path1"></span><span class="path2"></span></i>
-                            <span>Pages</span>
+                            <span>Halaman Statis</span>
                         </a>
                     </li>
                     @endcan
@@ -63,7 +63,7 @@
                     <li class="{{ setActive('backend/postcategories') }}">
                         <a href="{{ route('backend.postscategories.index') }}" title="Post Category">
                             <i class="fa fa-folder"><span class="path1"></span><span class="path2"></span></i>
-                            <span>Post Category</span>
+                            <span>Kategori Berita</span>
                         </a>
                     </li>
                     @endcan
@@ -79,7 +79,15 @@
                     <li class="{{ setActive('backend/posts') }}">
                         <a href="{{ route('backend.posts.index') }}" title="Post">
                             <i class="fa fa-file-text-o"><span class="path1"></span><span class="path2"></span></i>
-                            <span>Post</span>
+                            <span>Berita</span>
+                        </a>
+                    </li>
+                    @endcan
+                     @can('blogcategories.index')
+                    <li class="{{ setActive('backend/blogcategories') }}">
+                        <a href="{{ route('backend.blogcategories.index') }}" title="Blog Category">
+                            <i class="fa fa-folder"><span class="path1"></span><span class="path2"></span></i>
+                            <span>Kategori Blog</span>
                         </a>
                     </li>
                     @endcan
@@ -96,7 +104,7 @@
                     <li class="{{ setActive('backend/announcement') }}">
                         <a href="{{ route('backend.announcement.index') }}" title="Announcement">
                             <i class="fa fa-bullhorn" aria-hidden="true"><span class="path1"></span><span class="path2"></span></i>
-                            <span>{{ __('Announcement')}}</span>
+                            <span>{{ __('Pengumuman')}}</span>
                         </a>
                     </li>
                     @endcan
@@ -122,7 +130,7 @@
                     <a href="#">
                         <i class="fa fa-file-image-o" aria-hidden="true"></i>
                         <span class="path1"></span><span class="path2"></span></i>
-                        <span>Galeries</span>
+                        <span>Galler</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-right pull-right"></i>
                         </span>
@@ -156,7 +164,7 @@
                         <li class="{{ setActive('backend/sliders') }}">
                             <a href="{{ route('backend.sliders.index') }}">
                                 <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
-                                Sliders
+                                Gambar Slider
                             </a>
                         </li>
                         @endcan
@@ -164,7 +172,7 @@
                         <li class="{{ setActive('backend/statistic') }}">
                             <a href="{{ route('backend.statistic.index') }}">
                                 <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
-                                {{ __('Statistic')}}
+                                {{ __('Statistik Data')}}
                             </a>
                         </li>
                         @endcan
@@ -208,7 +216,7 @@
                             <li class="{{ setActive('backend/jenisptk') }}">
                                 <a href="{{ route('backend.jenisptk.index') }}">
                                     <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
-                                    JenisPTK
+                                    Jenis PTK
                                 </a>
                             </li>
                             @endcan
@@ -253,7 +261,7 @@
                         <li class="{{ setActive('backend/settings') }}">
                             <a href="{{ route('backend.settings') }}">
                                 <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
-                                Setting Web
+                                Pengaturan Sistem
                             </a>
                         </li>
                         @endcan
@@ -261,14 +269,14 @@
                         <li class="{{ setActive('backend/menu') }}">
                             <a href="{{ route('backend.menu.index') }}">
                                 <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
-                                Menu
+                                PengaturanMenu
                             </a>
                         </li>
                         @endcan
                         <li class="{{ setActive('backend/socialmedia') }}">
                             <a href="{{ route('backend.socialmedia.index') }}">
                                 <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
-                                Social Media
+                                Social Media link
                             </a>
                         </li>
                     </ul>
@@ -309,7 +317,7 @@
                         <li class="{{ setActive('backend/users/index') }}">
                             <a href="{{ route('backend.users.index') }}">
                                 <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
-                                Users
+                                Pengguna
                             </a>
                         </li>
                         @endcan

@@ -70,7 +70,7 @@
                             @endif
                             <i class="fa fa-folder-open me-2 ms-2" aria-hidden="true"></i>
                             <a title="Category" href="{{route('blog.category', $item->blogcategory->slug)}}" target="_blank" style="text-decoration: none; ">
-                                {{ !empty($item->postcategory_id) ? $item->blogcategory->title : '' }}
+                                {{ !empty($item->blogcategory_id) ? $item->blogcategory->title : '' }}
                             </a>
                             <i class="fa fa-tags ms-2 me-2" aria-hidden="true" title="Tags">
                             </i>{!! $item->tags_htmlback !!}

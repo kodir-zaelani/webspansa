@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Support\Str;
-use App\Models\Postcategory;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Intervention\Image\Laravel\Facades\Image;
 use App\Http\Requests\PostcategorystoreRequest;
 use App\Http\Requests\PostcategoryupdateRequest;
+use App\Models\Postcategory;
+use Illuminate\Support\Str;
+use Intervention\Image\Laravel\Facades\Image;
 
 class PostcategoryController extends Controller
 {
-     protected $uploadPath;
+    protected $uploadPath;
     /**
     * __construct
     *

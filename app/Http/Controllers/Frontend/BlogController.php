@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Blog;
-use App\Models\Postcategory;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
+use App\Models\Blogcategory;
+use App\Models\Postcategory;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
@@ -35,7 +37,7 @@ class BlogController extends Controller
 
     public function blog_category(Request $request) {
         $this->segment = $request->segment(3);
-        $blogcategory = Postcategory::where('slug', $this->segment)->first();
+        $blogcategory = Blogcategory::where('slug', $this->segment)->first();
         $blogs = $blogcategory->blogs()
         ->published()
         ->publishedate()
@@ -46,6 +48,36 @@ class BlogController extends Controller
             'blogs' => $blogs,
             'blogcategory' => $blogcategory,
             'title' => 'Blog Category'
+        ]);
+    }
+
+    public function news_tag(Request $request) {
+        $this->segment = $request->segment(3);
+        $tag = Tag::where('slug', $this->segment)->first();
+        $blogs =$tag->blogs()
+                ->with('blogcategory', 'author')
+                ->latest()
+                ->published()
+                ->paginate(10);
+        return view('frontend.blog.all-blog-tags', [
+            'newstag' => $blogs,
+            'tag_name' => $tag->title,
+            'title' => 'Tag Berita'
+        ]);
+    }
+
+    public function news_author(Request $request) {
+        $this->segment = $request->segment(3);
+        $author = User::where('id', $this->segment)->first();
+        $blogs =$author->blogs()
+                ->with('blogcategory', 'author')
+                ->latest()
+                ->published()
+                ->paginate(10);
+        return view('frontend.blog.all-blog-author', [
+            'newsauthor' => $blogs,
+            'author_name' => $author->name,
+            'title' => 'Penulis Berita'
         ]);
     }
 }

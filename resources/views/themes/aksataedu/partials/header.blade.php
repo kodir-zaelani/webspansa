@@ -1,7 +1,7 @@
-<header class="top-bar text-dark d-md-block d-none">
+<header class="bg-white top-bar text-dark d-md-block d-none">
     @include('themes.aksataedu.partials.topbar')
 
-    <nav hidden class="nav-dark">
+    <nav hidden class="bg-white nav-dark">
         <div class="nav-header">
             <a href="{{route('root')}}" class="brand">
                 <img src="{{ $global_option->logo_menuUrl ? $global_option->logo_menuUrl : '/assets/uploads/images/no_image.png' }}" alt="" style="max-width: 50%"/>

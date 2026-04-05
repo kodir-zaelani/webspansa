@@ -26,7 +26,7 @@ class RequestBlogUpdate extends FormRequest
         return [
             'image'           => 'image|mimes:jpeg,jpg,png,webp|max:1500',
             'title'           => 'required',
-            'postcategory_id' => 'required',
+            'blogcategory_id' => 'required',
             'content'         => 'required',
             'published_at'    => 'required',
         ];

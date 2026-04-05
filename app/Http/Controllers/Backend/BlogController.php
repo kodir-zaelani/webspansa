@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Tag;
-use App\Models\Blog;
-use Illuminate\Support\Str;
-use App\Models\Postcategory;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RequestBlogStore;
 use App\Http\Requests\RequestBlogUpdate;
+use App\Models\Blog;
+use App\Models\Blogcategory;
+use App\Models\Postcategory;
+use App\Models\Tag;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Intervention\Image\Laravel\Facades\Image;
 
 class BlogController extends Controller
@@ -43,7 +44,7 @@ class BlogController extends Controller
     public function create()
     {
         return view('backend.blog.create', [
-            'postcatagories' => Postcategory::orderBy('title', 'asc')->get(),
+            'blogcategories' => Blogcategory::orderBy('title', 'asc')->get(),
             'tags' => Tag::orderBy('title', 'asc')->get(),
             'title'=> 'Blog create'
         ]);
@@ -54,10 +55,8 @@ class BlogController extends Controller
         // Default data
         $data = [
             'title'              => $request->input('title'),
-            'postcategory_id'    => $request->input('postcategory_id'),
+            'blogcategory_id'    => $request->input('blogcategory_id'),
             'slug'               => Str::slug($request->input('title')),
-            'headline'           => $request->input('headline'),
-            'selection'          => $request->input('selection'),
             'content'            => $request->input('content'),
             'video'              => $request->input('video'),
             'caption_video'      => $request->input('caption_video'),
@@ -151,7 +150,7 @@ class BlogController extends Controller
     {
 
         return view('backend.blog.edit', [
-            'postcatagories'    => Postcategory::orderBy('title', 'asc')->get(),
+            'blogcategories'    => Blogcategory::orderBy('title', 'asc')->get(),
             'blog'              => $blog,
             'tags'              => Tag::orderBy('title', 'asc')->get(),
             'title'             => 'Blog Edit',
@@ -175,10 +174,8 @@ class BlogController extends Controller
         // Default data
         $data = [
             'title'           => $request->input('title'),
-            'postcategory_id' => $request->input('postcategory_id'),
+            'blogcategory_id' => $request->input('blogcategory_id'),
             'slug'            => Str::slug($request->input('title')),
-            'headline'        => $request->input('headline'),
-            'selection'       => $request->input('selection'),
             'content'         => $request->input('content'),
             'video'           => $request->input('video'),
             'caption_video'   => $request->input('caption_video'),

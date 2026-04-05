@@ -24,9 +24,9 @@ class RequestBlogStore extends FormRequest
     public function rules()
     {
         return [
-            'image'           => 'image|mimes:jpeg,jpg,png,webp|max:1500',
+            'image'           => 'required|image|mimes:jpeg,jpg,png,webp|max:1500',
             'title'           => 'required|unique:blogs,title',
-            'postcategory_id' => 'required',
+            'blogcategory_id' => 'required',
             'content'         => 'required',
             'published_at'    => 'required',
         ];

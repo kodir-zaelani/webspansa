@@ -43,39 +43,7 @@
                                 <div class="form-control-feedback"><small> <code>{{ $message }}</code> </small></div>
                                 @enderror
                             </div>
-                            <div class="form-group visually-hidden">
-                                <label class="form-label">Headline :</label>
-                                <div class="demo-radio-button">
-                                    <input {{ $blog->headline == 0 ? 'checked' : '' }} value="0" name="headline"
-                                    type="radio" id="radio_32" class="with-gap radio-col-success" />
-                                    <label for="radio_32">Inactive</label>
-                                    <input {{ $blog->headline == 1 ? 'checked' : '' }} value="1" name="headline"
-                                    type="radio" id="radio_30" class="with-gap radio-col-success" />
-                                    <label for="radio_30">Active</label>
-                                </div>
-                            </div>
-                            <div class="form-group visually-hidden">
-                                <label class="form-label">Primary / Selection :</label>
-                                <div class="demo-radio-button">
-                                    <input {{ $blog->selection == 0 ? 'checked' : '' }} value="0" name="selection"
-                                    type="radio" id="radio_33" class="with-gap radio-col-primary" checked />
-                                    <label for="radio_33">Primary</label>
-                                    <input {{ $blog->selection == 1 ? 'checked' : '' }} value="1" name="selection"
-                                    type="radio" id="radio_34" class="with-gap radio-col-primary" />
-                                    <label for="radio_34">Selection</label>
-                                </div>
-                            </div>
-                            <div class="form-group" hidden>
-                                <label class="form-label">News/Blog:</label>
-                                <div class="demo-radio-button">
-                                    <input {{ $blog->statuspost == 0 ? 'checked' : '' }} value="0" name="statuspost"
-                                    type="radio" id="radio_41" class="with-gap radio-col-primary" />
-                                    <label for="radio_41">News</label>
-                                    <input {{ $blog->statuspost == 1 ? 'checked' : '' }} value="1" name="statuspost"
-                                    type="radio" id="radio_40" class="with-gap radio-col-primary" />
-                                    <label for="radio_40">Blog</label>
-                                </div>
-                            </div>
+
                             <div class="form-group">
                                 <label for="video">Video</label>
                                 <div class="mt-2 input-group">
@@ -174,19 +142,19 @@
                             </h4>
                         </div>
                         <div class="box-body">
-                            <div class="form-group @error('postcategory_id') has-error @enderror">
+                            <div class="form-group @error('blogcategory_id') has-error @enderror">
                                 <label class="form-label">Category <span class="text-danger">*</span></label>
-                                <select class="form-control select2" style="width: 100%;" name="postcategory_id">
+                                <select class="form-control select2" style="width: 100%;" name="blogcategory_id">
                                     <option value="" holder>Select Category</option>
-                                    @foreach ($postcatagories as $item)
+                                    @foreach ($blogcategories as $item)
                                     <option value="{{ $item->id }}"
-                                        {{ old('postcategory_id') == $item->id ? 'selected' : '' }}
-                                        @if ($item->id == $blog->postcategory_id) selected @endif>
+                                        {{ old('blogcategory_id') == $item->id ? 'selected' : '' }}
+                                        @if ($item->id == $blog->blogcategory_id) selected @endif>
                                         {{ $item->title }}
                                     </option>
                                     @endforeach
                                 </select>
-                                @error('postcategory_id')
+                                @error('blogcategory_id')
                                 <span class="help-block"><strong>{{ $message }}</strong></span>
                                 @enderror
                             </div>

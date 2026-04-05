@@ -3,15 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Agenda;
-use App\Models\Announcement;
 use App\Models\Editorial;
 use App\Models\Foto;
 use App\Models\Gallery;
+use App\Models\Greeting;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\Slider;
-use App\Models\Statistic;
 use App\Models\Video;
 use Illuminate\Http\Request;
 
@@ -20,11 +18,9 @@ class FrontendController extends Controller
     public function index(){
         return view('themes.aksataedu.home.index',[
             'sliders' => Slider::published()->latest()->take(8)->get(),
-            'statistics' => Statistic::with('author')->published()->take(6)->get(),
-            'featured_news' => Post::with('author','postcategory')->where('headline', 1)->published()->latest()->take(8)->get(),
+            'greeting' => Greeting ::latest()->take(1)->first(),
+            'featured_news' => Post::with('author','postcategory')->where('headline', 1)->published()->latest()->take(12)->get(),
             'latest_news' => Post::with('author','postcategory')->published()->latest()->take(6)->get(),
-            'latest_announcements' => Announcement::with('author')->published()->latest()->take(4)->get(),
-            'latest_agendas' => Agenda::with('author')->published()->latest()->take(4)->get(),
             'title' => 'Beranda'
         ]);
     }
@@ -39,9 +35,15 @@ class FrontendController extends Controller
     //         'title' => 'Beranda'
     //     ]);
     // }
+
     public function contact(){
-        return view('frontend.home.contact',[
-            'title' => 'Kontak'
+        return view('themes.aksataedu.static.contact',[
+            'title' => 'Kontak Kami'
+        ]);
+    }
+    public function about(){
+        return view('themes.aksataedu.static.about',[
+            'title' => 'Tentang Kami'
         ]);
     }
 

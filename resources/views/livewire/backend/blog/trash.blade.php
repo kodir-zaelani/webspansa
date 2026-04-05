@@ -58,7 +58,7 @@
                             <i class="fa fa-user ms-2 me-2" aria-hidden="true"></i>
                             {{ $item->author->name }}
                             <i class="fa fa-folder-open me-2 ms-2" aria-hidden="true"></i>
-                            {{ !empty($item->postcategory_id) ? $item->blogcategory->title : '' }}
+                            {{ !empty($item->blogcategory_id) ? $item->blogcategory->title : '' }}
                             <i class="fa fa-tags ms-2 me-2" aria-hidden="true" title="Tags"></i>
                             {!! $item->tags_html !!}
                         </td>
