@@ -9,6 +9,7 @@ use App\Models\Editorial;
 use App\Models\Foto;
 use App\Models\Greeting;
 use App\Models\Page;
+use App\Models\Performance;
 use App\Models\Post;
 use App\Models\Slider;
 use App\Models\Video;
@@ -73,7 +74,12 @@ class FrontendController extends Controller
         ]);
     }
 
-
+public function all_performance(){
+        return view('themes.aksataedu.performance.performance-all',[
+            'performances' => Performance::with('author')->published()->latest()->paginate(16),
+            'title' => 'Semua Berita'
+        ]);
+    }
 
 
     public function upload(Request $request)
