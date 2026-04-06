@@ -34,6 +34,7 @@ class PostController extends Controller
         $postcategory = Postcategory::where('slug', $this->segment)->first();
         return view('themes.aksataedu.post.all-news-category', [
             'newspostcategory' => Post::with('postcategory', 'tags', 'author')->where('postcategory_id', $postcategory->id)->paginate(10),
+            'postcategory' => $postcategory,
             'title' => 'Kategori Berita'
         ]);
     }
