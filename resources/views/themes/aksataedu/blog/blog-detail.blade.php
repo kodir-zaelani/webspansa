@@ -26,16 +26,22 @@
             </div>
             <div class="col-xl-9 col-md-7 col-12">
                 <div class="box">
-                    <div class="box-body">
+                    <div class="box-body blog-post">
                         <h3 class="box-title">{{ $item->title }}</h3>
-                        <div class="cour-stac d-lg-flex align-items-center text-fade">
-                            <div class="d-flex align-items-center">
-                                <p><i class="fa fa-book-open text-muted me-5"></i> {{ $item->reading_time }} menit</p>
-                                <p class="lt-sp">|</p>
-                                <p><i class="fa fa-calendar-o me-5"></i> {{$item->published_at ? $item->published_at : $item->created_at}}</p>
-
-                            </div>
+                        <div class="mb-10 entry-meta">
+                            <ul class="list-unstyled">
+                                <li><a href="{{route('blog.category', $item->blogcategory->slug)}}" title="{{$item->blogcategory->title ?? 'Uncategorized'}}"><i class="fa fa-folder-open-o"></i> {{ $item->blogcategory->title ?? 'Uncategorized' }}</a></li>
+                                <li><a href="#"><i class="fa fa-eye me-5"></i> {{$item->view_count}} kali</a></li>
+                                <li><a href="#"><i class="fa fa-calendar-o"></i> {{$item->published_at ? $item->date_published : $item->date_created}}</a></li>
+                                <li><a href="#"><i class="fa fa-book-open me-5"></i> {{ $item->reading_time }} menit</a></li>
+                                <li>
+                                    <a href="{{route('news.author', $item->author->id)}}" title="{{$item->author->displayname ?? $item->author->name}}">
+                                        <i class="fa fa-user me-5"></i> {{$item->author->displayname ?? $item->author->name}}
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
+
                         <img class="py-10 box-img-top btrr-5 btlr-5" src="{{$item->image_url ? $item->image_url : asset('uploads/images/logo/'. $global_option->logo)}}" alt="Card image cap">
                         <hr>
                         <p class="fs-16 mb-30">

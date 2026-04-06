@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Blog extends Model
 {
@@ -154,13 +155,19 @@ class Blog extends Model
         return $query->where("published_at", "<=",  date('Y-m-d'));
     }
 
+
     // fungsi  untuk manampilkan yang tanggal diffForHumans publish
     public function getDatepublishedAttribute($value)
     {
         // return $this->published_at->diffForHumans(); // laravel below 9
-        return is_null($this->published_at) ? '' : Carbon::parse($this->published_at)->diffForHumans(); // laravel 10 or latest
+        // return is_null($this->published_at) ? '' : Carbon::parse($this->published_at)->diffForHumans(); // laravel 10 or latest
+         return \Carbon\Carbon::parse($this->attributes['published_at'])->diffForHumans();
     }
-
+    // fungsi  untuk manampilkan yang tanggal diffForHumans publish
+    public function getDatecreatedAttribute($value)
+    {
+         return \Carbon\Carbon::parse($this->attributes['created_at'])->diffForHumans();
+    }
     public function scopePublished($query)
     {
         return $query->where("status", "=", 1);
@@ -198,5 +205,12 @@ class Blog extends Model
                 ->orderByRaw('min(published_at) desc')
                 ->get();
         }
+    }
+    public function getReadingTimeAttribute()
+    {
+        // Hitung jumlah kata, asumsikan 200 kata per menit
+        $minutes = ceil(str_word_count(strip_tags($this->content)) / 200);
+
+        return $minutes . ' ' . Str::plural('menit', $minutes) . ' baca';
     }
 }

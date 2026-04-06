@@ -33,8 +33,7 @@ class PostController extends Controller
         $this->segment = $request->segment(3);
         $postcategory = Postcategory::where('slug', $this->segment)->first();
         return view('themes.aksataedu.post.all-news-category', [
-            'newspostcategory' => Post::with('postcategory', 'tags', 'author')->where('postcategory_id', $postcategory->id)->paginate(10),
-            'postcategory' => $postcategory,
+            'all_news' => Post::with('postcategory', 'tags', 'author')->where('postcategory_id', $postcategory->id)->paginate(10),
             'title' => 'Kategori Berita'
         ]);
     }
@@ -46,8 +45,8 @@ class PostController extends Controller
                 ->latest()
                 ->published()
                 ->paginate(10);
-        return view('frontend.post.all-news-tags', [
-            'newstag' => $posts,
+        return view('themes.aksataedu.post.all-news-tags', [
+            'all_news' => $posts,
             'tag_name' => $tag->title,
             'title' => 'Tag Berita'
         ]);
@@ -61,8 +60,8 @@ class PostController extends Controller
                 ->latest()
                 ->published()
                 ->paginate(10);
-        return view('frontend.post.all-news-author', [
-            'newsauthor' => $posts,
+        return view('themes.aksataedu.post.all-news-author', [
+            'all_news' => $posts,
             'author_name' => $author->name,
             'title' => 'Penulis Berita'
         ]);

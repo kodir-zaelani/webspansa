@@ -44,9 +44,17 @@
                                                 </a>
                                                 <span>
                                                     <small class="text-secondary fst-italic"><i class="fa fa-calendar-o"></i> {{ \Carbon\Carbon::parse($item->published_at ? $item->published_at : $item->created_at)->format('M j, Y') }}</small>
+                                                </span>
+                                                <span class="ms-3"> |
+                                                    <i class="mx-2 fa fa-eye text-secondary"></i><small class="text-primary fw-semibold ">{{ $item->view_count }} kali</small>
                                                 </span><br/>
-                                                <span>
-                                                    <i class="fa fa-eye me-2 text-secondary"></i><small class="text-primary fw-semibold ">{{ $item->view_count }} kali</small>
+                                                <span >
+                                                    <i class="me-2 fa fa-user text-secondary"></i>
+                                                    <small class="text-primary fw-semibold ">
+                                                       <a href="{{route('news.author', $item->author->id)}}" title="{{$item->author->displayname ?? $item->author->name}}">
+                                                            {{ $item->author->displayname ?? $item->author->name }}
+                                                        </a>
+                                                    </small>
                                                 </span>
                                             </div>
                                         </div>
