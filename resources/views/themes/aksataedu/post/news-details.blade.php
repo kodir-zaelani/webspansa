@@ -22,6 +22,7 @@
                 <div class="course-detail-bx">
                     @include('themes.aksataedu.partials.sidebar-recent-news')
                     @include('themes.aksataedu.partials.sidebar-postcategory')
+                    @include('themes.aksataedu.partials.sidebar-recent-blog')
                 </div>
             </div>
             <div class="col-xl-9 col-md-7 col-12">
