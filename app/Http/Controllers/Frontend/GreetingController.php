@@ -8,8 +8,8 @@ use App\Models\Greeting;
 class GreetingController extends Controller
 {
      public function all_greetings(){
-        return view('themes.aksataedu.greetings.all-greeting',[
-            'all_greetings' => Greeting::with('author')->published()->latest()->paginate(8),
+        return view('themes.aksataedu.greetings.greeting-all',[
+            'greetings' => Greeting::with('author')->published()->latest()->paginate(8),
             'title' => 'Semua Sambutan'
         ]);
     }

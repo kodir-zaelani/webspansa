@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Pagination\Paginator;
+// use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
@@ -36,8 +36,8 @@ class AppServiceProvider extends ServiceProvider
         });
 
         // Paginator::useBootstrapFive();
-        Paginator::defaultView(
-            'pagination::bootstrap-edit-5',
-        );
+        // Paginator::defaultView(
+        //     'pagination::bootstrap-5-aksata',
+        // );
     }
 }

@@ -15,7 +15,7 @@ class BlogController extends Controller
     protected $limit = 6;
     public function index()
     {
-        return view('frontend.blog.index', [
+        return view('themes.aksataedu.blog.blog-all', [
             'blogs' => Blog::with('blogcategory', 'tags', 'author')
             ->Published()
             ->Publishedate()

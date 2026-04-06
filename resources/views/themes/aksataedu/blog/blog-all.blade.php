@@ -20,15 +20,15 @@
         <div class="row">
             <div class="col-xl-3 col-md-4 col-sm-12">
                 <div class="course-detail-bx">
-                    @include('themes.aksataedu.partials.sidebar-recent-news')
-                    @include('themes.aksataedu.partials.sidebar-postcategory')
+                    @include('themes.aksataedu.partials.sidebar-recent-blog')
+                    @include('themes.aksataedu.partials.sidebar-blogcategory')
                 </div>
             </div>
             <div class="col-xl-9 col-md-8 col-12">
                 <div class="box">
                     <div class="box-body">
                         <div class="row justify-content-center">
-                            @foreach ($all_news as $item)
+                            @foreach ($blogs as $item)
                             <div class="mb-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 d-none d-md-block d-lg-block d-xl-block">
                                 <div class="mb-2 border-0 card">
                                     <div class="row g-0">
@@ -59,12 +59,12 @@
 
                         <div class="row justify-content-center d-md-none d-lg-none d-xl-none d-block">
                             <div class="text-center col-lg-12 col-12">
-                                {{ $all_news->links('vendor.pagination.bootstrap-5-aksata-simple') }}
+                                {{ $blogs->links('vendor.pagination.bootstrap-5-aksata-simple') }}
                             </div>
                         </div>
                         <div class="row justify-content-center d-md-block d-lg-block d-xl-block d-none">
                             <div class="text-center col-lg-12 col-12">
-                                {{ $all_news->links('vendor.pagination.bootstrap-5-aksata') }}
+                                {{ $blogs->links('vendor.pagination.bootstrap-5-aksata') }}
                             </div>
                         </div>
                     </div>

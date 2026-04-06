@@ -22,7 +22,7 @@ Route::get('berita/penulis/{id}',  [App\Http\Controllers\Frontend\PostController
 Route::get('berita/pencarian',  [App\Http\Controllers\Frontend\PostController::class, 'news_search'])->name('news.search');
 
 Route::get('blog/detail/{slug}',  [App\Http\Controllers\Frontend\BlogController::class, 'detail'])->name('blog.detail');
-Route::get('blog',  [App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('blog.all');
+Route::get('blog/semua-blog',  [App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('blog.all');
 Route::get('blog/kategori/{slug}',  [App\Http\Controllers\Frontend\BlogController::class, 'blog_category'])->name('blog.category');
 Route::get('blog/tag/{slug}',  [App\Http\Controllers\Frontend\BlogController::class, 'blog_tag'])->name('blog.tag');
 Route::get('blog/penulis/{id}',  [App\Http\Controllers\Frontend\BlogController::class, 'blog_author'])->name('blog.author');
