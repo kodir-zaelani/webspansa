@@ -30,6 +30,8 @@ Route::get('blog/pencarian',  [App\Http\Controllers\Frontend\BlogController::cla
 
 Route::prefix('halaman')->group(function () {
     Route::get('/detail/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'pagedetail'])->name('page.detail');
+    Route::get('/pengumuman/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'announcementdetail'])->name('announcement.detail');
+    Route::get('/agenda/{slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'agendadetail'])->name('agenda.detail');
     // Route::get('/kategory/{slug}', App\Http\Livewire\Template\Frontend\Terasgreen\Page\Pagecategorylist::class)->name('page.category');
 });
 Route::middleware(['auth', 'verified', 'web'])->group(function () {

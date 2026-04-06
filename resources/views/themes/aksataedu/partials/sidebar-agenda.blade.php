@@ -14,7 +14,7 @@
                         <img class="img-fluid bg-primary-light" src="{{$item->imageThumbUrl ? $item->imageThumbUrl : asset('uploads/images/default-image.png')}}" alt="">
                     </div>
                     <div class="recent-post-info">
-                        <a href="#" title="{{$item->title}}">{{Str::limit($item->title, 40)}}</a>
+                        <a href="{{ route('agenda.detail', $item->slug) }}" title="{{$item->title}}">{{Str::limit($item->title, 40)}}</a>
                         <span><i class="fa fa-calendar-o"></i> {{ $item->created_at->format('F j, Y') }}</span>
                     </div>
                 </div>

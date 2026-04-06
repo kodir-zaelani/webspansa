@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Agenda;
+use App\Models\Announcement;
 use App\Models\Editorial;
 use App\Models\Foto;
-use App\Models\Gallery;
 use App\Models\Greeting;
 use App\Models\Page;
 use App\Models\Post;
@@ -24,17 +25,6 @@ class FrontendController extends Controller
             'title' => 'Beranda'
         ]);
     }
-
-    // public function index(){
-    //     return view('frontend.home.index',[
-    //         'sliders' => Slider::published()->latest()->take(8)->get(),
-    //         'featured_news' => Post::with('author','postcategory')->where('headline', 1)->published()->latest()->take(6)->get(),
-    //         'latest_news' => Post::with('author','postcategory')->published()->latest()->take(6)->get(),
-    //         'statistics' => Statistic::with('author')->published()->take(6)->get(),
-    //         'latest_video' => Video::published()->latest()->take(6)->get(),
-    //         'title' => 'Beranda'
-    //     ]);
-    // }
 
     public function contact(){
         return view('themes.aksataedu.static.contact',[
@@ -61,17 +51,30 @@ class FrontendController extends Controller
     }
 
 
+    public function announcementdetail(Request $request, Announcement $announcement){
+        $this->segment = $request->segment(3);
+        $announcement->increment('view_count');
 
-    // public function storeimage(Request $request){
-    //     $request->validate([
-    //         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    //     ]);
+        return view('themes.aksataedu.static.announcement-detail',[
+            'item' => Announcement::published()->where('slug', $this->segment)->first(),
+            'title' => 'Detail Pengumuman'
+        ]);
+    }
 
-    //     $imageName = time().'.'.$request->fotos->extension();
-    //     $request->fotos->move(public_path('fotos'), $imageName);
 
-    //     return redirect()->back()->with(['success'=>'Image uploaded successfully.']);
-    // }
+    public function agendadetail(Request $request, Agenda $agenda){
+        $this->segment = $request->segment(3);
+        $agenda->increment('view_count');
+
+        return view('themes.aksataedu.static.agenda-detail',[
+            // 'agenda' => Agenda::published()->where('slug', $this->segment)->first(),
+            'item' => Agenda::published()->where('slug', $this->segment)->first(),
+            'title' => 'Detail Agenda'
+        ]);
+    }
+
+
+
 
     public function upload(Request $request)
     {

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Announcement extends Model
 {
@@ -81,5 +82,13 @@ class Announcement extends Model
     public function scopeDraft($query)
     {
         return $query->where("status", "=", 0);
+    }
+
+    public function getReadingTimeAttribute()
+    {
+        // Hitung jumlah kata, asumsikan 200 kata per menit
+        $minutes = ceil(str_word_count(strip_tags($this->content)) / 200);
+
+        return $minutes . ' ' . Str::plural('menit', $minutes) . ' baca';
     }
 }
