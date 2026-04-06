@@ -9,7 +9,9 @@
             <div class="col-lg-6 col-12 position-relative">
                 <div class="popup-vdo mt-30 mt-md-0">
                     <img src="{{$global_option->bg_headerThumbUrl ? $global_option->bg_headerThumbUrl : asset('uploads/images/no_image.png')}}" class="rounded img-fluid h-350" alt="">
+                    @if ($global_option->video)
                     <a href="{{$global_option->video }}" class="popup-youtube play-vdo-bt waves-effect waves-circle btn btn-circle btn-primary btn-lg"><i class="mdi mdi-play"></i></a>
+                    @endif
                 </div>
             </div>
         </div>

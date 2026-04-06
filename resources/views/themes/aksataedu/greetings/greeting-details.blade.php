@@ -16,15 +16,15 @@
     </div>
 </section>
 <section class="py-50">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-xl-4 col-md-5 col-sm-12">
+            <div class="col-xl-3 col-md-4 col-sm-12">
                 <div class="course-detail-bx">
                     @include('themes.aksataedu.partials.sidebar-greeting')
                     @include('themes.aksataedu.partials.sidebar-recent-news')
                 </div>
             </div>
-            <div class="col-xl-8 col-md-7 col-12">
+            <div class="col-xl-9 col-md-8 col-12">
                 <div class="box">
                     <div class="box-body">
                         <h3 class="box-title">{{ $item->title }}</h3>
@@ -47,4 +47,5 @@
         </div>
     </div>
 </section>
+@include('themes.aksataedu.blog.blog-new-page')
 @endsection

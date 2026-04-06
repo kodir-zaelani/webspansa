@@ -14,7 +14,7 @@ class RecentNewsServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer(['*'], function ($view) {
-        $global_recentposts = Post::with('author', 'postcategory')->Published()->orderBy('created_at', 'desc')->take(5)->get();
+        $global_recentposts = Post::with('author', 'postcategory')->Published()->orderBy('created_at', 'desc')->take(4)->get();
             if (!empty($global_recentposts)) {
                 $view->with('global_recentposts', $global_recentposts);
             } else {
