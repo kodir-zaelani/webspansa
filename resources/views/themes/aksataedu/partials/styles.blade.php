@@ -17,3 +17,4 @@
 <link rel="stylesheet" href="{{ asset('') }}assets/frontedu/css/skin_color.css">
 <link href="{{asset('')}}assets/icons/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
 @stack('styles')
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=69d3f11f93f102c20db92ece&product=sop' async='async'></script>
