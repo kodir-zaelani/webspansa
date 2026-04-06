@@ -5,14 +5,16 @@
     <div class="pt-1 box-body">
         <div class="clearfix widget">
             <div class="media-list media-list-divided">
-                @foreach ($blogcategories as $item)
+                @forelse ($blogcategories as $item)
                 @if ($item->blogs->count() != 0)
                 <a class="px-0 pb-0 media media-single" href="#">
                     <span class="title ms-0">{{ $item->title }}</span>
                     <span class="mx-0 badge badge-secondary-light">{{ $item->blogs->count() }}</span>
                 </a>
                 @endif
-                @endforeach
+                @empty
+                <p>No blog categories available.</p>
+                @endforelse
             </div>
         </div>
     </div>

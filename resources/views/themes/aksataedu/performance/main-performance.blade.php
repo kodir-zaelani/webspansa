@@ -13,7 +13,7 @@
             </div>
             <div class="col-lg-9 col-md-8 col-12">
                 <div class="row justify-content-center">
-                    @foreach ($global_performances as $item)
+                    @forelse ($global_performances as $item)
                     <div class="mb-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 d-none d-md-block d-lg-block d-xl-block">
                         <div class="mb-2 border-0 card">
                             <div class="row g-0">
@@ -39,7 +39,9 @@
                         </div>
                         <hr>
                     </div>
-                    @endforeach
+                    @empty
+                    <p>No performance records available.</p>
+                    @endforelse
                 </div>
             </div>
         </div>
