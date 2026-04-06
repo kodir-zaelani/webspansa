@@ -53,10 +53,10 @@ class FrontendController extends Controller
         $page = Page::published()->where('slug', $this->segment)->first();
         $page->increment('view_count');
 
-        return view('frontend.page.detail',[
+        return view('themes.aksataedu.static.page-detail',[
             'pages' => Page::published()->where('pagecategory_id', $page->pagecategory_id)->get(),
-            'page' => $page,
-            'title' => 'Detail Page'
+            'item' => $page,
+            'title' => 'Detail Halaman'
         ]);
     }
 
