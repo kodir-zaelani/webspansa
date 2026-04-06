@@ -11,6 +11,9 @@ Route::get('/video/details/{slug}', [App\Http\Controllers\Frontend\FrontendContr
 
 Route::post('gallery/upload', [App\Http\Controllers\Backend\GalleryController::class, 'upload']);
 
+Route::get('sambutan/semua-sambutan', [App\Http\Controllers\Frontend\GreetingController::class, 'all_greetings'])->name('greeting.all');
+Route::get('sambutan/detail/{slug}', [App\Http\Controllers\Frontend\GreetingController::class, 'greeting_detail'])->name('greeting.detail');
+
 Route::get('berita/semua-berita', [App\Http\Controllers\Frontend\PostController::class, 'all_news'])->name('news.all');
 Route::get('berita/details/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'news_detail'])->name('news.detail');
 Route::get('berita/kategori/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'news_category'])->name('news.category');

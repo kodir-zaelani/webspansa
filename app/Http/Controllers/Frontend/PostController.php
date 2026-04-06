@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
      public function all_news(){
-        return view('frontend.post.all-news',[
+        return view('themes.aksataedu.post.news-all',[
             'all_news' => Post::with('author','postcategory')->published()->latest()->paginate(16),
             'title' => 'Semua Berita'
         ]);
@@ -22,7 +22,7 @@ class PostController extends Controller
         $post->increment('view_count');
         $post_item =Post::with('postcategory', 'tags', 'author')->where('slug', $slug)->first();
         $postcategories = Postcategory::with('posts')->where('id', '!=', $post_item->postcategory_id)->get();
-        return view('frontend.post.news-details', [
+        return view('themes.aksataedu.post.news-details', [
             'item' => $post_item,
             'postcategories' => $postcategories,
             'title' => 'Detail Berita',
@@ -32,7 +32,7 @@ class PostController extends Controller
     public function news_category(Request $request) {
         $this->segment = $request->segment(3);
         $postcategory = Postcategory::where('slug', $this->segment)->first();
-        return view('frontend.post.all-news-category', [
+        return view('themes.aksataedu.post.all-news-category', [
             'newspostcategory' => Post::with('postcategory', 'tags', 'author')->where('postcategory_id', $postcategory->id)->paginate(10),
             'title' => 'Kategori Berita'
         ]);

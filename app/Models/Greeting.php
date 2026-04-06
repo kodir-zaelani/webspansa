@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Greeting extends Model
 {
@@ -73,6 +74,13 @@ class Greeting extends Model
     }
 
     //change default date view
+    public function getPublishedAtAttribute($publishedAt)
+    {
+        // return Carbon::parse($publishedAt)->format('d-M-Y');
+        return \Carbon\Carbon::parse($this->attributes['published_at'])
+        ->diffForHumans();
+    }
+    //change default date view
     public function getCreatedAtAttribute($createdAt)
     {
         // return Carbon::parse($createdAt)->format('d-M-Y');
@@ -93,5 +101,11 @@ class Greeting extends Model
         return $query->where("status", "=", 1);
     }
 
+    public function getReadingTimeAttribute()
+    {
+        // Hitung jumlah kata, asumsikan 200 kata per menit
+        $minutes = ceil(str_word_count(strip_tags($this->content)) / 200);
 
+        return $minutes . ' ' . Str::plural('menit', $minutes) . ' baca';
+    }
 }

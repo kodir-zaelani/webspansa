@@ -8,7 +8,7 @@
 					<div class="text-center">
 						<h2 class="text-white page-title">{{ __($title ?? 'Contact us') }}</h2>
 						<ol class="bg-transparent breadcrumb justify-content-center">
-							<li class="breadcrumb-item"><a href="#" class="text-white-50"><i class="mdi mdi-home-outline"></i></a></li>
+							<li class="breadcrumb-item"><a href="{{route('root')}}" class="text-white-50"><i class="mdi mdi-home-outline"></i></a></li>
 						</ol>
 					</div>
 				</div>

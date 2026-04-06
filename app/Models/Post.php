@@ -167,7 +167,13 @@ class Post extends Model
     public function getDatepublishedAttribute($value)
     {
         // return $this->published_at->diffForHumans(); // laravel below 9
-        return is_null($this->published_at) ? '' : Carbon::parse($this->published_at)->diffForHumans(); // laravel 10 or latest
+        // return is_null($this->published_at) ? '' : Carbon::parse($this->published_at)->diffForHumans(); // laravel 10 or latest
+         return \Carbon\Carbon::parse($this->attributes['published_at'])->diffForHumans();
+    }
+    // fungsi  untuk manampilkan yang tanggal diffForHumans publish
+    public function getDatecreatedAttribute($value)
+    {
+         return \Carbon\Carbon::parse($this->attributes['created_at'])->diffForHumans();
     }
 
     public function scopePublished($query)
