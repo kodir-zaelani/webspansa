@@ -29,7 +29,7 @@ class BlogController extends Controller
 
         $blog->increment('view_count');
 
-        return view('frontend.blog.blog-details', [
+        return view('themes.aksataedu.blog.blog-detail', [
             'item' => Blog::with('blogcategory', 'tags', 'author')->where('slug', $slug)->first(),
             'title' => 'Blog Detail'
         ]);

@@ -20,8 +20,8 @@
         <div class="row">
             <div class="col-xl-3 col-md-5 col-sm-12">
                 <div class="course-detail-bx">
-                    @include('themes.aksataedu.partials.sidebar-recent-news')
-                    @include('themes.aksataedu.partials.sidebar-postcategory')
+                    @include('themes.aksataedu.partials.sidebar-blogcategory')
+                    @include('themes.aksataedu.partials.sidebar-recent-blog')
                 </div>
             </div>
             <div class="col-xl-9 col-md-7 col-12">
@@ -32,7 +32,7 @@
                             <div class="d-flex align-items-center">
                                 <p><i class="fa fa-book-open text-muted me-5"></i> {{ $item->reading_time }} menit</p>
                                 <p class="lt-sp">|</p>
-                                <p><i class="fa fa-calendar-o me-5"></i> {{$item->published_at ? $item->published_at->format('d M Y') : $item->created_at->format('d M Y')}}</p>
+                                <p><i class="fa fa-calendar-o me-5"></i> {{$item->published_at ? $item->published_at : $item->created_at}}</p>
 
                             </div>
                         </div>
