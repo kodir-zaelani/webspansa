@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Blogcategory;
-use App\Models\Postcategory;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 

@@ -45,10 +45,11 @@
                             <p>No blog posts available.</p>
                             @endforelse
                         </div>
-
+                        @if ($global_blog->count())
                         <div aria-label="Page navigation example">
                             <a href="{{ route('blog.all') }}" class="mx-auto btn btn-primary">Tampilkan Semua</a>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
