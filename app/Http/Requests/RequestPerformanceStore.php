@@ -25,7 +25,7 @@ class RequestPerformanceStore extends FormRequest
     {
         return [
             'image'           => 'image|mimes:jpeg,jpg,png,webp|max:1500',
-            'title'           => 'required|unique:blogs,title',
+            'title'           => 'required|unique:performances,title',
             'content'         => 'required',
             'published_at'    => 'required',
         ];

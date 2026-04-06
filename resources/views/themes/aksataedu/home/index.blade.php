@@ -6,4 +6,5 @@
 @include('themes.aksataedu.post.main-news-new')
 @include('themes.aksataedu.partials.statistic')
 @include('themes.aksataedu.blog.main-blog-new')
+@include('themes.aksataedu.performance.main-performance')
 @endsection

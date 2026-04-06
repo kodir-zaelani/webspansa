@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Page;
 use Illuminate\Support\Str;
 use App\Models\Pagecategory;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RequestPageStore;
@@ -15,6 +14,7 @@ use Intervention\Image\Laravel\Facades\Image;
 class PageController extends Controller
 {
     protected $uploadPath;
+    protected $textWatermark;
     /**
     * __construct
     *
@@ -23,6 +23,7 @@ class PageController extends Controller
     public function __construct()
     {
         $this->uploadPath = public_path(config('cms.image.directoryPages'));
+        $this->textWatermark = $global_options->webname ?? config('cms.textWatermark');
     }
 
      public static function middleware(): array

@@ -7,16 +7,15 @@ use App\Http\Requests\RequestBlogStore;
 use App\Http\Requests\RequestBlogUpdate;
 use App\Models\Blog;
 use App\Models\Blogcategory;
-use App\Models\Postcategory;
 use App\Models\Tag;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Intervention\Image\Laravel\Facades\Image;
 
 class BlogController extends Controller
 {
-     protected $uploadPath;
+    protected $uploadPath;
+    protected $textWatermark;
     /**
     * __construct
     *
@@ -25,6 +24,7 @@ class BlogController extends Controller
     public function __construct()
     {
         $this->uploadPath = public_path(config('cms.image.directoryBlogs'));
+        $this->textWatermark = $global_options->webname ?? config('cms.textWatermark');
     }
 
     public static function middleware(): array
@@ -88,7 +88,7 @@ class BlogController extends Controller
 
                 //KEMUDIAN KITA SISIPKAN WATERMARK DENGAN TEXT LAMAN KREASI
                 //X = 200, Y = 150. SILAHKAN DISESUAIKAN UNTUK POSISINYA
-                $imageUploaded-> text( 'Spansa', 300, 150, function ($font) {
+                $imageUploaded-> text( $this->textWatermark, 300, 150, function ($font) {
                     // $font->file(public_path('fonts/milkyroad.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->file(public_path('uploads/fonts/amandasignature.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(30);
@@ -212,7 +212,7 @@ class BlogController extends Controller
 
                 //KEMUDIAN KITA SISIPKAN WATERMARK DENGAN TEXT LAMAN KREASI
                 //X = 200, Y = 150. SILAHKAN DISESUAIKAN UNTUK POSISINYA
-                $imageUploaded-> text( 'Spansa', 300, 150, function ($font) {
+                $imageUploaded-> text( $this->textWatermark, 300, 150, function ($font) {
                     // $font->file(public_path('fonts/milkyroad.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->file(public_path('uploads/fonts/amandasignature.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(30);

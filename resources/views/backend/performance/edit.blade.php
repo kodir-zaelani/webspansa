@@ -9,9 +9,9 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}"><i class="fa fa-home"><span
                             class="path1"></span><span class="path2"></span></i></a></li>
-                            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('backend.blog.index') }}">
-                                Blog</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Edit a blog</li>
+                            <li class="breadcrumb-item" aria-current="page"><a
+                                href="{{ route('backend.performance.index') }}">Prestasi</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Edit</li>
                             </ol>
                         </nav>
                     </div>
@@ -19,8 +19,9 @@
 
             </div>
         </div>
+        <!-- Main content -->
         <section class="content">
-            <form id="post-form" enctype="multipart/form-data" action="{{ route('backend.blog.update', $blog) }}"
+            <form id="post-form" enctype="multipart/form-data" action="{{ route('backend.performance.update', $performance) }}"
             method="POST">
             @csrf
             @method('PUT')
@@ -28,7 +29,7 @@
                 <div class="col-lg-8 col-12">
                     <div class="box">
                         <div class="box-header">
-                            <h4 class="box-title">Edit a Blog
+                            <h4 class="box-title">Edit a Page
                             </h4>
                         </div>
                         <div class="box-body">
@@ -37,52 +38,19 @@
                                 <div class="controls">
                                     <input type="text" name="title"
                                     class="form-control @error('title') is-invalid @enderror"
-                                    value="{{ old('title') ?? $blog->title }}" placeholder="Title" required>
+                                    value="{{ old('title') ?? $performance->title }}" placeholder="Title" required>
                                 </div>
                                 @error('title')
                                 <div class="form-control-feedback"><small> <code>{{ $message }}</code> </small></div>
                                 @enderror
                             </div>
-                            <div class="form-group visually-hidden">
-                                <label class="form-label">Headline :</label>
-                                <div class="demo-radio-button">
-                                    <input {{ $blog->headline == 0 ? 'checked' : '' }} value="0" name="headline"
-                                    type="radio" id="radio_32" class="with-gap radio-col-success" />
-                                    <label for="radio_32">Inactive</label>
-                                    <input {{ $blog->headline == 1 ? 'checked' : '' }} value="1" name="headline"
-                                    type="radio" id="radio_30" class="with-gap radio-col-success" />
-                                    <label for="radio_30">Active</label>
-                                </div>
-                            </div>
-                            <div class="form-group visually-hidden">
-                                <label class="form-label">Primary / Selection :</label>
-                                <div class="demo-radio-button">
-                                    <input {{ $blog->selection == 0 ? 'checked' : '' }} value="0" name="selection"
-                                    type="radio" id="radio_33" class="with-gap radio-col-primary" checked />
-                                    <label for="radio_33">Primary</label>
-                                    <input {{ $blog->selection == 1 ? 'checked' : '' }} value="1" name="selection"
-                                    type="radio" id="radio_34" class="with-gap radio-col-primary" />
-                                    <label for="radio_34">Selection</label>
-                                </div>
-                            </div>
-                            <div class="form-group" hidden>
-                                <label class="form-label">News/Blog:</label>
-                                <div class="demo-radio-button">
-                                    <input {{ $blog->statuspost == 0 ? 'checked' : '' }} value="0" name="statuspost"
-                                    type="radio" id="radio_41" class="with-gap radio-col-primary" />
-                                    <label for="radio_41">News</label>
-                                    <input {{ $blog->statuspost == 1 ? 'checked' : '' }} value="1" name="statuspost"
-                                    type="radio" id="radio_40" class="with-gap radio-col-primary" />
-                                    <label for="radio_40">Blog</label>
-                                </div>
-                            </div>
                             <div class="form-group">
-                                <label for="video">Video</label>
+                                <label for="video " class="pb-1">Video <span class="text-danger small">youtobe</span></label>
                                 <div class="mt-2 input-group">
                                     <input id="video" name="video" type="text"
                                     class="form-control @error('video') is-invalid @enderror" placeholder="Content Video"
-                                    value="{{ old('video') ?? $blog->video }}">
-                                    <a class="btn btn-sm btn-primary input-group-text popup-youtube" href="{{$blog->video}}">{{ __('View')}}</a>
+                                    value="{{ old('video') ?? $performance->video }}">
+                                    <a class="btn btn-sm btn-primary input-group-text popup-youtube" href="{{$performance->video}}">{{ __('View')}}</a>
                                 </div>
                                 <span class="font-italic"> Example: https://www.youtube.com/watch?v=LJ_YrtyEnck</span>
                                 @error('video')
@@ -92,20 +60,22 @@
                             <div class="form-group">
                                 <label for="caption_video">Caption Video</label>
                                 <textarea name="caption_video" id="caption_video" class="form-control  @error('caption_video') is-invalid @enderror"
-                                placeholder="Caption Video">{{ old('caption_video') ?? $blog->caption_video }}</textarea>
+                                placeholder="Caption Video">{{ old('caption_video') ?? $performance->caption_video }}</textarea>
                                 @error('caption_video')
                                 <div class="form-control-feedback"><small> <code>{{ $message }}</code> </small></div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Content <span class="text-danger">*</span></label>
-                                <textarea id="editor1" rows="40" cols="80" class="form-control @error('content') is-invalid @enderror"
-                                name="content">{{ old('content') ?? $blog->content }}</textarea>
+                                <textarea id="editor1" rows="10" cols="80" class="form-control @error('content') is-invalid @enderror"
+                                name="content">{{ old('content') ?? $performance->content }}</textarea>
                                 @error('content')
                                 <div class="form-control-feedback"><small> <code>{{ $message }}</code> </small></div>
                                 @enderror
                             </div>
+
                         </div>
+
                     </div>
                 </div>
                 <div class="col-lg-4 col-12">
@@ -117,36 +87,11 @@
                         </div>
                         <div class="box-body">
                             <div class="form-group row">
-                                <label for="status">
-                                    Status :
-                                    @if ($blog->status == 1)
-                                    <font style="color: rgb(18, 168, 13)">Publish</font>
-                                    @else
-                                    <font style="color: rgb(58, 40, 224)"> Draft</font>
-                                    @endif
-                                </label>
-                            </div>
-
-                            <div class="form-group row" hidden>
-                                <label class="form-label">Comments :</label>
-                                <div class="c-inputs-stacked">
-                                    <input {{ $blog->comment_status == 0 ? 'checked' : '' }} value="0"
-                                    name="comment_status" type="radio" id="radio_36"
-                                    class="with-gap radio-col-success" />
-                                    <label for="radio_36">Inactive</label>
-                                    <input {{ $blog->comment_status == 1 ? 'checked' : '' }} value="1"
-                                    name="comment_status" type="radio" id="radio_35"
-                                    class="with-gap radio-col-success" />
-                                    <label for="radio_35">Active</label>
-
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-form-label">Published At</label>
+                                <label class="col-form-label">Published At <span class="text-danger">*</span></label>
                                 <div class="col">
-                                    <input class="form-control @error('published_at') is-invalid @enderror"
-                                    name="published_at" type="date"
-                                    value="{{ old('published_at') ?? $blog->published_at }}" id="example-date-input">
+                                    <input class="form-control @error('published_at') is-invalid @enderror" name="published_at"
+                                    type="date" value="{{ old('published_at') ?? $performance->published_at }}"
+                                    id="example-date-input">
                                     @error('published_at')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -156,72 +101,33 @@
                         </div>
                         <div class="box-footer text-end">
                             <input type="text" name="status" id="status" hidden>
-                            <a href="{{route('backend.blog.index')}}" type="submit" class="btn btn-info me-1">
-                                Cancel
-                            </a>
                             <button id="draft-btn" type="submit" class="btn btn-warning me-1">
                                 Draft
                             </button>
-                            <button id="publish-btn" type="submit"class="btn btn-primary" @if (auth()->user()->can('postsubcribe.create')) hidden @endif>
+                            <button id="publish-btn" type="submit"class="btn btn-primary">
                                 Publish
                             </button>
                         </div>
                     </div>
-                    <div class="box">
-                        <div class="box-header">
-                            <h4 class="box-title">
-                                Category | Tags
-                            </h4>
-                        </div>
-                        <div class="box-body">
-                            <div class="form-group @error('postcategory_id') has-error @enderror">
-                                <label class="form-label">Category <span class="text-danger">*</span></label>
-                                <select class="form-control select2" style="width: 100%;" name="postcategory_id">
-                                    <option value="" holder>Select Category</option>
-                                    @foreach ($postcatagories as $item)
-                                    <option value="{{ $item->id }}"
-                                        {{ old('postcategory_id') == $item->id ? 'selected' : '' }}
-                                        @if ($item->id == $blog->postcategory_id) selected @endif>
-                                        {{ $item->title }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                                @error('postcategory_id')
-                                <span class="help-block"><strong>{{ $message }}</strong></span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Tags</label>
-                                <select class="form-control select2" multiple="multiple" name="tags[]"
-                                data-placeholder="Select a Tag" style="width: 100%;">
-                                @foreach ($tags as $item)
-                                <option value="{{ $item->id }}"
-                                    {{ in_array($item->id,$blog->tags()->pluck('id')->toArray())? 'selected': '' }}>
-                                    {{ $item->title }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="box">
                         <div class="box-header">
                             <h4 class="box-title">
                                 Feature Image
                             </h4>
                         </div>
-                        <div class="box-body ">
-                            <div class=" form-group">
+                        <div class="text-center box-body ">
+                            <div class="form-group">
                                 <div class=" fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-new img-thumbnail" style="width: 200px;">
-                                        <img src="{{ $blog->imageThumbUrl ? $blog->imageThumbUrl : '/assets/images/no_image.png' }}"
+                                        <img src="{{ $performance->imageThumbUrl ? $performance->imageThumbUrl : '/assets/images/no_image.png' }}"
                                         alt="...">
                                     </div>
-                                    <div class="fileinput-preview fileinput-exists img-thumbnail"
-                                    style="max-width: 200px;"></div>
+                                    <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px;">
+                                    </div>
                                     <div>
-                                        <span class="btn btn-outline-secondary btn-file"><span
-                                            class="fileinput-new">Select image</span><span
-                                            class="fileinput-exists">Change</span>
+                                        <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select
+                                            image</span><span class="fileinput-exists">Change</span>
                                             <input type="file" class="@error('image') is-invalid @enderror"
                                             name="image" value="{{ old('image') }}"></span>
                                             <a href="#" class="btn btn-outline-secondary fileinput-exists"
@@ -233,18 +139,17 @@
                                         {{ $message }}
                                     </div>
                                     @enderror
+                                    <div class="form-group">
+                                        <label for="caption_image">Caption Image</label>
+                                        <textarea name="caption_image" id="caption_image" class="form-control @error('caption_image') is-invalid @enderror"
+                                        placeholder="Caption Image">{{ old('caption_image') ?? $performance->caption_image }}</textarea>
+                                        @error('caption_image')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <div class="form-group text-start">
-                                    <label for="caption_image">Caption Image</label>
-                                    <textarea name="caption_image" id="caption_image" class="form-control @error('caption_image') is-invalid @enderror"
-                                    placeholder="Caption Image">{{ old('caption_image') ?? $blog->caption_image }}</textarea>
-                                    @error('caption_image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -269,9 +174,9 @@
         <script>
             var options = {
                 filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-                filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{ csrf_token() }}',
+                filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
                 filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-                filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{ csrf_token() }}'
+                filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
             };
         </script>
         <script>

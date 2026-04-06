@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -29,12 +30,6 @@ class Performance extends Model
             $q->whereHas('author', function ($qr) use ($term) {
                 $qr->where('name', 'LIKE', $term);
             });
-            $q->orWhereHas('blogcategory', function ($qr) use ($term) {
-                $qr->where('title', 'LIKE', $term);
-            });
-            $q->orWhereHas('tags', function ($qr) use ($term) {
-                $qr->where('title', 'LIKE', $term);
-            });
             $q->orWhereRaw('LOWER(title) LIKE ?', [$term]);
             $q->orWhereRaw('LOWER(content) LIKE ?', [$term]);
         });
@@ -50,7 +45,7 @@ class Performance extends Model
         $imageUrl = "";
 
         if (!is_null($this->image)) {
-            $directory = config('cms.image.directoryBlogs');
+            $directory = config('cms.image.directoryPerformance');
             $imagePath = public_path() . "/{$directory}" . $this->image;
             if (file_exists($imagePath)) $imageUrl = asset("/{$directory}" . $this->image);
         }
@@ -63,7 +58,7 @@ class Performance extends Model
         $imageThumbUrl = "";
 
         if (!is_null($this->image)) {
-            $directory = config('cms.image.directoryBlogs');
+            $directory = config('cms.image.directoryPerformance');
             $ext       = substr(strrchr($this->image, '.'), 1);
             $thumbnail = str_replace(".{$ext}", "_thumb.{$ext}", $this->image);
             $imagePath = public_path() . "/{$directory}" . $thumbnail;
@@ -78,7 +73,7 @@ class Performance extends Model
         $imageWatermarkUrl = "";
 
         if (!is_null($this->image)) {
-            $directory = config('cms.image.directoryBlogs');
+            $directory = config('cms.image.directoryPerformance');
             $ext       = substr(strrchr($this->image, '.'), 1);
             $watermark = str_replace(".{$ext}", "_watermark.{$ext}", $this->image);
             $imagePath = public_path() ."/{$directory}" . $watermark;

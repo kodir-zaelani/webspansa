@@ -19,7 +19,7 @@ Route::get('berita/penulis/{id}',  [App\Http\Controllers\Frontend\PostController
 Route::get('berita/pencarian',  [App\Http\Controllers\Frontend\PostController::class, 'news_search'])->name('news.search');
 
 Route::get('blog/detail/{slug}',  [App\Http\Controllers\Frontend\BlogController::class, 'detail'])->name('blog.detail');
-Route::get('blog',  [App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('blog.index');
+Route::get('blog',  [App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('blog.all');
 Route::get('blog/kategori/{slug}',  [App\Http\Controllers\Frontend\BlogController::class, 'blog_category'])->name('blog.category');
 Route::get('blog/tag/{slug}',  [App\Http\Controllers\Frontend\BlogController::class, 'blog_tag'])->name('blog.tag');
 Route::get('blog/penulis/{id}',  [App\Http\Controllers\Frontend\BlogController::class, 'blog_author'])->name('blog.author');
@@ -176,6 +176,13 @@ Route::middleware(['auth', 'verified', 'web'])->group(function () {
     Route::post('backend/statistic/store', [App\Http\Controllers\Backend\StatisticController::class, 'store'])->name('backend.statistic.store');
     Route::get('backend/statistic/{editorial}/edit', [App\Http\Controllers\Backend\StatisticController::class, 'edit'])->name('backend.statistic.edit');
     Route::put('backend/statistic/{editorial}/update', [App\Http\Controllers\Backend\StatisticController::class, 'update'])->name('backend.statistic.update');
+
+    // Performance
+    Route::get('backend/prestasi', [App\Http\Controllers\Backend\PerformanceController::class, 'index'])->name('backend.performance.index');
+    Route::get('backend/prestasi/create', [App\Http\Controllers\Backend\PerformanceController::class, 'create'])->name('backend.performance.create');
+    Route::post('backend/prestasi/store', [App\Http\Controllers\Backend\PerformanceController::class, 'store'])->name('backend.performance.store');
+    Route::get('backend/prestasi/{performance}/edit', [App\Http\Controllers\Backend\PerformanceController::class, 'edit'])->name('backend.performance.edit');
+    Route::put('backend/prestasi/{performance}/update', [App\Http\Controllers\Backend\PerformanceController::class, 'update'])->name('backend.performance.update');
 
      // Tahun ajaran Controller
     Route::get('backend/tahunajaran', [App\Http\Controllers\Backend\TahunajaranController::class, 'index'])->name('backend.tahunajaran.index');

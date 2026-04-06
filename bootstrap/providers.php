@@ -2,12 +2,16 @@
 
 return [
     App\Providers\AgendaServiceProvider::class,
+    App\Providers\AlbumServiceProvider::class,
     App\Providers\AnnouncementServiceProvider::class,
     App\Providers\AppServiceProvider::class,
+    App\Providers\BlogServiceProvider::class,
     App\Providers\BlogcategoryServiceProvider::class,
     App\Providers\EmployeServiceProvider::class,
+    App\Providers\PeformanceServiceProvider::class,
     App\Providers\PerformanceServiceProvider::class,
     App\Providers\StatisticServiceProvider::class,
+    App\Providers\VideoServiceProvider::class,
     App\Providers\ViewHeadermenuServiceProvider::class,
     App\Providers\ViewMenuFotterleftServiceProvider::class,
     App\Providers\ViewMenuFottermiddleServiceProvider::class,

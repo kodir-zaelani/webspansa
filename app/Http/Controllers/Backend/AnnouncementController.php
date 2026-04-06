@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Announcement;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\RequestFotoStore;
 use App\Http\Requests\RequestAnnouncementStore;
 use App\Http\Requests\RequestAnnouncementUpdate;
 use Intervention\Image\Laravel\Facades\Image;
@@ -16,6 +14,7 @@ class AnnouncementController extends Controller
 {
     protected $uploadPath;
     protected $uploadPathfoto;
+    protected $textWatermark;
     /**
      * __construct
      *
@@ -24,6 +23,7 @@ class AnnouncementController extends Controller
     public function __construct()
     {
         $this->uploadPath = public_path(config('cms.image.directoryAnnouncements'));
+        $this->textWatermark = $global_options->webname ?? config('cms.textWatermark');
     }
 
 
@@ -71,7 +71,7 @@ class AnnouncementController extends Controller
             $imageUploaded->save($destination . $fileName, 80);
 
             if ($imageUploaded) {
-                  $imageUploaded-> text( 'Spansa', 300, 150, function ($font) {
+                  $imageUploaded-> text( $this->textWatermark, 300, 150, function ($font) {
                     // $font->file(public_path('fonts/milkyroad.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->file(public_path('uploads/fonts/amandasignature.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(30);
@@ -164,7 +164,7 @@ class AnnouncementController extends Controller
 
             if ($imageUploaded) {
 
-                $imageUploaded-> text( 'Spansa', 300, 150, function ($font) {
+                $imageUploaded-> text( $this->textWatermark, 300, 150, function ($font) {
                     // $font->file(public_path('fonts/milkyroad.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->file(public_path('uploads/fonts/amandasignature.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(30);

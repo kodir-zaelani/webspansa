@@ -102,11 +102,7 @@
                                                                btn-success @endif"
                                                     wire:click="selectItem('{{ $item->id }}' , 'addphotos')">
                                                     <i class="bi bi-images"></i>
-                                                    @if ($item->fotos->count())
-                                                    Update
-                                                    @else
-                                                    Add
-                                                    @endif
+                                                    {{__('Add')}}
                                                 </button>
                                             </td>
 

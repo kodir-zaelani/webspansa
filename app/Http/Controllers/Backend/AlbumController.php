@@ -16,8 +16,9 @@ use Intervention\Image\Laravel\Facades\Image;
 class AlbumController extends Controller
 {
 
-protected $uploadPath;
+    protected $uploadPath;
     protected $uploadPathfoto;
+    protected $textWatermark;
     /**
      * __construct
      *
@@ -27,6 +28,7 @@ protected $uploadPath;
     {
         $this->uploadPath = public_path(config('cms.image.directoryAlbums'));
         $this->uploadPathfoto = public_path(config('cms.image.directoryFoto'));
+        $this->textWatermark = $global_options->webname ?? config('cms.textWatermark');
     }
 
 
@@ -74,7 +76,7 @@ protected $uploadPath;
             $imageUploaded->save($destination . $fileName, 80);
 
             if ($imageUploaded) {
-                  $imageUploaded->text('TK Tunas Beriman', 300, 150, function ($font) {
+                  $imageUploaded->text($this->textWatermark, 300, 150, function ($font) {
                     // $font->file(public_path('fonts/milkyroad.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->file(public_path('uploads/fonts/amandasignature.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(30);
@@ -167,7 +169,7 @@ protected $uploadPath;
 
             if ($imageUploaded) {
 
-                $imageUploaded->text('TK Tunas Beriman', 300, 150, function ($font) {
+                $imageUploaded->text($this->textWatermark, 300, 150, function ($font) {
                     // $font->file(public_path('fonts/milkyroad.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->file(public_path('uploads/fonts/amandasignature.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(30);
@@ -240,7 +242,7 @@ protected $uploadPath;
             $imageUploaded->save($destinationfoto . $fileName, 80);
 
             if ($imageUploaded) {
-                  $imageUploaded->text('TK Tunas Beriman', 300, 150, function ($font) {
+                  $imageUploaded->text($this->textWatermark, 300, 150, function ($font) {
                     // $font->file(public_path('fonts/milkyroad.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->file(public_path('uploads/fonts/amandasignature.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(30);

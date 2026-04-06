@@ -67,7 +67,7 @@ return [
             'width' => 300,
             'height' => 200
         ],
-        'directoryPerformance' => 'uploads/images/performances/',
+        'directoryPerformance' => 'uploads/images/performance/',
         'thumbnailperformance' => [
             'width' => 250,
             'height' => 200
@@ -216,4 +216,5 @@ return [
     'default_masterliterasisubcategory' => 1,
     'default_masteruser' => 1,
     'masterpengajiancategory' => 1,
+    'textWatermark' => 'Anak Petani',
 ];

@@ -3,9 +3,8 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12">
                 <div class="">
-                    @include('themes.aksataedu.partials.sidebar-performance')
-                    @include('themes.aksataedu.partials.sidebar-postcategory')
-                    @include('themes.aksataedu.partials.sidebar-tags-blog')
+                    @include('themes.aksataedu.partials.sidebar-album')
+                    @include('themes.aksataedu.partials.sidebar-video')
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-12">
@@ -17,18 +16,18 @@
                     </div>
                     <div class="box-body">
                         <div class="row justify-content-center">
-                            @foreach ($featured_news as $item)
+                            @forelse ($global_blog as $item)
                             <div class="mb-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 d-none d-md-block d-lg-block d-xl-block">
                                 <div class="mb-2 border-0 card">
                                     <div class="row g-0">
                                         <div class="col-md-4 ">
-                                            <a href="{{ route('news.detail', $item->slug) }}" title="{{$item->title}}">
+                                            <a href="{{ route('blog.detail', $item->slug) }}" title="{{$item->title}}">
                                                 <img src="{{ $item->imageUrl ? $item->imageUrl : '/uploads/images/logo/' . $global_option->logo }}" class="pt-1 rounded img-fluid" alt="..." style="max-height: 100%">
                                             </a>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="pt-0 pb-0 card-body ps-3 pe-1">
-                                                <a href="{{ route('news.detail', $item->slug) }}" title="{{$item->title}}">
+                                                <a href="{{ route('blog.detail', $item->slug) }}" title="{{$item->title}}">
                                                     <h6 class="p-0 m-0 card-title ">{{ Str::limit($item->title, 75) }}</h6>
                                                 </a>
                                                 <span>
@@ -41,13 +40,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
                             </div>
-                            @endforeach
+                            @empty
+                            <p>No blog posts available.</p>
+                            @endforelse
                         </div>
 
                         <div aria-label="Page navigation example">
-                            <a href="{{ route('news.all') }}" class="mx-auto btn btn-primary">Tampilkan Semua</a>
+                            <a href="{{ route('blog.all') }}" class="mx-auto btn btn-primary">Tampilkan Semua</a>
                         </div>
                     </div>
                 </div>

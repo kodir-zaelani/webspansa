@@ -130,12 +130,20 @@
                     <a href="#">
                         <i class="fa fa-file-image-o" aria-hidden="true"></i>
                         <span class="path1"></span><span class="path2"></span></i>
-                        <span>Galler</span>
+                        <span>Galleri</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-right pull-right"></i>
                         </span>
                     </a>
                     <ul class="treeview-menu">
+                        @can('performance.index')
+                        <li class="{{ setActive('backend/prestasi') }}">
+                            <a href="{{ route('backend.performance.index') }}">
+                                <i class="icon-Commit"><span class="path1"></span><span class="path2"></span>
+                                </i>Prestasi
+                            </a>
+                        </li>
+                        @endcan
                         @can('agendas.index')
                         <li class="{{ setActive('backend/agenda') }}">
                             <a href="{{ route('backend.agendas.index') }}">

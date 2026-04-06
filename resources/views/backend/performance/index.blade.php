@@ -1,4 +1,4 @@
 @extends('layouts.appb')
 @section('content')
-    @livewire('backend.blog.index')
+    @livewire('backend.performance.index')
 @endsection

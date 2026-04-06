@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RequestPerformanceStore;
 use App\Http\Requests\RequestPerformanceUpdate;
 use App\Models\Performance;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Intervention\Image\Laravel\Facades\Image;
@@ -14,6 +13,8 @@ use Intervention\Image\Laravel\Facades\Image;
 class PerformanceController extends Controller
 {
    protected $uploadPath;
+   protected $textWatermark;
+
     /**
     * __construct
     *
@@ -21,7 +22,9 @@ class PerformanceController extends Controller
     */
     public function __construct()
     {
-        $this->uploadPath = public_path(config('cms.image.directoryBlogs'));
+        $this->uploadPath = public_path(config('cms.image.directoryPerformance'));
+        $this->textWatermark = $global_options->webname ?? config('cms.textWatermark');
+
     }
 
     public static function middleware(): array
@@ -41,7 +44,7 @@ class PerformanceController extends Controller
     public function create()
     {
         return view('backend.performance.create', [
-            'title'=> 'Performance create'
+            'title'=> 'Prestasi '
         ]);
     }
 
@@ -56,6 +59,7 @@ class PerformanceController extends Controller
             'caption_video'      => $request->input('caption_video'),
             'caption_image'      => $request->input('caption_image'),
             'status'             => $request->input('status'),
+            'comment_status'     => 0,
             'published_at'       => $request->input('published_at'),
             'author_id'          => Auth::id(),
         ];
@@ -75,7 +79,7 @@ class PerformanceController extends Controller
 
                 //KEMUDIAN KITA SISIPKAN WATERMARK DENGAN TEXT LAMAN KREASI
                 //X = 200, Y = 150. SILAHKAN DISESUAIKAN UNTUK POSISINYA
-                $imageUploaded->text($global_option->webname , 300, 150, function ($font) {
+                $imageUploaded->text($this->textWatermark, 300, 150, function ($font) {
                     // $font->file(public_path('fonts/milkyroad.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->file(public_path('uploads/fonts/amandasignature.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(30);
@@ -93,8 +97,8 @@ class PerformanceController extends Controller
                 ->save($destination . '/' . $filenameWatermark, 80); //SIMPAN FILE ORIGINAL YANG BERISI WATERMARK
 
                 # script dibawah koneksi ke file App\confog\cms.php
-                $width = config('cms.image.thumbnailblog.width');
-                $height = config('cms.image.thumbnailblog.height');
+                $width = config('cms.image.thumbnailperformance.width');
+                $height = config('cms.image.thumbnailperformance.height');
                 $thumbnail = str_replace(".{$extension}", "_thumb.{$extension}", $fileName);
 
                 $imageUploaded->resize($width, $height)
@@ -137,7 +141,7 @@ class PerformanceController extends Controller
 
         return view('backend.performance.edit', [
             'performance' => $performance,
-            'title'       => 'Performance Edit',
+            'title'       => 'Prestasi Edit',
         ]);
     }
 
@@ -188,7 +192,7 @@ class PerformanceController extends Controller
 
                 //KEMUDIAN KITA SISIPKAN WATERMARK DENGAN TEXT LAMAN KREASI
                 //X = 200, Y = 150. SILAHKAN DISESUAIKAN UNTUK POSISINYA
-                $imageUploaded-> text( 'Spansa', 300, 150, function ($font) {
+                $imageUploaded-> text( $this->textWatermark, 300, 150, function ($font) {
                     // $font->file(public_path('fonts/milkyroad.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->file(public_path('uploads/fonts/amandasignature.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(30);
@@ -206,8 +210,8 @@ class PerformanceController extends Controller
                 ->save($destination . '/' . $filenameWatermark, 80); //SIMPAN FILE ORIGINAL YANG BERISI WATERMARK
 
                 # script dibawah koneksi ke file App\confog\cms.php
-                $width = config('cms.image.thumbnailblog.width');
-                $height = config('cms.image.thumbnailblog.height');
+                $width = config('cms.image.thumbnailperformance.width');
+                $height = config('cms.image.thumbnailperformance.height');
                 $thumbnail = str_replace(".{$extension}", "_thumb.{$extension}", $fileName);
 
                 $imageUploaded->resize($width, $height)
