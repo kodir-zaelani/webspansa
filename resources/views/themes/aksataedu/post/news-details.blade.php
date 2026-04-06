@@ -32,7 +32,7 @@
                             <ul class="list-unstyled">
                                 <li><a href="{{route('news.category', $item->postcategory->slug)}}" title="{{$item->postcategory->title ?? 'Uncategorized'}}"><i class="fa fa-folder-open-o"></i> {{ $item->postcategory->title ?? 'Uncategorized' }}</a></li>
                                 <li><a href="#"><i class="fa fa-eye me-5"></i> {{$item->view_count}} kali</a></li>
-                                <li><a href="#"><i class="fa fa-calendar-o"></i> {{$item->published_at ? $item->published_at->format('d M Y') : $item->created_at->format('d M Y')}}</a></li>
+                                <li><a href="#"><i class="fa fa-calendar-o"></i> {{$item->published_at ? $item->published_at : $item->date_created}}</a></li>
                                 <li><a href="#"><i class="fa fa-book-open me-5"></i> {{ $item->reading_time }} menit</a></li>
                                 <li>
                                     <a href="{{route('news.author', $item->author->id)}}" title="{{$item->author->displayname ?? $item->author->name}}">
