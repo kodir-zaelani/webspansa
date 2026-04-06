@@ -9,7 +9,7 @@
                     <h2 class="text-white page-title">{{ __($title ?? 'Anak Petani') }}</h2>
                     <ol class="bg-transparent breadcrumb justify-content-center">
                         <li class="breadcrumb-item"><a href="{{route('root')}}" class="text-white-50"><i class="mdi mdi-home-outline"></i></a></li>
-                        <li class="text-white breadcrumb-item active" aria-current="page">{{$all_news->first()->postcategory->title}}</li>
+                        <li class="text-white breadcrumb-item active" aria-current="page">{{$all_blog->first()->blogcategory->title}}</li>
                     </ol>
                 </div>
             </div>
@@ -21,6 +21,8 @@
         <div class="row">
             <div class="col-xl-3 col-md-4 col-sm-12">
                 <div class="course-detail-bx">
+                    @include('themes.aksataedu.partials.sidebar-blogcategory')
+                    @include('themes.aksataedu.partials.sidebar-recent-blog')
                     @include('themes.aksataedu.partials.sidebar-postcategory')
                     @include('themes.aksataedu.partials.sidebar-recent-news')
                 </div>
@@ -29,7 +31,7 @@
                 <div class="box">
                     <div class="box-body">
                         <div class="row justify-content-center">
-                            @foreach ($all_news as $item)
+                            @foreach ($all_blog as $item)
                             <div class="mb-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 d-none d-md-block d-lg-block d-xl-block">
                                 <div class="mb-2 border-0 card">
                                     <div class="row g-0">
@@ -68,12 +70,12 @@
 
                         <div class="row justify-content-center d-md-none d-lg-none d-xl-none d-block">
                             <div class="text-center col-lg-12 col-12">
-                                {{ $all_news->links('vendor.pagination.bootstrap-5-aksata-simple') }}
+                                {{ $all_blog->links('vendor.pagination.bootstrap-5-aksata-simple') }}
                             </div>
                         </div>
                         <div class="row justify-content-center d-md-block d-lg-block d-xl-block d-none">
                             <div class="text-center col-lg-12 col-12">
-                                {{ $all_news->links('vendor.pagination.bootstrap-5-aksata') }}
+                                {{ $all_blog->links('vendor.pagination.bootstrap-5-aksata') }}
                             </div>
                         </div>
                     </div>

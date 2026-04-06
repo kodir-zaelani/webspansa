@@ -44,8 +44,8 @@ class BlogController extends Controller
         ->paginate($this->limit);
 
 
-        return view('frontend.blog.blog-category', [
-            'blogs' => $blogs,
+        return view('themes.aksataedu.blog.all-blog-category', [
+            'all_blog' => $blogs,
             'blogcategory' => $blogcategory,
             'title' => 'Blog Category'
         ]);
