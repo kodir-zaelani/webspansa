@@ -1,3 +1,4 @@
+@if ($global_blog->count())
 <section class="bg-light py-50" data-aos="fade-up">
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -43,3 +44,4 @@
         </div>
     </div>
 </section>
+@endif
