@@ -7,7 +7,9 @@
                         <h4 class="footer-title">Prestasi</h4>
                         <hr class="mx-auto mt-0 mb-10 bg-primary d-inline-block w-60">
                         <p class="mb-20 text-capitalize">Beberapa prestasi yang telah diraih oleh sekolah kami. Baik prestasi diraih oleh Tenaga Pendidik, Tenaga Kependidikan maupun siswa-siswi.</p>
+                        @if ($global_performance->count())
                         <a href="http://" class="btn btn-primary">Lihat Semua</a>
+                        @endif
                     </div>
                 </div>
             </div>
