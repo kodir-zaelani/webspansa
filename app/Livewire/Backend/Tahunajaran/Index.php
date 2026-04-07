@@ -203,6 +203,14 @@ class Index extends Component
 
         $tahun_ajaran = Tahunajaran::create($data);
 
+        $tahun_ajaran->update($data);
+
+        $tahun_ajaran_aktif = Tahunajaran::where('periode_aktif', 1)->where('id', '!=', $tahun_ajaran->id)->first();
+
+        if ($this->periode_aktif == 1 && $tahun_ajaran_aktif) {
+            $tahun_ajaran_aktif->update(['periode_aktif' => 0]);
+        }
+
         session()->flash('success', 'Create Tahun Ajaran Successfully');
 
         // This is to reset our public variables
@@ -262,6 +270,12 @@ class Index extends Component
         $tahun_ajaran = Tahunajaran::find($this->modelId);
 
         $tahun_ajaran->update($data);
+
+        $tahun_ajaran_aktif = Tahunajaran::where('periode_aktif', 1)->where('id', '!=', $this->modelId)->first();
+
+        if ($this->periode_aktif == 1 && $tahun_ajaran_aktif) {
+            $tahun_ajaran_aktif->update(['periode_aktif' => 0]);
+        }
 
         session()->flash('success', 'Update Tahun Ajaran Successfully');
 

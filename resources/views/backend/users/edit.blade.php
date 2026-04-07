@@ -51,7 +51,7 @@
                                 <label for="username">
                                     {{ $user->username ?? 'No Username' }}
                                     {{-- {{ $user->username }} --}}
-                                 </label>
+                                </label>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -86,15 +86,15 @@
                             </div>
                             @endif
                         </div>
-                         {{-- <div class="col-md-12">
+                        {{-- <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-label">Reset Password :</label>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" name="rolesetpassword" id="resetpassword" value="1">
-                                        <label class="form-check-label" for="resetpassword">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="rolesetpassword" id="resetpassword" value="1">
+                                    <label class="form-check-label" for="resetpassword">
                                         Reset
-                                        </label>
-                                    </div>
+                                    </label>
+                                </div>
                             </div>
                         </div> --}}
                         <div class="col-md-12">
@@ -127,25 +127,15 @@
                             </div>
 
 
-                            @if ($user->masterstatus == config('cms.default_masteruser'))
-                            <div class="form-group">
-                                <label for="current_password_for_password">{{ __('Current Password')}} <span
-                                    class="text-danger">*</span></label>
-                                    <input name="current_password_for_password" type="password"
-                                    class="form-control @error('current_password_for_password') is-invalid @enderror"
-                                    placeholder="Current Password" />
-                                    <span class="form-text text-muted">{{ __('Your Password') }} <code>{{ __('in system') }}</code></span>
-                                    @error('current_password_for_password')
-                                    <div class="form-control-feedback"><small> <code>{{ $message }}</code>
-                                    </small></div>
-                                    @enderror
-                                </div>
-                                @endif
                                 <div class="col-md-12">
                                     <a href="{{ route('backend.users.index') }}" class="btn btn-warning me-2">
                                         {{ __('Cancel') }}
                                     </a>
+                                    @if ($user->masterstatus == config('cms.default_masteruser'))
+                                    <button class="btn btn-primary" disabled>{{ __('Update') }}</button>
+                                    @else
                                     <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
+                                    @endif
                                 </div>
                             </div>
                         </form>

@@ -22,6 +22,7 @@ public function run(): void
 //     'email' => 'test@example.com',
 // ]);
 
+$this->call(UserspansaSeeder::class);
 // $this->call(UserSeeder::class);
 // $this->call(CountrySeeder::class);
 // $this->call(SettingSeeder::class);
@@ -33,7 +34,6 @@ public function run(): void
 // $this->call(PageSeeder::class);
 // $this->call(PostcategorySeeder::class);
 // $this->call(TagSeeder::class);
-// $this->call(UserspansaSeeder::class);
 // $this->call(PostSeeder::class);
 // $this->call(SliderspansaSeeder::class);
 

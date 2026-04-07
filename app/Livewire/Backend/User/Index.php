@@ -176,6 +176,8 @@ class Index extends Component
             $this->changeInactive();
         } elseif ($action == 'active') {
             $this->changeActive();
+        } elseif ($action == 'reset') {
+            $this->dispatch('openResetModal');
         }
     }
     public function changeInactive()
@@ -221,6 +223,20 @@ class Index extends Component
         $this->dispatch('closeDeleteModalAll');
     }
 
+    // Delete Single Record
+    public function resetPassword()
+    {
+        // $masteruser = User::where('masterstatus', 1)->first();
+
+        $user = User::find($this->selectedItem);
+
+        $user->update(['password' => bcrypt('12345678!')]);
+
+        // return redirect()->to('backend/users/index');
+        session()->flash('success', 'Reset Password User "' . $user->name . '" Successfully');
+        $this->dispatch('closeResetModal');
+
+    }
     // Delete Single Record
     public function delete()
     {

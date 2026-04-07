@@ -3,13 +3,15 @@
 namespace App\Livewire\Backend\User;
 
 use App\Models\User;
-use Livewire\Component;
-use Livewire\WithFileUploads;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
+use Livewire\Component;
 use Livewire\Features\SupportFileUploads\FileUploadConfiguration;
+use Livewire\WithFileUploads;
 
 class Profile extends Component
 {
@@ -212,7 +214,7 @@ class Profile extends Component
         }
     }
 
-    public function changepassword()
+    public function changepassword(Request $request)
     {
         // This is always the case
         $validateData = [];
@@ -235,8 +237,11 @@ class Profile extends Component
 
         if(count($data)) {
             User::find($this->userId)->update($data);
-            session()->flash('success', 'Password updated successfully');
-            return redirect()->to('backend/admin/profile');
+             Auth::logout();
+             $request->session()->invalidate();
+             $request->session()->regenerateToken();
+            // session()->flash('warning', 'Password updated successfully');
+            return redirect()->to('/login')->with('warning', 'Password updated successfully, please login again');
         }
     }
     public function changephone()

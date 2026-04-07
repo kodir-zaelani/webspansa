@@ -70,6 +70,13 @@
         window.addEventListener('closeDeleteModal', event => {
             $("#modalFormDelete").modal('hide');
         });
+        window.addEventListener('openResetModal', event => {
+            $("#modalFormReset").modal('show');
+        });
+
+        window.addEventListener('closeResetModal', event => {
+            $("#modalFormReset").modal('hide');
+        });
 
 
 

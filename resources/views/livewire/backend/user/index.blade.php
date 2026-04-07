@@ -89,6 +89,11 @@
                                                 </td>
                                                 <td class="text-center align-midle">
                                                     @if ($item->masterstatus == config('cms.default_masteruser') || $currentUser->id == $item->id)
+                                                    <button   class="mx-1 my-1 btn btn-xs btn-danger disabled" title="Reset Password"><i class="fa fa-lock "></i></button>
+                                                    @else
+                                                    <button wire:click="selectItem('{{ $item->id }}', 'reset')" class="btn btn-xs btn-danger" title="Reset Password"><i class="fa fa-lock-open "></i></button>
+                                                    @endif
+                                                    @if ($item->masterstatus == config('cms.default_masteruser') || $currentUser->id == $item->id)
                                                     <button class="btn btn-xs btn-success disabled" title="No Change"><i class="fa fa-eye"></i></button>
                                                     @else
                                                     @if ($item->status == 1)
@@ -105,6 +110,7 @@
                                                     @else
                                                     <button wire:click="selectItem('{{ $item->id }}', 'delete')" class="btn btn-xs btn-danger" title="Delete"><i class="fa fa-trash "></i></button>
                                                     @endif
+
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -167,6 +173,25 @@
                     <div class="modal-footer modal-footer-uniform">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                         <button wire:click="deleteRecords()" class="btn btn-primary float-end">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- Modal Delete--}}
+        <div class="modal center-modal fade" id="modalFormReset" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Reset Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        {{-- Selected Item {{ $selectedItem }} --}}
+                        <p><h3>Do you wish to continue?</h3></p>
+                    </div>
+                    <div class="modal-footer modal-footer-uniform">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                        <button wire:click="resetPassword" class="btn btn-primary float-end">Yes</button>
                     </div>
                 </div>
             </div>

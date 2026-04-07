@@ -15,11 +15,12 @@ class UserspansaSeeder extends Seeder
      */
     public function run(): void
     {
-        $json = File::get('database/data_json/users.json');
+        $json = File::get('database/data_json/users_uuid.json');
         $data = json_decode($json);
 
         foreach($data as $obj){
             User::create([
+            'id'                => $obj->id,
             'name'              => $obj->name,
             'email'             => $obj->email,
             'email_verified_at' => $obj->email_verified_at ?? null,
@@ -28,6 +29,7 @@ class UserspansaSeeder extends Seeder
             'bio'               => $obj->bio  ?? null,
             'image'             => $obj->photo  ?? null,
             'status'            => $obj->status ?? true,
+            'masterstatus'      => $obj->masterstatus ?? false,
             'remember_token'    => $obj->remember_token ?? null,
             'created_at'        => $obj->created_at,
             'updated_at'        => $obj->updated_at,
