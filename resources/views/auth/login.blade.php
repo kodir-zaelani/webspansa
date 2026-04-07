@@ -9,7 +9,7 @@
                     <div class="bg-white shadow-lg rounded10">
                         <div class="p-20 pb-0 content-top-agile">
                             <h2 class="text-primary">Let's Get Started</h2>
-                            <p class="mb-0">Sign in to continue to WebkitX.</p>
+                            <p class="mb-0">Sign in to continue to your account.</p>
                         </div>
                         <x-flash-message/>
                         <x-auth-session-status class="mb-4" :status="session('status')" />
