@@ -49,13 +49,13 @@
                                         </div>
                                     </div>
 
+                                    @if (Route::has('password.request'))
                                     <div class="col-6">
-                                        @if (Route::has('password.request'))
                                         <div class="fog-pwd text-end">
                                             <a href="{{ route('password.request') }}" class="hover-warning"><i class="ion ion-locked"></i> {{ __('Forgot Your Password?') }}</a><br>
                                         </div>
-                                        @endif
                                     </div>
+                                    @endif
 
                                     <div class="gap-0 d-grid column-gap-4" style="grid-template-columns: 1fr 1fr;">
                                         <div class="p-2 text-start">

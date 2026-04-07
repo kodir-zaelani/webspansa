@@ -43,20 +43,30 @@
                         @else
                         <li class="me-10 ps-10">
                             <a href="{{ route('backend.dashboard') }}" class="fw-bold"><i class="text-dark fa fa-dashboard d-md-inline-block d-none"></i>
-                                Dashboard</a>
-                            </li>
-                            @endguest
-                            @if ($social_media)
-                            @foreach ($social_media as $socialmedia)
-                            <li class="me-10 ps-10 d-md-inline-block d-none"><a href="{{ $socialmedia->url }}" target="_blank" >{!! $socialmedia->icon !!}</a></li>
-                            @endforeach
-                            @endif
-                            {{-- // <li class="me-10 ps-10"><a href="#"><i class="text-dark fa fa-user d-md-inline-block d-none"></i> Register</a></li>
-                            // <li class="me-10 ps-10"><a href="#"><i class="text-dark fa fa-sign-in d-md-inline-block d-none"></i> Login</a></li>
-                            // <li class="me-10 ps-10"><a href="#"><i class="text-dark fa fa-dashboard d-md-inline-block d-none"></i> My Account</a></li> --}}
-                        </ul>
-                    </div>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="me-10 ps-10">
+                            <a href="{{ route('logout') }}" class="fw-bold" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="text-dark fa fa-sign-out d-md-inline-block d-none"></i>
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+                        @endguest
+                        @if ($social_media)
+                        @foreach ($social_media as $socialmedia)
+                        <li class="me-10 ps-10 d-md-inline-block d-none"><a href="{{ $socialmedia->url }}" target="_blank" >{!! $socialmedia->icon !!}</a></li>
+                        @endforeach
+                        @endif
+                        {{-- // <li class="me-10 ps-10"><a href="#"><i class="text-dark fa fa-user d-md-inline-block d-none"></i> Register</a></li>
+                        // <li class="me-10 ps-10"><a href="#"><i class="text-dark fa fa-sign-in d-md-inline-block d-none"></i> Login</a></li>
+                        // <li class="me-10 ps-10"><a href="#"><i class="text-dark fa fa-dashboard d-md-inline-block d-none"></i> My Account</a></li> --}}
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+</div>
