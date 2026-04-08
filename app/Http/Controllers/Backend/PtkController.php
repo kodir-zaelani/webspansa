@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Sekolah;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Imports\ImportCollectionPtk;
@@ -53,7 +52,6 @@ class PtkController extends Controller
     {
         $this->cleanupload();
         return view('backend.ptk.create', [
-            'sekolah' => Sekolah::all(),
             'title' => 'Daftar PTK'
         ]);
 

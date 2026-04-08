@@ -568,13 +568,5 @@ $(function () {
       }
     });
   });
-  document.querySelectorAll('.carousel-indicators-mobile').forEach((carouselIndicator) => {
-    carouselIndicator.closest('.carousel-mobile').querySelectorAll('.carousel-item').forEach((carouselItem, index) => {
-      if (index === 0) {
-        carouselIndicator.innerHTML += `<li data-bs-target="#${carouselIndicator.closest('.carousel-mobile').id}" data-bs-slide-to="${index}" class="active"></li>`;
-      } else {
-        carouselIndicator.innerHTML += `<li data-bs-target="#${carouselIndicator.closest('.carousel-mobile').id}" data-bs-slide-to="${index}"></li>`;
-      }
-    });
-  });
+
 

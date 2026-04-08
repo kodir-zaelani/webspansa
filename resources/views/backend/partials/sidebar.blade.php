@@ -83,7 +83,7 @@
                         </a>
                     </li>
                     @endcan
-                     @can('blogcategories.index')
+                    @can('blogcategories.index')
                     <li class="{{ setActive('backend/blogcategories') }}">
                         <a href="{{ route('backend.blogcategories.index') }}" title="Blog Category">
                             <i class="fa fa-folder"><span class="path1"></span><span class="path2"></span></i>
@@ -233,6 +233,14 @@
                                 <a href="{{ route('backend.jabatantugasptk.index') }}">
                                     <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
                                     Jabatan Tugas PTK
+                                </a>
+                            </li>
+                            @endcan
+                            @can('ptk.index')
+                            <li class="{{ setActive('backend/ptk') }}">
+                                <a href="{{ route('backend.ptk.index') }}">
+                                    <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
+                                    PTK
                                 </a>
                             </li>
                             @endcan

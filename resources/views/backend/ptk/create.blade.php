@@ -90,26 +90,6 @@
                     @endif
                     <form action="{{ route('backend.ptk.import') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-12">
-                                <div class="form-group @error('sekolah_id') has-error @enderror">
-                                    <h5 >Sekolah <span class="text-danger">*</span></h5>
-                                    <select class="form-control select2" style="width: 100%;" name="sekolah_id" id="sekolah_id" required>
-                                        <option value="" holder>Pilih Sekolah</option>
-                                        @foreach ($sekolah as $item)
-                                        <option value="{{ $item->id }}" {{ old('sekolah_id') == $item->id ? 'selected' : '' }}>
-                                            {{ $item->nama }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                    @error('sekolah_id')
-                                    <div class="form-control-feedback"><small>
-                                        <code>{{ $message }}</code> </small>
-                                    </div>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
                         <h5>File sumber</h5>
                         <input type="file" name="importfile" class="form-control @error('importfile') is-invalid @enderror" required>
                         @error('importfile')

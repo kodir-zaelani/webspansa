@@ -22,7 +22,7 @@
                                         <div class="col-md-8">
                                             <div class="pt-0 pb-0 card-body ps-3 pe-1">
                                                 <a href="{{ route('news.detail', $item->slug) }}" title="{{$item->title}}">
-                                                    <h6 class="p-0 m-0 card-title ">{{ Str::limit($item->title, 75) }}</h6>
+                                                    <h6 class="py-2 m-0 card-title ">{{ Str::limit($item->title, 75) }}</h6>
                                                 </a>
                                                 <span>
                                                     <small class="text-secondary fst-italic"><i class="fa fa-calendar-o"></i> {{ \Carbon\Carbon::parse($item->published_at ? $item->published_at : $item->created_at)->format('M j, Y') }}</small>

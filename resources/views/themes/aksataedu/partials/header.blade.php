@@ -153,23 +153,67 @@
             </button>
         </div>
         @if ($public_menu)
-        <ul class="menu">
+        <ul class="bg-white menu">
             @foreach ($public_menu as $menu)
             @if ($menu['status'] == 1)
             @if ($menu['child'])
             {{-- menu child --}}
             <li class="dropdown">
-                <a href="#">Home</a>
+                @if ($menu['type'] == 'internal' && $menu['link'] == '/')
+                <a href="{{ $menu['link'] }}" target="{{ $menu['target'] }}">
+                    <span>{{ $menu['label'] }}</span>
+                </a>
+                @elseif ($menu['type'] == 'internal' && $menu['link'] != '/')
+                <a href="{{ asset('') }}{{ $menu['link'] }}" target="{{ $menu['target'] }}">
+                    <span>{{ $menu['label'] }}</span>
+                </a>
+                @endif
                 <ul class="dropdown-menu">
-                    <li><a href="index.html">Home 1</a></li>
-                    <li><a href="index2.html">Home 2</a></li>
-                    <li><a href="index3.html">Home 3</a></li>
-                    <li><a href="index4.html">Home 4</a></li>
-                    <li><a href="index5.html">Home 5</a></li>
-                    <li><a href="index6.html">Home 6</a></li>
+                    @foreach ($menu['child'] as $child)
+                    @if ($child['status'] == 1)
+                    @if ($child['child'])
+                    <li class="dropdown">
+                        {{-- child sub child --}}
+                        @if ($child['type'] == 'internal')
+                        <a href="{{ asset('') }}{{ $child['link'] }}" target="{{ $child['target'] }}">
+                            <span>{{ $child['label'] }}</span>
+                        </a>
+                        @else
+                        <a href="{{ $child['link'] }}" target="{{ $child['target'] }}">
+                            <span>{{ $child['label'] }}</span>
+                        </a>
+                        @endif
+                        <ul class="dropdown-menu">
+                            @foreach ($child['child'] as $subchild)
+                            @if ($subchild['status'] == 1)
+                            <li >
+                                @if ($subchild['type'] == 'internal')
+                                <a href="{{ asset('') }}{{ $subchild['link'] }}" target="{{ $subchild['target'] }}">{{ $subchild['label'] }}</a>
+                                @else
+                                <a href="{{ $subchild['link'] }}" target="{{ $subchild['target'] }}">{{ $subchild['label'] }}</a>
+                                @endif
+                            </li>
+                            @endif
+                            @endforeach
+                        </ul>
+                        {{-- end child sub child --}}
+                    </li>
+                    @else
+                    <li>
+                        @if ($child['type'] == 'internal')
+                        <a href="{{ asset('') }}{{ $child['link'] }}" target="{{ $child['target'] }}">{{ $child['label'] }}</a>
+                        @else
+                        <a href="{{ $child['link'] }}" target="{{ $child['target'] }}">{{ $child['label'] }}</a>
+                        @endif
+                    </li>
+                    @endif
+                    @endif
+                    @endforeach
                 </ul>
             </li>
+            {{-- end menu child --}}
             @else
+            {{-- mmnu --}}
             <li>
                 @if ($menu['type'] == 'internal' && $menu['link'] == '/')
                 <a href="{{ $menu['link'] }}" target="{{ $menu['target'] }}">
@@ -188,55 +232,6 @@
             @endif
             @endif
             @endforeach
-
-            <li class="dropdown">
-                <a href="#">Blog</a>
-                <ul class="dropdown-menu">
-                    <li class="dropdown">
-                        <a href="#">Grid Blog</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="blog_grid_2.html">Grid 2 colunm</a></li>
-                            <li><a href="blog_grid_3.html">Grid 3 colunm</a></li>
-                            <li><a href="blog_grid_left_sidebar.html">blog left sidebar</a></li>
-                            <li><a href="blog_grid_right_sidebar.html">blog right sidebar</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#">List Blog</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="blog_list.html">Blog List</a></li>
-                            <li><a href="blog_list_left_sidebar.html">Blog List Left Sidebar</a></li>
-                            <li><a href="blog_list_right_sidebar.html">Blog List right Sidebar</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#">Single Blog Post</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="blog_single_grid_post.html">Single Grid Post</a></li>
-                            <li><a href="blog_single_html5video_post.html">Single html5 Video-post</a></li>
-                            <li><a href="blog_single_image_post.html">Single Image Post</a></li>
-                            <li><a href="blog_single_slider_post.html">Single Slider Post</a></li>
-                            <li><a href="blog_single_soundcloud_post.html">Single SoundCloud Post</a></li>
-                            <li><a href="blog_single_vimeo_post.html">Single Vimeo Post</a></li>
-                            <li><a href="blog_single_post.html">Single without image post</a></li>
-                            <li><a href="blog_single_youtube_post.html">Single Youtube Post</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">Shop</a>
-                <ul class="dropdown-menu">
-                    <li><a href="shop.html">Shop Grid</a></li>
-                    <li><a href="shop-cart.html">Shop Cart</a></li>
-                    <li><a href="shop-checkout.html">Shop Checkout</a></li>
-                    <li><a href="shop-details.html">Shop Details</a></li>
-                    <li><a href="shop-orders.html">Shop Orders</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="contact_us.html">Contact</a>
-            </li>
         </ul>
         @endif
 

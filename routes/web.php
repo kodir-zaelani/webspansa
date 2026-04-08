@@ -202,6 +202,15 @@ Route::middleware(['auth', 'verified', 'web'])->group(function () {
     Route::get('backend/jabatantugasptk', [App\Http\Controllers\Backend\TugastambahanptkController::class, 'index'])->name('backend.jabatantugasptk.index');
 
 
+    // PTK
+    Route::get('backend/ptk', [App\Http\Controllers\Backend\PtkController::class, 'index'])->name('backend.ptk.index');
+    Route::get('backend/ptk/create', [App\Http\Controllers\Backend\PtkController::class, 'create'])->name('backend.ptk.create');
+    Route::post('backend/ptk/store', [App\Http\Controllers\Backend\PtkController::class, 'store'])->name('backend.ptk.store');
+    Route::get('backend/ptk/{ptk}/edit', [App\Http\Controllers\Backend\PtkController::class, 'edit'])->name('backend.ptk.edit');
+    Route::put('backend/ptk/{ptk}/update', [App\Http\Controllers\Backend\PtkController::class, 'update'])->name('backend.ptk.update');
+    Route::put('backend/ptk/{ptk}/updatelogo', [App\Http\Controllers\Backend\PtkController::class, 'updatelogo'])->name('backend.ptk.updatelogo');
+    Route::post('backend/ptk/import', [App\Http\Controllers\Backend\PtkController::class, 'import'])->name('backend.ptk.import');
+
 });
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
