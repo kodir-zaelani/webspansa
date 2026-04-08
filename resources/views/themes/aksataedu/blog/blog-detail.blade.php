@@ -43,7 +43,7 @@
                                 <li><a href="#"><i class="fa fa-calendar-o"></i> {{$item->published_at ? $item->date_published : $item->date_created}}</a></li>
                                 <li><a href="#"><i class="fa fa-book-open me-5"></i> {{ $item->reading_time }} </a></li>
                                 <li>
-                                    <a href="{{route('news.author', $item->author->id)}}" title="{{$item->author->displayname ?? $item->author->name}}">
+                                    <a href="{{route('blog.author', $item->author->id)}}" title="{{$item->author->displayname ?? $item->author->name}}">
                                         <i class="fa fa-user me-5"></i> {{$item->author->displayname ?? $item->author->name}}
                                     </a>
                                 </li>

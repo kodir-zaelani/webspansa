@@ -33,13 +33,13 @@
                                 <div class="mb-2 border-0 card">
                                     <div class="row g-0">
                                         <div class="col-md-4 ">
-                                            <a href="{{ route('news.detail', $item->slug) }}" title="{{$item->title}}">
+                                            <a href="{{ route('blog.detail', $item->slug) }}" title="{{$item->title}}">
                                                 <img src="{{ $item->imageUrl ? $item->imageUrl : '/uploads/images/logo/' . $global_option->logo }}" class="pt-1 rounded img-fluid" alt="..." style="max-height: 100%">
                                             </a>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="pt-0 pb-0 card-body ps-3 pe-1">
-                                                <a href="{{ route('news.detail', $item->slug) }}" title="{{$item->title}}">
+                                                <a href="{{ route('blog.detail', $item->slug) }}" title="{{$item->title}}">
                                                     <h6 class="p-0 m-0 card-title ">{{ Str::limit($item->title, 75) }}</h6>
                                                 </a>
                                                 <span>

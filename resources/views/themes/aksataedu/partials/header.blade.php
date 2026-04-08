@@ -94,49 +94,8 @@
         @endif
         <ul class="attributes">
             {{-- <li class="d-md-block d-none"><a href="#" class="px-10 pb-10 pt-15"><div class="py-5 btn btn-primary">Enroll Now</div></a></li> --}}
-            <li class="d-md-block d-none"><a href="#" class="toggle-search-fullscreen"><span class="ti-search"></span></a></li>
-            <li class="megamenu" data-width="270">
-                <a href="#"><span class="ti-shopping-cart"></span></a>
-                <div class="megamenu-content megamenu-cart">
+            <li class=""><a href="#" class="toggle-search-fullscreen"><span class="ti-search"></span></a></li>
 
-                    <div class="cart-header">
-                        <div class="total-price">
-                            Total:  <span>$2,432.93</span>
-                        </div>
-                        <i class="ti-shopping-cart"></i>
-                        <span class="badge">3</span>
-                    </div>
-                    <div class="cart-body">
-                        <ul>
-                            <li>
-                                <img src="{{ asset('') }}assets/images/front-end-img/product/product-1.png" alt="">
-                                <h5 class="title">Lorem ipsum dolor</h5>
-                                <span class="qty">Quantity: 02</span>
-                                <span class="price-st">$843,12</span>
-                                <a href="#" class="link"></a>
-                            </li>
-                            <li>
-                                <img src="{{ asset('') }}assets/images/front-end-img/product/product-2.png" alt="">
-                                <h5 class="title">Lorem ipsum dolor</h5>
-                                <span class="qty">Quantity: 02</span>
-                                <span class="price-st">$843,12</span>
-                                <a href="#" class="link"></a>
-                            </li>
-                            <li>
-                                <img src="{{ asset('') }}assets/images/front-end-img/product/product-3.png" alt="">
-                                <h5 class="title">Lorem ipsum dolor</h5>
-                                <span class="qty">Quantity: 02</span>
-                                <span class="price-st">$843,12</span>
-                                <a href="#" class="link"></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="cart-footer">
-                        <a href="#">Checkout</a>
-                    </div>
-
-                </div>
-            </li>
         </ul>
 
 

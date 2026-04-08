@@ -1,4 +1,4 @@
-<section class="block bg-light py-50 d-xl-block d-lg-block d-md d-none">
+<section class="block bg-light py-50 d-xl-block d-lg-block d-md-block d-none">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 col-12">
@@ -17,3 +17,17 @@
         </div>
     </div>
 </section>
+{{-- <section class="block bg-light py-50 d-xl-none d-lg-none d-md-none d-block">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-12 position-relative">
+                <div class="popup-vdo ">
+                    <img src="{{$global_option->bg_headerThumbUrl ? $global_option->bg_headerThumbUrl : asset('uploads/images/no_image.png')}}" class="rounded img-fluid " alt="" style="max-width: 100%">
+                    @if ($global_option->video)
+                    <a href="{{$global_option->video }}" class="popup-youtube play-vdo-bt waves-effect waves-circle btn btn-circle btn-primary btn-lg"><i class="mdi mdi-play"></i></a>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+</section> --}}

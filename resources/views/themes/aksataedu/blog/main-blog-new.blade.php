@@ -45,6 +45,20 @@
                             <p>No blog posts available.</p>
                             @endforelse
                         </div>
+                        <div class="media-list media-list-hover media-list-divided md-post mt-lg-0 mt-30 d-xl-none d-lg-none d-md-none d-block">
+                            @forelse ($global_blog as $item)
+                            <a class="bg-white media media-single box-shadowed pull-up mb-15" href="{{ route('blog.detail', $item->slug) }}" title="{{$item->title}}">
+                                <img class="rounded w-80 ms-0" src="{{$item->imageThumbUrl ? $item->imageThumbUrl : asset('uploads/images/logo/'. $global_option->logo)}}" alt="...">
+                                <div class="media-body fw-500">
+                                    <h6 class="overflow-hidden text-overflow-h nowrap">{{Str::limit($item->title, 40)}}</h6>
+                                    <span class="text-info"><i class="fa fa-calendar-o"></i> {{ $item->created_at->format('F j, Y') }}</span>
+                                    <p><span class="mt-10 text-fade text-primary">{{$item->postcategory->title ?? 'Uncategorized'}}</span></p>
+                                </div>
+                            </a>
+                            @empty
+                            <p>No blog posts available.</p>
+                            @endforelse
+                        </div>
                         @if ($global_blog->count())
                         <div aria-label="Page navigation example">
                             <a href="{{ route('blog.all') }}" class="mx-auto btn btn-primary">Tampilkan Semua</a>

@@ -31,7 +31,7 @@
                                 @endif
                             </div>
                             <div class="d-flex flex-column fw-500">
-                                <a href="{{ route('news.author', $item->author->id) }}" class="mb-1 text-dark hover-primary fs-16">
+                                <a href="{{ route('blog.author', $item->author->id) }}" class="mb-1 text-dark hover-primary fs-16">
                                     @if ($item->author->displayname)
                                     {{ $item->author->displayname }}
                                     @else

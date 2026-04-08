@@ -9,7 +9,7 @@
                     <h2 class="text-white page-title">{{ __($title ?? 'Anak Petani') }}</h2>
                     <ol class="bg-transparent breadcrumb justify-content-center">
                         <li class="breadcrumb-item"><a href="{{route('root')}}" class="text-white-50"><i class="mdi mdi-home-outline"></i></a></li>
-                        <li class="text-white breadcrumb-item active" aria-current="page">{{$all_blog->first()->blogcategory->title}}</li>
+                        <li class="text-white breadcrumb-item active" aria-current="page">{{$author_name}}</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                     <h2 class="pt-20 text-white page-title">{{ __($title ?? 'Anak Petani') }}</h2>
                     <ol class="bg-transparent breadcrumb justify-content-center">
                         <li class="breadcrumb-item"><a href="{{route('root')}}" class="text-white-50"><i class="mdi mdi-home-outline"></i></a></li>
-                        <li class="text-white breadcrumb-item active" aria-current="page">{{$all_blog->first()->blogcategory->title}}</li>
+                        <li class="text-white breadcrumb-item active" aria-current="page">{{$author_name}}</li>
                     </ol>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 <div class="box">
                     <div class="box-body">
                         <div class="row justify-content-center">
-                            @foreach ($all_blog as $item)
+                            @foreach ($blogs_author as $item)
                             <div class="mb-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 d-none d-md-block d-lg-block d-xl-block">
                                 <div class="mb-2 border-0 card">
                                     <div class="row g-0">
@@ -74,23 +74,23 @@
                             </div>
                             @endforeach
                         </div>
-                        <div class="row">
+                        <div class="row d-md-none d-lg-none d-xl-none d-block">
                             <div class="col">
                                 <h4>Blog</h4>
-                                <div class="row justify-content-center d-md-none d-lg-none d-xl-none d-block">
+                                <div class="row justify-content-center ">
                                     <div class="text-center col-lg-12 col-12">
-                                        {{ $all_blog->links('vendor.pagination.bootstrap-5-aksata-simple') }}
+                                        {{ $blogs_author->links('vendor.pagination.bootstrap-5-aksata-simple') }}
                                     </div>
                                 </div>
 
                                 <div class="media-list media-list-hover media-list-divided md-post mt-lg-0 mt-30 d-xl-none d-lg-none d-md-none d-block">
-                                    @forelse ($all_blog as $item)
+                                    @forelse ($blogs_author as $item)
                                     <a class="bg-white media media-single box-shadowed pull-up mb-15" href="{{ route('blog.detail', $item->slug) }}" title="{{$item->title}}">
                                         <img class="rounded w-80 ms-0" src="{{$item->imageThumbUrl ? $item->imageThumbUrl : asset('uploads/images/logo/'. $global_option->logo)}}" alt="...">
                                         <div class="media-body fw-500">
                                             <h6 class="overflow-hidden text-overflow-h nowrap">{{Str::limit($item->title, 40)}}</h6>
                                             <span class="text-info"><i class="fa fa-calendar-o"></i> {{ $item->created_at->format('F j, Y') }}</span>
-                                            <p><span class="mt-10 text-fade text-primary">{{$item->blogcategory->title ?? 'Uncategorized'}}</span></p>
+                                            <p><span class="mt-10 text-fade text-primary">{{$item->postcategory->title ?? 'Uncategorized'}}</span></p>
                                         </div>
                                     </a>
                                     @empty
@@ -101,12 +101,12 @@
                         </div>
                         <div class="row justify-content-center d-md-none d-lg-none d-xl-none d-block">
                             <div class="text-center col-lg-12 col-12">
-                                {{ $all_blog->links('vendor.pagination.bootstrap-5-aksata-simple') }}
+                                {{ $blogs_author->links('vendor.pagination.bootstrap-5-aksata-simple') }}
                             </div>
                         </div>
                         <div class="row justify-content-center d-md-block d-lg-block d-xl-block d-none">
                             <div class="text-center col-lg-12 col-12">
-                                {{ $all_blog->links('vendor.pagination.bootstrap-5-aksata') }}
+                                {{ $blogs_author->links('vendor.pagination.bootstrap-5-aksata') }}
                             </div>
                         </div>
                     </div>
@@ -114,9 +114,8 @@
             </div>
             <div class="col-xl-3 col-md-4 col-sm-12">
                 <div class="course-detail-bx">
-                    @include('themes.aksataedu.partials.sidebar-blogcategory')
-                    @include('themes.aksataedu.partials.sidebar-recent-blog')
                     @include('themes.aksataedu.partials.sidebar-postcategory')
+                    @include('themes.aksataedu.partials.sidebar-tags')
                     @include('themes.aksataedu.partials.sidebar-recent-news')
                 </div>
             </div>

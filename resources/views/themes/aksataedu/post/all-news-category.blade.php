@@ -1,12 +1,27 @@
 @extends('layouts.appf')
 @section('title', $title ?? 'Anak Petani')
 @section('content')
-<section class="pb-20 bg-img pt-180" data-overlay="7" style="background-image: url({{asset('')}}assets/images/front-end-img/background/bg-8laptop.jpeg);">
+<section class="pb-20 bg-img pt-180 d-xl-block d-lg-block d-md-block d-none" data-overlay="7" style="background-image: url({{asset('')}}assets/images/front-end-img/background/bg-8laptop.jpeg);">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="text-center">
                     <h2 class="text-white page-title">{{ __($title ?? 'Anak Petani') }}</h2>
+                    <ol class="bg-transparent breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a href="{{route('root')}}" class="text-white-50"><i class="mdi mdi-home-outline"></i></a></li>
+                        <li class="text-white breadcrumb-item active" aria-current="page">{{$all_news->first()->postcategory->title}}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-img pt-60 d-xl-none d-lg-none d-md-none d-block" data-overlay="7" style="background-image: url({{asset('')}}assets/images/front-end-img/background/bg-8laptop.jpeg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <h2 class="pt-20 text-white page-title">{{ __($title ?? 'Anak Petani') }}</h2>
                     <ol class="bg-transparent breadcrumb justify-content-center">
                         <li class="breadcrumb-item"><a href="{{route('root')}}" class="text-white-50"><i class="mdi mdi-home-outline"></i></a></li>
                         <li class="text-white breadcrumb-item active" aria-current="page">{{$all_news->first()->postcategory->title}}</li>
@@ -60,7 +75,7 @@
 
                             @endforeach
                         </div>
-                        <div class="row">
+                        <div class="row d-xl-none d-lg-none d-md-none d-block">
                             <div class="col">
                                 <h4 class="fw-blod">Berita</h4>
                                 <div class="row justify-content-center d-md-none d-lg-none d-xl-none d-block">
@@ -73,7 +88,7 @@
                                         {{ $all_news->links('vendor.pagination.bootstrap-5-aksata') }}
                                     </div>
                                 </div>
-                                <div class="media-list media-list-hover media-list-divided md-post mt-lg-0 mt-30 d-xl-none d-lg-none d-md-none d-block">
+                                <div class="media-list media-list-hover media-list-divided md-post mt-lg-0 mt-30 ">
                                     @forelse ($all_news as $item)
                                     <a class="bg-white media media-single box-shadowed pull-up mb-15" href="{{ route('agenda.detail', $item->slug) }}" title="{{$item->title}}">
                                         <img class="rounded w-80 ms-0" src="{{$item->imageThumbUrl ? $item->imageThumbUrl : asset('uploads/images/logo/'. $global_option->logo)}}" alt="...">
@@ -105,6 +120,7 @@
             <div class="col-xl-3 col-md-4 col-sm-12">
                 <div class="course-detail-bx">
                     @include('themes.aksataedu.partials.sidebar-postcategory')
+                    @include('themes.aksataedu.partials.sidebar-post-tags')
                     @include('themes.aksataedu.partials.sidebar-recent-news')
                 </div>
             </div>

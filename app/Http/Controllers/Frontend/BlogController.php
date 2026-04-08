@@ -66,16 +66,16 @@ class BlogController extends Controller
         ]);
     }
 
-    public function news_author(Request $request) {
+    public function blog_author(Request $request) {
         $this->segment = $request->segment(3);
         $author = User::where('id', $this->segment)->first();
-        $blogs =$author->blogs()
+        $blogs_author =$author->blogs()
                 ->with('blogcategory', 'author')
                 ->latest()
                 ->published()
                 ->paginate(10);
-        return view('frontend.blog.all-blog-author', [
-            'newsauthor' => $blogs,
+        return view('themes.aksataedu.blog.all-blog-author', [
+            'blogs_author' => $blogs_author,
             'author_name' => $author->name,
             'title' => 'Penulis Berita'
         ]);
