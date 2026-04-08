@@ -39,7 +39,7 @@
     <div class="box-body">
         <h4 class="box-title justify-content-between d-flex align-items-center">{{$greeting->title}}</h4>
         <p class="box-text">
-            {{Str::limit($greeting->content, 200)}}
+            {!! Str::limit($greeting->content, 200) !!}
         </p>
     </div>
     <div class="box-footer justify-content-between d-flex align-items-center">
