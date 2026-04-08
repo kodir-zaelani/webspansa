@@ -36526,4 +36526,15 @@ img.away, img.busy, img.offline, img.online {
     transform: translate3d(0, 0, 0);
   }
 }
+
+.breadcrumb-fixed {
+  position: fixed;   /* Keeps the bar at the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;     /* Ensures it stays above other content */
+  background: white; /* Required so content doesn't show through */
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 /*# sourceMappingURL=style.css.map */

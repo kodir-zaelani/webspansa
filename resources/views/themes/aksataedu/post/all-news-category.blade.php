@@ -19,12 +19,6 @@
 <section class="py-50">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xl-3 col-md-4 col-sm-12">
-                <div class="course-detail-bx">
-                    @include('themes.aksataedu.partials.sidebar-postcategory')
-                    @include('themes.aksataedu.partials.sidebar-recent-news')
-                </div>
-            </div>
             <div class="col-xl-9 col-md-8 col-12">
                 <div class="box">
                     <div class="box-body">
@@ -63,9 +57,38 @@
                                 </div>
                                 <hr>
                             </div>
+
                             @endforeach
                         </div>
-
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="fw-blod">Berita</h4>
+                                <div class="row justify-content-center d-md-none d-lg-none d-xl-none d-block">
+                                    <div class="text-center col-lg-12 col-12">
+                                        {{ $all_news->links('vendor.pagination.bootstrap-5-aksata-simple') }}
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center d-md-block d-lg-block d-xl-block d-none">
+                                    <div class="text-center col-lg-12 col-12">
+                                        {{ $all_news->links('vendor.pagination.bootstrap-5-aksata') }}
+                                    </div>
+                                </div>
+                                <div class="media-list media-list-hover media-list-divided md-post mt-lg-0 mt-30 d-xl-none d-lg-none d-md-none d-block">
+                                    @forelse ($all_news as $item)
+                                    <a class="bg-white media media-single box-shadowed pull-up mb-15" href="{{ route('agenda.detail', $item->slug) }}" title="{{$item->title}}">
+                                        <img class="rounded w-80 ms-0" src="{{$item->imageThumbUrl ? $item->imageThumbUrl : asset('uploads/images/logo/'. $global_option->logo)}}" alt="...">
+                                        <div class="media-body fw-500">
+                                            <h6 class="overflow-hidden text-overflow-h nowrap">{{Str::limit($item->title, 40)}}</h6>
+                                            <span class="text-info"><i class="fa fa-calendar-o"></i> {{ $item->created_at->format('F j, Y') }}</span>
+                                            <p><span class="mt-10 text-fade text-primary">{{$item->postcategory->title ?? 'Uncategorized'}}</span></p>
+                                        </div>
+                                    </a>
+                                    @empty
+                                    <p>No agenda available.</p>
+                                    @endforelse
+                                </div>
+                            </div>
+                        </div>
                         <div class="row justify-content-center d-md-none d-lg-none d-xl-none d-block">
                             <div class="text-center col-lg-12 col-12">
                                 {{ $all_news->links('vendor.pagination.bootstrap-5-aksata-simple') }}
@@ -79,6 +102,13 @@
                     </div>
                 </div>
             </div>
+            <div class="col-xl-3 col-md-4 col-sm-12">
+                <div class="course-detail-bx">
+                    @include('themes.aksataedu.partials.sidebar-postcategory')
+                    @include('themes.aksataedu.partials.sidebar-recent-news')
+                </div>
+            </div>
+
         </div>
     </div>
 </section>

@@ -1,4 +1,4 @@
-<section class="bg-light py-50">
+<section class="block bg-light py-50 d-xl-block d-lg-block d-md d-none">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 col-12">

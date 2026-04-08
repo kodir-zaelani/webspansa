@@ -22,6 +22,7 @@ class FrontendController extends Controller
             'sliders' => Slider::published()->latest()->take(8)->get(),
             'greeting' => Greeting ::latest()->take(1)->first(),
             'featured_news' => Post::with('author','postcategory')->where('headline', 1)->published()->latest()->take(12)->get(),
+            'featured_news_mobile' => Post::with('author','postcategory')->where('headline', 1)->published()->latest()->take(5)->get(),
             'latest_news' => Post::with('author','postcategory')->published()->latest()->take(6)->get(),
             'title' => 'Beranda'
         ]);

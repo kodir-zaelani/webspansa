@@ -9,7 +9,7 @@
                         </div>
                     </div>
                     <div class="box-body">
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center d-xl-block d-lg-block d-md-block d-none">
                             @foreach ($featured_news as $item)
                             <div class="mb-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 ">
                                 <div class="mb-2 border-0 card">
@@ -28,12 +28,15 @@
                                                     <small class="text-secondary fst-italic"><i class="fa fa-calendar-o"></i> {{ \Carbon\Carbon::parse($item->published_at ? $item->published_at : $item->created_at)->format('M j, Y') }}</small>
                                                 </span>
                                                 <span class="ms-3"> |
-                                                    <i class="mx-2 fa fa-eye text-secondary"></i><small class="text-primary fw-semibold ">{{ $item->view_count }} kali</small>
+                                                    <i class="mx-2 fa fa-eye text-secondary"></i>
+                                                    <small class="text-primary fw-semibold ">{{ $item->view_count }} kali
+
+                                                    </small>
                                                 </span><br/>
                                                 <span >
                                                     <i class="me-2 fa fa-user text-secondary"></i>
                                                     <small class="text-primary fw-semibold ">
-                                                       <a href="{{route('news.author', $item->author->id)}}" title="{{$item->author->displayname ?? $item->author->name}}">
+                                                        <a href="{{route('news.author', $item->author->id)}}" title="{{$item->author->displayname ?? $item->author->name}}">
                                                             {{ $item->author->displayname ?? $item->author->name }}
                                                         </a>
                                                     </small>
@@ -45,6 +48,21 @@
                                 <hr>
                             </div>
                             @endforeach
+                        </div>
+
+                        <div class="media-list media-list-hover media-list-divided md-post mt-lg-0 mt-30 d-xl-none d-lg-none d-md-none d-block">
+                            @forelse ($featured_news_mobile as $item)
+                            <a class="bg-white media media-single box-shadowed pull-up mb-15" href="{{ route('agenda.detail', $item->slug) }}" title="{{$item->title}}">
+                                <img class="rounded w-80 ms-0" src="{{$item->imageThumbUrl ? $item->imageThumbUrl : asset('uploads/images/logo/'. $global_option->logo)}}" alt="...">
+                                <div class="media-body fw-500">
+                                    <h6 class="overflow-hidden text-overflow-h nowrap">{{Str::limit($item->title, 40)}}</h6>
+                                    <span class="text-info"><i class="fa fa-calendar-o"></i> {{ $item->created_at->format('F j, Y') }}</span>
+                                    <p><span class="mt-10 text-fade text-primary">{{$item->postcategory->title ?? 'Uncategorized'}}</span></p>
+                                </div>
+                            </a>
+                            @empty
+                            <p>No agenda available.</p>
+                            @endforelse
                         </div>
 
                         <div aria-label="Page navigation example">
@@ -61,4 +79,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>

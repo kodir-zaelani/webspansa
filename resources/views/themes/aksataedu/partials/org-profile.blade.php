@@ -1,7 +1,7 @@
 <section class="py-50">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3 col-md-4 col-12">
+            <div class="col-lg-3 col-md-4 col-12 d-xl-block d-lg-block d-md-block d-none">
                 <div class="box position-sticky t-100 h-360">
                     <div class="text-center box-body">
                         <h4 class="box-title text-primary">Pimpinan</h4>
@@ -14,10 +14,10 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-4 col-12">
+            <div class="col-lg-6 col-md-4 col-12 ">
                 @include('themes.aksataedu.greetings.main-greeting')
             </div>
-            <div class="col-lg-3 col-md-4 col-12 h-400">
+            <div class="col-lg-3 col-md-4 col-12 h-400 d-xl-block d-lg-block d-md-block d-none">
                 @include('themes.aksataedu.partials.sidebar-announcement')
             </div>
         </div>

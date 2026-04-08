@@ -1,5 +1,5 @@
 @if ($global_statistics->count())
-<section class="py-50 bg-img countnm-bx" style="background-image: url({{ $global_option->bg_statisticUrl ? $global_option->bg_statisticUrl : '/assets/uploads/images/no_image.png' }})" data-overlay="7" data-aos="fade-up">
+<section class="py-50 bg-img countnm-bx d-xl-block d-lg-block d-md-block d-none" style="background-image: url({{ $global_option->bg_statisticUrl ? $global_option->bg_statisticUrl : '/assets/uploads/images/no_image.png' }})" data-overlay="7" data-aos="fade-up">
     <div class="container">
         <div class="row">
             @foreach ($global_statistics as $item)
