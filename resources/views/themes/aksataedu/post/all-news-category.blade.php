@@ -120,7 +120,7 @@
             <div class="col-xl-3 col-md-4 col-sm-12">
                 <div class="course-detail-bx">
                     @include('themes.aksataedu.partials.sidebar-postcategory')
-                    @include('themes.aksataedu.partials.sidebar-post-tags')
+                    @include('themes.aksataedu.partials.sidebar-tags')
                     @include('themes.aksataedu.partials.sidebar-recent-news')
                 </div>
             </div>
