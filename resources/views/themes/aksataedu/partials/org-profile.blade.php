@@ -7,8 +7,8 @@
                         <h4 class="box-title text-primary">Pimpinan</h4>
                         <hr class="my-15">
                         <div class="mt-20">
-                            <img src="{{asset('')}}assets/images/front-end-img/avatar/1.jpeg" width="180" class="rounded bg-primary-light" alt="user">
-                            <h5 class="mt-20 mb-0">Prof. Dr. Johen , ST., M.Si</h5>
+                            <img src="{{asset('')}}uploads/images/pimpinan/principle_ni'mah_spd_mpd.jpeg" width="180" class="rounded bg-primary-light" alt="user">
+                            {{-- <h5 class="mt-20 mb-0">Prof. Dr. Johen , ST., M.Si</h5> --}}
                         </div>
                     </div>
                 </div>
